@@ -1,0 +1,114 @@
+{
+  "name": "@zowe/mq",
+  "version": "0.0.1",
+  "description": "MQ Configurator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zowe/zowe-cli-sample-plugin.git"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "node scripts/updateLicense.js && tsc --pretty --project tsconfig.json && npm run checkTestsCompile",
+    "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
+    "clean": "rimraf lib",
+    "watch": "tsc --pretty --watch",
+    "prepublishOnly": "npm run build",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "npm run test:unit && npm run test:system",
+    "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false",
+    "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\"",
+    "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install ."
+  },
+  "imperative": {
+    "configurationModule": "lib/imperative.js"
+  },
+  "peerDependencies": {
+    "@zowe/imperative": "^3.1.0",
+    "@zowe/cli": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/expect": "^1.20.3",
+    "@types/jest": "^22.1.0",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.10.5",
+    "@types/yargs": "^11.0.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chalk": "^2.4.1",
+    "expect": "^23.4.0",
+    "glob": "^7.1.2",
+    "jest": "^22.4.4",
+    "jest-cli": "^24.7.0",
+    "jest-environment-node": "^24.7.0",
+    "jest-environment-node-debug": "^2.0.0",
+    "jest-html-reporter": "^2.5.0",
+    "jest-junit": "6.3.0",
+    "jest-sonar-reporter": "2.0.0",
+    "jest-stare": "1.11.1",
+    "jsdom": "11.11.0",
+    "sinon": "^6.1.0",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^3.3.0",
+    "tslint": "5.14.0",
+    "typescript": "^3.4.1"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "__tests__/__snapshots__/"
+    ],
+    "testResultsProcessor": "jest-stare",
+    "transform": {
+      ".(ts)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(test|spec)\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/__results__"
+    ],
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!**/__tests__/**",
+      "!**/index.ts",
+      "!**/main.ts"
+    ],
+    "collectCoverage": false,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "cobertura"
+    ],
+    "coverageDirectory": "<rootDir>/__tests__/__results__/unit/coverage"
+  },
+  "jest-stare": {
+    "resultDir": "__tests__/__results__/jest-stare",
+    "additionalResultsProcessors": [
+      "jest-junit",
+      "jest-html-reporter"
+    ],
+    "coverageLink": "../coverage/lcov-report/index.html"
+  },
+  "jest-junit": {
+    "output": "__tests__/__results__/junit.xml"
+  },
+  "jest-html-reporter": {
+    "pageTitle": "MQ Config Plugin Test Results",
+    "outputPath": "__tests__/__results__/results.html",
+    "includeFailureMsg": true
+  },
+  "author": "Darkside",
+  "license": "EPL-2.0",
+  "dependencies": {
+    "@zowe/cli": "^3.4.0",
+    "@zowe/imperative": "^3.1.0"
+  }
+}

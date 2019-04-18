@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mq get resource should not have changed 1`] = `
+Object {
+  "description": "MQ Utils",
+  "name": "mqsc",
+  "summary": "MQ Utility Functions",
+  "type": "group",
+}
+`;

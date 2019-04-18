@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mq get MQSC command should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "run",
+  ],
+  "description": "MQ Utils",
+  "examples": Array [
+    Object {
+      "description": "The following sequence shows how to create a new server-connection channel that is 
+                    called NEWSVRCONN on a z/OS queue manager - our example queue manager is called MQ99",
+      "options": "MQ99 'DISPLAY CHANNEL(NEWSVRCONN)'",
+    },
+  ],
+  "name": "run",
+  "options": Array [
+    Object {
+      "description": "The cross site forgery field",
+      "name": "csrf",
+      "type": "string",
+    },
+  ],
+  "positionals": Array [
+    Object {
+      "description": "The queue manager to apply the command to",
+      "name": "queuemgr",
+      "required": true,
+      "type": "string",
+    },
+    Object {
+      "description": "The MQ command",
+      "name": "cmd",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "required": Array [
+      "mqrest",
+    ],
+  },
+  "summary": "MQ Utility Functions",
+  "type": "command",
+}
+`;

@@ -1,10 +1,10 @@
 {
   "name": "@zowe/mq",
-  "version": "0.0.1",
-  "description": "MQ Configurator",
+  "version": "1.0.0",
+  "description": "MQ Command runner",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zowe/zowe-cli-sample-plugin.git"
+    "url": "https://github.com/zowe/zowe-mq-plugin.git"
   },
   "main": "lib/index.js",
   "files": [
@@ -26,8 +26,8 @@
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@zowe/imperative": "^3.1.0",
-    "@zowe/cli": "^3.4.0"
+    "@zowe/imperative": "4.1.2",
+    "@zowe/cli": "5.5.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -35,16 +35,16 @@
     "@types/expect": "^1.20.3",
     "@types/jest": "^22.1.0",
     "@types/mocha": "^2.2.42",
-    "@types/node": "^7.10.5",
+    "@types/node": "^7.10.6",
     "@types/yargs": "^11.0.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "chalk": "^2.4.1",
     "expect": "^23.4.0",
-    "glob": "^7.1.2",
+    "glob": "^7.1.4",
     "jest": "^22.4.4",
-    "jest-cli": "^24.7.0",
-    "jest-environment-node": "^24.7.0",
+    "jest-cli": "^24.8.0",
+    "jest-environment-node": "^24.8.0",
     "jest-environment-node-debug": "^2.0.0",
     "jest-html-reporter": "^2.5.0",
     "jest-junit": "6.3.0",
@@ -55,7 +55,7 @@
     "ts-jest": "^23.10.5",
     "ts-node": "^3.3.0",
     "tslint": "5.14.0",
-    "typescript": "^3.4.1"
+    "typescript": "^3.4.5"
   },
   "jest": {
     "modulePathIgnorePatterns": [
@@ -108,7 +108,7 @@
   "author": "Darkside",
   "license": "EPL-2.0",
   "dependencies": {
-    "@zowe/cli": "^3.4.0",
-    "@zowe/imperative": "^3.1.0"
+    "@zowe/cli": "^5.5.0",
+    "@zowe/imperative": "^4.1.2"
   }
 }

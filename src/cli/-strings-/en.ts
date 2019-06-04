@@ -9,14 +9,14 @@
 *
 */
 
-import { TextUtils } from "@zowe/imperative";
+import { TextUtils } from "@brightside/imperative";
 
 export default {
     COMMAND: {
         DESCRIPTION: "MQ Utils",
         SUMMARY: "MQ Utility Functions",
         MQSC: {
-            DESCRIPTION: "Executes an MQ command against a Queue Manager",
+            DESCRIPTION: "Runs an MQSC command against a Queue Manager",
             POSITIONALS: {
                 THECOMMAND: "The MQ command",
                 QUEUEMANAGER: "The queue manager to apply the command to",

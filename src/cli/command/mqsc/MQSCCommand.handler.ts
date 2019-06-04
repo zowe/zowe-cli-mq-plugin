@@ -9,7 +9,7 @@
 *
 */
 
-import { AbstractSession, IHandlerParameters, IProfile } from "@zowe/imperative";
+import { AbstractSession, IHandlerParameters, IProfile } from "@brightside/imperative";
 import MQSCCommand from "../../../api/MQSCCommand";
 import { IMQResponse } from "../../../doc/IMQResponse";
 import MqBaseHandler from "../../MQBaseHandler";
@@ -36,7 +36,7 @@ export default class MQSCCommandHandler extends MqBaseHandler {
             }
             return await MQSCCommand.qmgrAction(session, params.arguments.queuemgr, endCommand);
         } catch (except) {
-            params.response.console.log("We just got an exception \n" +
+            params.response.console.log("Exception thrown \n" +
                 "Reason = " + except.message +
                 "\nWe will continue on anyway.\n"
             );

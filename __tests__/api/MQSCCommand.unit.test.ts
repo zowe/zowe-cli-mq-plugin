@@ -9,10 +9,10 @@
 *
 */
 
-import { ImperativeError, TextUtils, RestClient } from "@zowe/imperative";
+import { RestClient } from "@brightside/imperative";
 import { MQConstants } from "../../src/constants/MQ.constants";
 import MQSCCommand from "../../src/api/MQSCCommand";
-import { join, posix } from "path";
+import { posix } from "path";
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
 
@@ -43,14 +43,14 @@ describe("Run a command", () => {
     });
 
     describe("Success scenarios", () => {
-        it("should be able to submit a command", async () => {
-            const response = await MQSCCommand.qmgrAction(dummySession, queueMgrName, command );
+        it("should be able to submit a command nut override csrf", async () => {
+            const response = await MQSCCommand.qmgrAction(dummySession, queueMgrName, command, false );
             expect(response.commandResponse[0].text).toEqual("AMQ8147: IBM MQ object NEWSVRCONN not found.");
             expect(response.overallCompletionCode).toEqual(2);
             expect(mySpy).toHaveBeenCalledWith(dummySession,
                 "/ibmmq/rest/v1/admin/action/qmgr/testing/mqsc",
                 [{"Content-Type": "application/json"}],
-                {"parameters": {"command": "DEFINE CHANNEL(NEWSVRCONN) CHLTYPE(SVRCONN)"}, "type": "runCommand"});
+                {parameters: {command: "DEFINE CHANNEL(NEWSVRCONN) CHLTYPE(SVRCONN)"}, type: "runCommand"});
         });
 
         it("should be able to submit a command with CSRF header", async () => {
@@ -59,8 +59,8 @@ describe("Run a command", () => {
             expect(response.commandResponse[0].reasonCode).toEqual(2085);
             expect(response.overallCompletionCode).toEqual(2);
             expect(mySpy).toHaveBeenCalledWith(dummySession, "/ibmmq/rest/v1/admin/action/qmgr/testing/mqsc",
-            [{"Content-Type": "application/json"}, {"ibm-mq-rest-csrf-token": "certificate"}],
-            {"parameters": {"command": "DEFINE CHANNEL(NEWSVRCONN) CHLTYPE(SVRCONN)"}, "type": "runCommand"});
+            [{"Content-Type": "application/json"}, {"ibm-mq-rest-csrf-token": "true"}],
+            {parameters: {command: "DEFINE CHANNEL(NEWSVRCONN) CHLTYPE(SVRCONN)"}, type: "runCommand"});
         });
 
         it("should be fail to submit a command because queueMgrName is undefined", async () => {

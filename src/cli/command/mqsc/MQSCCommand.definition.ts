@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandDefinition } from "@zowe/imperative";
+import { ICommandDefinition } from "@brightside/imperative";
 
 import i18nTypings from "../../-strings-/en";
 
@@ -17,8 +17,8 @@ import i18nTypings from "../../-strings-/en";
 const strings = (require("../../-strings-/en").default as typeof i18nTypings).COMMAND;
 
 export const MQSCCommandDefinition: ICommandDefinition = {
-    name: "run",
-    aliases: ["run"],
+    name: "mqsc",
+    aliases: ["mqsc"],
     summary: strings.SUMMARY,
     description: strings.DESCRIPTION,
     type: "command",

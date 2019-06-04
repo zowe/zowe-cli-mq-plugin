@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`imperative config should match the snapshot 1`] = `
+Object {
+  "commandModuleGlobs": Array [
+    "**/cli/*/*.definition!(.d).*s",
+  ],
+  "name": "mq",
+  "pluginAliases": Array [
+    "zmqsc",
+  ],
+  "productDisplayName": "CLI Plug-in for IBM MQ",
+  "profiles": Array [
+    Object {
+      "createProfileExamples": Array [
+        Object {
+          "description": "Create an MQ profile named 'mqprofile' to connect to MQ at host zos123 and port 1234",
+          "options": "mqrest --host mq123 --port 1234 --user ibmuser --password myp4ss",
+        },
+      ],
+      "schema": Object {
+        "description": "CLI profile for MQ",
+        "properties": Object {
+          "host": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "H",
+              ],
+              "description": "The MQ Rest server host name",
+              "name": "host",
+              "required": true,
+              "type": "string",
+            },
+            "type": "string",
+          },
+          "password": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "p",
+              ],
+              "description": "Password to authenticate to your MQ REST API server",
+              "implies": Array [
+                "user",
+              ],
+              "name": "password",
+              "required": true,
+              "type": "string",
+            },
+            "secure": true,
+            "type": "string",
+          },
+          "port": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "P",
+              ],
+              "description": "Port number of your MQ REST API server",
+              "name": "port",
+              "required": true,
+              "type": "number",
+            },
+            "type": "number",
+          },
+          "protocol": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "o",
+              ],
+              "allowableValues": Object {
+                "caseSensitive": false,
+                "values": Array [
+                  "http",
+                  "https",
+                ],
+              },
+              "defaultValue": "http",
+              "description": "Specifies MQ protocol (http or https).",
+              "group": "MQ Connection Options",
+              "name": "protocol",
+              "required": true,
+              "type": "string",
+            },
+            "type": "string",
+          },
+          "rejectUnauthorized": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "ru",
+              ],
+              "defaultValue": true,
+              "description": "Reject self-signed certificates.",
+              "group": "MQ Connection Options",
+              "name": "reject-unauthorized",
+              "required": false,
+              "type": "boolean",
+            },
+            "type": "boolean",
+          },
+          "user": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "u",
+              ],
+              "description": "User name to authenticate to your MQ REST API server",
+              "name": "user",
+              "required": true,
+              "type": "string",
+            },
+            "secure": true,
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "host",
+          "port",
+          "user",
+          "password",
+        ],
+        "title": "CLI profile for MQ",
+        "type": "object",
+      },
+      "type": "mqrest",
+    },
+  ],
+  "rootCommandDescription": "Interact with IBM MQ.",
+}
+`;

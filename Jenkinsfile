@@ -210,7 +210,7 @@ pipeline {
                 timeout(time: 10, unit: 'MINUTES') {
                     echo "Install Zowe CLI globaly"
                     sh("npm set @zowe:registry https://api.bintray.com/npm/ca/brightside/")
-                    sh("npm install -g @zowe/cli@latest")
+                    sh("npm install -g @brightside/core@latest")
                     sh("zowe --version")
                 }
             }

@@ -3,7 +3,7 @@
 exports[`mq get MQSC command should not have changed 1`] = `
 Object {
   "aliases": Array [
-    "run",
+    "mqsc",
   ],
   "description": "MQ Utils",
   "examples": Array [
@@ -13,7 +13,7 @@ Object {
       "options": "MQ99 'DISPLAY CHANNEL(NEWSVRCONN)'",
     },
   ],
-  "name": "run",
+  "name": "mqsc",
   "options": Array [
     Object {
       "description": "The cross site forgery field",

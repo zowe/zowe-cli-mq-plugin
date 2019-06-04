@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@zowe/imperative";
+import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@brightside/imperative";
 
 /**
  * Utility Methods for Brightside
@@ -20,6 +20,7 @@ export class MqSession {
     public static MQ_CONNECTION_OPTION_GROUP = "MQ Connection Options";
 
     /**
+     *
      * Option used in profile creation and commands for hostname for MQ
      */
     public static MQ_OPTION_HOST: ICommandOptionDefinition = {
@@ -113,40 +114,32 @@ export class MqSession {
      * @returns {Session} - A session for usage in the MQ REST Client
      */
     public static createBasicMqSession(profile: IProfile): Session {
-        this.log.debug("Creating an MQ session from the profile named %s", profile.name);
+        MqSession.log.trace("Creating an MQ session from the profile named %s", profile.name);
         return new Session({
             type: "basic",
             hostname: profile.host,
             port: profile.port,
             user: profile.user,
-            password: profile.pass,
+            password: profile.password,
             basePath: profile.basePath,
+            rejectUnauthorized: profile.rejectUnauthorized,
             protocol: profile.protocol || "https",
         });
     }
 
     /**
-     * Given command line arguments, create a REST Client Session.
-     * @static
-     * @param {IProfile} args - The arguments specified by the user
-     * @returns {Session} - A session for usage in the MQ REST Client
+     * Internal logger
      */
-    public static createBasicMqSessionFromArguments(args: IProfile): Session {
-        this.log.debug("Creating a MQ session from arguments");
-        return new Session({
-            type: "basic",
-            hostname: args.host,
-            port: args.port,
-            user: args.user,
-            password: args.password,
-            basePath: args.basePath,
-            rejectUnauthorized: args.rejectUnauthorized,
-            protocol: args.protocol || "https",
-        });
-    }
+    private static mLogger: Logger;
 
-
+    /**
+     * Use the Brightside logger instead of the imperative logger
+     * @return {Logger}
+     */
     private static get log(): Logger {
-        return Logger.getAppLogger();
+        if (this.mLogger == null) {
+            this.mLogger = Logger.getAppLogger();
+        }
+        return this.mLogger;
     }
 }

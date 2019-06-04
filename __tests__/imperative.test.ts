@@ -22,4 +22,12 @@ describe("imperative config", () => {
         expect(config.rootCommandDescription).toContain("Interact with IBM MQ.");
     });
 
+    // Will fail if imperative config object is changed. This is a sanity/protection check to ensure that any
+    // changes to the configuration document are intended (and the snapshot must be updated).
+    it("should match the snapshot", () => {
+        const config = require("../src/imperative");
+        delete config.pluginHealthCheck; // this path changes depending on your system and can't be snapshotted.
+        expect(config).toMatchSnapshot();
+});
+
 });

@@ -37,9 +37,8 @@ describe("MQ Command handler", () => {
                           completionCode: 0,
                           reasonCode: 0,
                           text: [
-                            "CSQN205I   COUNT=       3, RETURN=00000000, REASON=00000000",
-                            "CSQM297I ]MQ21 CSQMDRTS NO CHANNEL FOUND MATCHING REQUEST CRITERIA ",
-                            "CSQ9022I ]MQ21 CSQMDRTS ' DISPLAY CHANNEL' NORMAL COMPLETION "
+                            "CSQN205I   COUNT=1, RETURN=00000000, REASON=00000000",
+                            "CSQM416I  MQ22 CHANNEL(SYSTEM.DEF.CLNTCONN)"
                           ],
                         }
                     ],
@@ -109,7 +108,7 @@ describe("MQ Command handler", () => {
             expect(error).toBeUndefined();
             expect(profFunc).toHaveBeenCalledWith("mqrest", false);
             expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
-            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, cmd, undefined);
+            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, cmd);
             expect(jsonObj).toMatchSnapshot();
             expect(apiMessage).toMatchSnapshot();
             expect(logMessage).toMatchSnapshot();
@@ -136,13 +135,18 @@ describe("MQ Command handler", () => {
                     success: true,
                     commandResponse:[
                         {
-                          completionCode: 0,
-                          reasonCode: 0,
-                          text: [
-                            "CSQN205I   COUNT=       3, RETURN=00000000, REASON=00000000",
-                            "CSQM297I ]MQ21 CSQMDRTS NO CHANNEL FOUND MATCHING REQUEST CRITERIA ",
+                        completionCode: 0,
+                        reasonCode: 0,
+                        text:[
+                            "CSQN205I COUNT= 5, RETURN=00000000, REASON=00000000",
+                            // tslint:disable-next-line:max-line-length
+                            "CSQM416I ]MQ21 CHANNEL(SYSTEM.DEF.CLNTCONN ) CHLTYPE(CLNTCONN ) QSGDISP(QMGR ) QMNAME( ) USERID( ) PASSWORD( ) TRPTYPE(LU62 ) CONNAME( ) DESCR( ) MODENAME( ) TPNAME( ) SCYEXIT( ) SCYDATA( ) SENDEXIT() SENDDATA() RCVEXIT() RCVDATA() CLNTWGHT( 0) AFFINITY(PREFERRED ) SHARECNV( 10) KAINT(AUTO ) ALTDATE(2018-12-05 ) ALTTIME(11.39.18) SSLCIPH( ) SSLPEER( ) DEFRECON(NO ) LOCLADDR( ) MAXMSGL( 4194304) COMPHDR(NONE ) COMPMSG(NONE ) HBINT( 300)",
+                            // tslint:disable-next-line:max-line-length
+                            "CSQM417I ]MQ21 CHANNEL(SYSTEM.DEF.CLUSRCVR ) CHLTYPE(CLUSRCVR ) QSGDISP(QMGR ) CLUSTER( ) CLUSNL( ) TRPTYPE(LU62 ) CONNAME( ) DESCR( ) MODENAME( ) TPNAME( ) DISCINT( 6000) SHORTRTY( 10) SHORTTMR( 60) LONGRTY( 999999999) LONGTMR( 1200) SCYEXIT( ) SCYDATA( ) MSGEXIT() MSGDATA() SENDEXIT() SENDDATA() RCVEXIT() RCVDATA() MREXIT( ) MRDATA( ) MRRTY( 10) MRTMR( 1000) PROPCTL(COMPAT ) PUTAUT(DEF ) SEQWRAP( 999999999) CONVERT(NO ) BATCHINT( 0) BATCHHB( 0) KAINT(AUTO ) NETPRTY( 0) CLWLRANK( 0) CLWLPRTY( 0) CLWLWGHT( 50) MCATYPE(THREAD ) MONCHL(QMGR ) ALTDATE(2018-12-05 ) ALTTIME(11.39.18) SSLCAUTH(REQUIRED ) SSLCIPH( ) SSLPEER( ) CERTLABL( ) BATCHLIM( 5000) USEDLQ(YES ) STATCHL(QMGR ) MCAUSER( ) LOCLADDR( ) BATCHSZ( 50) MAXMSGL( 4194304) COMPHDR(NONE ) COMPMSG(NONE ) HBINT( 300) NPMSPEED(FAST )",
+                            // tslint:disable-next-line:max-line-length
+                            "CSQM418I ]MQ21 CHANNEL(SYSTEM.DEF.CLUSSDR ) CHLTYPE(CLUSSDR ) QSGDISP(QMGR ) CLUSTER( ) CLUSNL( ) TRPTYPE(LU62 ) CONNAME( ) DESCR( ) MCANAME( ) MODENAME( ) TPNAME( ) DISCINT( 6000) SHORTRTY( 10) SHORTTMR( 60) LONGRTY( 999999999) LONGTMR( 1200) SCYEXIT( ) SCYDATA( ) MSGEXIT() MSGDATA() SENDEXIT() SENDDATA() RCVEXIT() RCVDATA() PROPCTL(COMPAT ) SEQWRAP( 999999999) CONVERT(NO ) BATCHINT( 0) BATCHHB( 0) KAINT(AUTO ) CLWLRANK( 0) CLWLPRTY( 0) CLWLWGHT( 50) MONCHL(QMGR ) ALTDATE(2018-12-05 ) ALTTIME(11.39.18) SSLCIPH( ) SSLPEER( ) CERTLABL( ) BATCHLIM( 5000) USEDLQ(YES ) STATCHL(QMGR ) MCAUSER( ) LOCLADDR( ) BATCHSZ( 50) MAXMSGL( 4194304) COMPHDR(NONE ) COMPMSG(NONE ) HBINT( 300) NPMSPEED(FAST )",
                             "CSQ9022I ]MQ21 CSQMDRTS ' DISPLAY CHANNEL' NORMAL COMPLETION "
-                          ],
+                        ]
                         }
                     ],
                     overallCompletionCode: "200",
@@ -211,7 +215,7 @@ describe("MQ Command handler", () => {
             expect(error).toBeUndefined();
             expect(profFunc).toHaveBeenCalledWith("mqrest", false);
             expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
-            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, "fakeNews", undefined);
+            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, "fakeNews");
             expect(jsonObj).toMatchSnapshot();
             expect(apiMessage).toMatchSnapshot();
             expect(logMessage).toMatchSnapshot();
@@ -241,9 +245,8 @@ describe("MQ Command handler", () => {
                           completionCode: 0,
                           reasonCode: 0,
                           text: [
-                            "CSQN205I   COUNT=       3, RETURN=00000000, REASON=00000000",
-                            "CSQM297I ]MQ21 CSQMDRTS NO CHANNEL FOUND MATCHING REQUEST CRITERIA ",
-                            "CSQ9022I ]MQ21 CSQMDRTS ' DISPLAY CHANNEL' NORMAL COMPLETION "
+                            "CSQN205I   COUNT=1, RETURN=00000000, REASON=00000000",
+                            "CSQM416I  MQ24 CHANNEL(SYSTEM.DEF.CLNTCONN)"
                           ],
                         }
                     ],
@@ -313,7 +316,7 @@ describe("MQ Command handler", () => {
             expect(error).toBeUndefined();
             expect(profFunc).toHaveBeenCalledWith("mqrest", false);
             expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
-            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, "fakeNew", undefined);
+            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, "fakeNew");
             expect(jsonObj).toMatchSnapshot();
             expect(apiMessage).toMatchSnapshot();
             expect(logMessage).toMatchSnapshot();

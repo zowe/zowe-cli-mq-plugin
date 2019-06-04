@@ -9,7 +9,7 @@
 *
 */
 
-import { IImperativeError, Logger, RestClient, TextUtils } from "@zowe/imperative";
+import { IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
 
 /**
  * Wrapper for invoke MQ API through the RestClient to perform common error
@@ -21,11 +21,19 @@ import { IImperativeError, Logger, RestClient, TextUtils } from "@zowe/imperativ
 export class MQRestClient extends RestClient {
 
     /**
-     * Use the Brightside logger instead of the imperative logger
-     * @type {Logger}
+     * Internal logger
      */
-    public get log(): Logger {
-        return Logger.getAppLogger();
+    private static mLogger: Logger;
+
+    /**
+     * Use the Brightside logger instead of the imperative logger
+     * @return {Logger}
+     */
+    private static get log(): Logger {
+        if (this.mLogger == null) {
+            this.mLogger = Logger.getAppLogger();
+        }
+        return this.mLogger;
     }
 
     /**
@@ -42,9 +50,9 @@ export class MQRestClient extends RestClient {
             // if we didn't get an error trying to parse json, check if there is a stack
             // on the JSON error and delete it
             if (json.stack != null) {
-                this.log.error("An error was encountered in MQ with a stack." +
+                MQRestClient.log.error("An error was encountered in MQ with a stack." +
                     " Here is the full error before deleting the stack:\n%s", JSON.stringify(json));
-                this.log.error("The stack has been deleted from the error before displaying the error to the user");
+                MQRestClient.log.error("The stack has been deleted from the error before displaying the error to the user");
                 delete json.stack; // remove the stack field
             }
 
@@ -52,7 +60,7 @@ export class MQRestClient extends RestClient {
             details = TextUtils.prettyJson(json, undefined, true);
         } catch (e) {
             // if there's an error, the causeErrors text is not json
-            this.log.debug("Encountered an error trying to parse causeErrors as JSON  - causeErrors is likely not JSON format");
+            MQRestClient.log.debug("Encountered an error trying to parse causeErrors as JSON  - causeErrors is likely not JSON format");
         }
         original.msg += "\n" + details; // add the data string which is the original error
         return original;

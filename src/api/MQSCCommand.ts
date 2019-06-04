@@ -9,10 +9,10 @@
 *
 */
 
-import { AbstractSession, ImperativeExpect, Logger, RestClient } from "@zowe/imperative";
+import { AbstractSession, ImperativeExpect } from "@brightside/imperative";
 import { MQMessages } from "../constants/MQ.messages";
 import { MQConstants } from "../constants/MQ.constants";
-import { IHeaderContent } from "@zowe/cli";
+import { IHeaderContent } from "@brightside/core";
 import { IMQResponse } from "../doc/IMQResponse";
 import { MQRestClient } from "../rest/MQRestClient";
 import { posix } from "path";
@@ -28,12 +28,12 @@ export default class MQSCCommand {
      * @param {AbstractSession}  session      - MQ connection info
      * @param {string} queueMgrName - The Queue manager to apply command to
      * @param {string} command - The command to be run.
-     * @param {string} csrfHeader - The CSRF protection header, optional.
+     * @param {boolean} csrfHeader - Set the CSRF protection header, default is true
      * @throws ImperativeError
      * @memberof Command
      */
-    public static async qmgrAction(session: AbstractSession, queueMgrName: string, thecommand: string): Promise<IMQResponse> {
-        const csrfHeader: string = "true";
+    public static async qmgrAction(session: AbstractSession, queueMgrName: string,
+                                   thecommand: string, csrfHeader: boolean = true): Promise<IMQResponse> {
         ImperativeExpect.toNotBeNullOrUndefined(queueMgrName, MQMessages.missingQueueManagerName.message);
         ImperativeExpect.toNotBeEqual(queueMgrName, "", MQMessages.missingQueueManagerName.message);
         ImperativeExpect.toNotBeNullOrUndefined(thecommand, MQMessages.missingCommand.message);
@@ -43,8 +43,8 @@ export default class MQSCCommand {
 
         const payload: any = { type: "runCommand", parameters: { command: thecommand } };
 
-        const headers: IHeaderContent[] = csrfHeader
-            ? [{"Content-Type": "application/json"}, {"ibm-mq-rest-csrf-token": csrfHeader}]
+        const headers: IHeaderContent[] = (csrfHeader === true)
+            ? [{"Content-Type": "application/json"}, {"ibm-mq-rest-csrf-token": "true"}]
             : [{"Content-Type": "application/json"}];
 
         const content: IMQResponse = await MQRestClient.postExpectJSON<IMQResponse>(session, endpoint, headers, payload);

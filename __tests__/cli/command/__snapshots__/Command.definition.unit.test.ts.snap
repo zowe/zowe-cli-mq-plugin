@@ -3,7 +3,7 @@
 exports[`mq get resource should not have changed 1`] = `
 Object {
   "description": "MQ Utils",
-  "name": "mqsc",
+  "name": "run",
   "summary": "MQ Utility Functions",
   "type": "group",
 }

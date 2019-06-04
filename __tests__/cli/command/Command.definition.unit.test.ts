@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandDefinition } from "@zowe/imperative";
+import { ICommandDefinition } from "@brightside/imperative";
 
 describe("mq get resource", () => {
     const DEFINE_RESOURCES = 1;

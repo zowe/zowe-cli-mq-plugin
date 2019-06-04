@@ -23,7 +23,7 @@ export default {
                 CSRF: "The cross site forgery field"
             },
             EXAMPLES: {
-                EX1: `The following sequence shows how to create a new server-connection channel that is 
+                EX1: `The following sequence shows how to create a new server-connection channel that is
                     called NEWSVRCONN on a z/OS queue manager - our example queue manager is called MQ99`
             }
         }

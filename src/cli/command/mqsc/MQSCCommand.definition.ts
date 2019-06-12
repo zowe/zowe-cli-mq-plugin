@@ -44,7 +44,7 @@ export const MQSCCommandDefinition: ICommandDefinition = {
             type: "string"
         }],
     profile: {
-        required: ["mqrest"],
+        required: ["mq"],
     },
     examples: [{
         description: strings.MQSC.EXAMPLES.EX1,

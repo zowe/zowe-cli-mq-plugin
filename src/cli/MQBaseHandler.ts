@@ -28,7 +28,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      * @returns {Promise<IMQResponse>}
      */
     public async process(commandParameters: IHandlerParameters) {
-        const profile = commandParameters.profiles.get("mqrest", false) || {};
+        const profile = commandParameters.profiles.get("mq", false) || {};
         const session = MqSession.createBasicMqSession(profile);
 
         const task: ITaskWithStatus = {

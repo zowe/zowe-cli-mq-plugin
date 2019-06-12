@@ -22,11 +22,12 @@ const config: IImperativeConfig = {
     pluginAliases: ["zmqsc"],
     profiles: [
         {
-          type: "mqrest",
+          type: "mq",
           schema: {
             type: "object",
             title: "CLI profile for MQ",
-            description: "CLI profile for MQ",
+            description: "An MQREST profile is required to issue commands in the MQ command group that interacts with MQSC. " +
+                "The mq profile contains your host, port, user name, and password for the IBM MQ System Console interface",
             properties: {
               host: {
                 type: "string",
@@ -84,7 +85,7 @@ const config: IImperativeConfig = {
           },
           createProfileExamples: [
             {
-             options: "mqrest --host mq123 --port 1234 --user ibmuser --password myp4ss",
+             options: "mq --host mq123 --port 1234 --user ibmuser --password myp4ss",
              description: "Create an MQ profile named 'mqprofile' to connect to MQ at host zos123 and port 1234"
             }
           ]

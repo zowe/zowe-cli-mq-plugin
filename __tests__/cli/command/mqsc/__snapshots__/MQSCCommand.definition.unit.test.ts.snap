@@ -37,7 +37,7 @@ Object {
   ],
   "profile": Object {
     "required": Array [
-      "mqrest",
+      "mq",
     ],
   },
   "summary": "MQ Utility Functions",

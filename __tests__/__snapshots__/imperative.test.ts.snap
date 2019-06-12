@@ -15,7 +15,7 @@ Object {
       "createProfileExamples": Array [
         Object {
           "description": "Create an MQ profile named 'mqprofile' to connect to MQ at host zos123 and port 1234",
-          "options": "mqrest --host mq123 --port 1234 --user ibmuser --password myp4ss",
+          "options": "mq --host mq123 --port 1234 --user ibmuser --password myp4ss",
         },
       ],
       "schema": Object {
@@ -119,7 +119,7 @@ Object {
         "title": "CLI profile for MQ",
         "type": "object",
       },
-      "type": "mqrest",
+      "type": "mq",
     },
   ],
   "rootCommandDescription": "Interact with IBM MQ.",

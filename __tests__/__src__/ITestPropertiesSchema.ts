@@ -36,17 +36,25 @@ export interface ITestPropertiesSchema {
          */
         port?: number,
         /**
-         * The reject unauthorized indicator
-         */
-        rejectUnauthorized: boolean,
-        /**
          * The location of the API
          */
         basepath: string,
         /**
-         * The Queue manager
+         * The name of the MQ queuemanager
+         * that will take the command
          */
         queuemgr: string,
+        /**
+         * The name of the protocol
+         * http/https
+         */
+        protocol: string,
+        /**
+         * Reject unauthorized
+         * certificate error
+         * true/false
+         */
+        rejectUnauthorized: boolean
         /**
          * The command payloads
          */

@@ -11,7 +11,7 @@
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
 import { IMQResponse } from "../doc/IMQResponse";
-import { MqSession } from "./MQSession";
+import { MqSessionUtils } from "./MQSessionUtils";
 
 /**
  * This class is used by the various mq handlers as the base class for their implementation.
@@ -29,7 +29,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      */
     public async process(commandParameters: IHandlerParameters) {
         const profile = commandParameters.profiles.get("mq", false) || {};
-        const session = MqSession.createBasicMqSession(profile);
+        const session = MqSessionUtils.createBasicMqSession(profile);
 
         const task: ITaskWithStatus = {
             percentComplete: 0,
@@ -38,7 +38,8 @@ export default abstract class MqBaseHandler implements ICommandHandler {
         };
         if (commandParameters.arguments.cmd && commandParameters.arguments.queuemgr) {
             commandParameters.response.console.log("Running MQ command: " +
-                "'" + commandParameters.arguments.cmd + "'"  + " against " + commandParameters.arguments.queuemgr);
+                "'" + commandParameters.arguments.cmd + "'"  + " against " +
+                     commandParameters.arguments.queuemgr + "\n");
         }
 
         // commandParameters.response.progress.startBar({task});
@@ -56,9 +57,9 @@ export default abstract class MqBaseHandler implements ICommandHandler {
             let success = false;
             for (const line of mqJSON) {
                 let modifiedLine = line;
-                if (start && modifiedLine.indexOf("CSQN205I") > -1 && modifiedLine.indexOf("RETURN=00000000") > -1) {
+                modifiedLine = modifiedLine.replace(/\s+(?=(COUNT=)*(\d))/, ""); // remove whitespace after word COUNT=
+                if (start && modifiedLine.indexOf("CSQN205I") > -1 && modifiedLine.indexOf("RETURN=00000000") > -1 ) {
                     success = true;
-                    modifiedLine = modifiedLine.replace(/\s+(?=(COUNT=)*(\d))/, ""); // remove whitespace after word COUNT=
                 } else if (success) {
                     modifiedLine = modifiedLine.replace(/\s+(?=[^()\"]*\))/g, ""); // remove whitespace between parenthesis but allow within quotes
                     modifiedLine = modifiedLine.replace(/\] /g, " ");

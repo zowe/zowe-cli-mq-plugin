@@ -31,7 +31,7 @@ export interface ISetupEnvironmentParms {
      * ITestEnvironment object when setup is complete. tempProfiles
      * can be used to delete the profiles later
      *
-     * Example: ["cics"]
+     * Example: ["mq"]
      */
     tempProfileTypes?: string[];
 

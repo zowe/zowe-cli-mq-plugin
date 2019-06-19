@@ -10,24 +10,31 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
+  },
   "scripts": {
-    "build": "npm run clean && node scripts/updateLicense.js && tsc --pretty --project tsconfig.json && npm run checkTestsCompile",
+    "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
     "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
+    "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",
     "clean": "rimraf lib",
     "watch": "tsc --pretty --watch",
     "prepublishOnly": "npm run build",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "npm run test:unit && npm run test:system",
-    "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false",
-    "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\"",
+    "lint": "npm run lint:src && npm run lint:tests",
+    "lint:src": "tslint --format stylish --exclude \"**/__tests__/**/*.ts\" \"src/**/*.ts\"",
+    "lint:tests": "tslint --format stylish -c ./tslint-tests.json --exclude \"node_modules/**/*\" --exclude \"**__tests__/__results__/**\" \"**/__tests__/**/*.ts\"",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:integration": "env-cmd __tests__/__resources__/env/integration.env jest .*/__integration__/.* ",
+    "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false --runInBand",
+    "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" \"__integration__\"",
     "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install ."
   },
   "imperative": {
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@brightside/core": "^2.15.0",
-    "@brightside/imperative": "^2.3.0"
+    "@brightside/core": "^2.0.0",
+    "@brightside/imperative": "^2.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -40,9 +47,10 @@
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "chalk": "^2.4.1",
-    "expect": "^23.4.0",
+    "expect": "^24.8.0",
+    "fs-extra": "^5.0.0",
     "glob": "^7.1.4",
-    "jest": "^22.4.4",
+    "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
     "jest-environment-node": "^24.8.0",
     "jest-environment-node-debug": "^2.0.0",
@@ -51,11 +59,13 @@
     "jest-sonar-reporter": "2.0.0",
     "jest-stare": "1.11.1",
     "jsdom": "11.11.0",
+    "rimraf": "^2.6.2",
     "sinon": "^6.1.0",
     "ts-jest": "^23.10.5",
     "ts-node": "^3.3.0",
     "tslint": "5.14.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.2",
+    "uuid": "^3.2.1"
   },
   "jest": {
     "modulePathIgnorePatterns": [
@@ -63,7 +73,7 @@
     ],
     "testResultsProcessor": "jest-stare",
     "transform": {
-      ".(ts)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".(ts)": "ts-jest"
     },
     "testRegex": "(test|spec)\\.ts$",
     "moduleFileExtensions": [
@@ -98,6 +108,7 @@
     "coverageLink": "../coverage/lcov-report/index.html"
   },
   "jest-junit": {
+    "suiteName": "jest tests",
     "output": "__tests__/__results__/junit.xml"
   },
   "jest-html-reporter": {
@@ -105,10 +116,11 @@
     "outputPath": "__tests__/__results__/results.html",
     "includeFailureMsg": true
   },
-  "author": "Darkside",
+  "author": "Brightside",
   "license": "EPL-2.0",
   "dependencies": {
-    "@brightside/core": "^2.28.1",
-    "@brightside/imperative": "^2.4.2"
+    "@types/fs-extra": "^7.0.0",
+    "@brightside/core": "^2.0.0",
+    "@brightside/imperative": "^2.0.0"
   }
 }

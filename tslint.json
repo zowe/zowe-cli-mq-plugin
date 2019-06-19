@@ -8,15 +8,12 @@
     "no-var-requires": false,
     "trailing-comma": false,
     "no-submodule-imports": [
-      true
+      true,
+      "csv-parse/lib/sync"
     ],
     "max-line-length": [
       true,
       150
-    ],
-    "no-implicit-dependencies": [
-      true,
-      "dev"
     ],
     "no-magic-numbers": [
       true,
@@ -30,25 +27,8 @@
       2
     ],
     "prefer-conditional-expression": false,
-    "indent": [
-      true,
-      "spaces",
-      4
-    ],
-    "whitespace": [
-      true,
-      "check-module"
-    ],
-    "no-implicit-dependencies": [
-      true,
-      "dev"
-    ]    
+    "indent": [true, "spaces", 4],
+    "whitespace": [true, "check-module"]
   },
-  "linterOptions": {
-    "exclude": [
-      "__mocks__/*"
-    ]
-},
   "type-check": true
 }
-

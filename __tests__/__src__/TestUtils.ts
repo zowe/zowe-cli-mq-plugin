@@ -10,8 +10,8 @@
 */
 
 import * as fs from "fs";
-import {spawnSync, SpawnSyncReturns} from "child_process";
-import {ITestEnvironment} from "./environment/doc/response/ITestEnvironment";
+import { spawnSync, SpawnSyncReturns } from "child_process";
+import { ITestEnvironment } from "./environment/doc/response/ITestEnvironment";
 
 
 /**
@@ -34,7 +34,6 @@ export function runCliScript(scriptPath: string, testEnvironment: ITestEnvironme
             // copy the values from the env
             childEnv[key] = testEnvironment.env[key];
         }
-
         // Execute the command synchronously
         return spawnSync("sh", [`${scriptPath}`].concat(args), {cwd: testEnvironment.workingDir, env: childEnv});
     } else {

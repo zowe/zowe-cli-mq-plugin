@@ -12,10 +12,10 @@
 import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@brightside/imperative";
 
 /**
- * Utility Methods for Brightside
+ * Utility Methods for Zowe
  * @export
  */
-export class MqSession {
+export class MqSessionUtils {
 
     public static MQ_CONNECTION_OPTION_GROUP = "MQ Connection Options";
 
@@ -29,7 +29,7 @@ export class MqSession {
         description: "The MQ server host name.",
         type: "string",
         required: true,
-        group: MqSession.MQ_CONNECTION_OPTION_GROUP
+        group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
     /**
@@ -41,7 +41,7 @@ export class MqSession {
         description: "The MQ server port.",
         type: "number",
         defaultValue: 443,
-        group: MqSession.MQ_CONNECTION_OPTION_GROUP
+        group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
     /**
@@ -53,7 +53,7 @@ export class MqSession {
         description: "Mainframe (MQ) user name, which can be the same as your TSO login.",
         type: "string",
         required: true,
-        group: MqSession.MQ_CONNECTION_OPTION_GROUP
+        group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
     /**
@@ -64,7 +64,7 @@ export class MqSession {
         aliases: ["pw"],
         description: "Mainframe (MQ) password, which can be the same as your TSO password.",
         type: "string",
-        group: MqSession.MQ_CONNECTION_OPTION_GROUP,
+        group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP,
         required: true
     };
 
@@ -78,7 +78,7 @@ export class MqSession {
         type: "boolean",
         defaultValue: true,
         required: false,
-        group: MqSession.MQ_CONNECTION_OPTION_GROUP
+        group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
     /**
      * Option used in profile creation and commands for protocol for MQ
@@ -91,7 +91,7 @@ export class MqSession {
         defaultValue: "http",
         required: true,
         allowableValues: {values: ["http", "https"], caseSensitive: false},
-        group: MqSession.MQ_CONNECTION_OPTION_GROUP
+        group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
     /**
@@ -99,12 +99,12 @@ export class MqSession {
      * These options can be filled in if the user creates a profile
      */
     public static MQ_CONNECTION_OPTIONS: ICommandOptionDefinition[] = [
-        MqSession.MQ_OPTION_HOST,
-        MqSession.MQ_OPTION_PORT,
-        MqSession.MQ_OPTION_USER,
-        MqSession.MQ_OPTION_PASSWORD,
-        MqSession.MQ_OPTION_REJECT_UNAUTHORIZED,
-        MqSession.MQ_OPTION_PROTOCOL
+        MqSessionUtils.MQ_OPTION_HOST,
+        MqSessionUtils.MQ_OPTION_PORT,
+        MqSessionUtils.MQ_OPTION_USER,
+        MqSessionUtils.MQ_OPTION_PASSWORD,
+        MqSessionUtils.MQ_OPTION_REJECT_UNAUTHORIZED,
+        MqSessionUtils.MQ_OPTION_PROTOCOL
     ];
 
     /**
@@ -114,7 +114,7 @@ export class MqSession {
      * @returns {Session} - A session for usage in the MQ REST Client
      */
     public static createBasicMqSession(profile: IProfile): Session {
-        MqSession.log.trace("Creating an MQ session from the profile named %s", profile.name);
+        MqSessionUtils.log.trace("Creating an MQ session from the profile named %s", profile.name);
         return new Session({
             type: "basic",
             hostname: profile.host,
@@ -124,6 +124,26 @@ export class MqSession {
             basePath: profile.basePath,
             rejectUnauthorized: profile.rejectUnauthorized,
             protocol: profile.protocol || "https",
+        });
+    }
+
+    /**
+     * Given a MQ profile, create a REST Client Session.
+     * @static
+     * @param {IProfile} profile - The MQ profile contents
+     * @returns {Session} - A session for usage in the MQ REST Client
+     */
+    public static createBasicMqSessionFromArguments(args: ICommandArguments): Session {
+        MqSessionUtils.log.trace("Creating an MQ session from arguments", args.name);
+        return new Session({
+            type: "basic",
+            hostname: args.host,
+            port: args.port,
+            user: args.user,
+            password: args.password,
+            basePath: args.basePath,
+            rejectUnauthorized: args.rejectUnauthorized,
+            protocol: args.protocol || "https",
         });
     }
 

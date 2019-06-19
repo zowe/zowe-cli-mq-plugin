@@ -11,7 +11,7 @@
 
 import { IImperativeConfig } from "@brightside/imperative";
 import { PluginConstants } from "./constants/PluginConstants";
-import { MqSession } from "./cli/MQSession";
+import { MqSessionUtils } from "./cli/MQSessionUtils";
 
 const config: IImperativeConfig = {
     commandModuleGlobs: ["**/cli/*/*.definition!(.d).*s"],
@@ -74,11 +74,11 @@ const config: IImperativeConfig = {
               },
               rejectUnauthorized: {
                   type: "boolean",
-                  optionDefinition: MqSession.MQ_OPTION_REJECT_UNAUTHORIZED
+                  optionDefinition: MqSessionUtils.MQ_OPTION_REJECT_UNAUTHORIZED
               },
               protocol: {
                   type: "string",
-                  optionDefinition: MqSession.MQ_OPTION_PROTOCOL
+                  optionDefinition: MqSessionUtils.MQ_OPTION_PROTOCOL
               }
             },
             required: ["host", "port", "user", "password"],

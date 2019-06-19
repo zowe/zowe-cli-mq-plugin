@@ -1,8 +1,8 @@
 
 # Contribution Guidelines
-The contribution guidelines in this document pertain to contributing to this zowe-cli-sample-plugin repository.
+The contribution guidelines in this document pertain to contributing to this mq-config repository.
 
-We provide guidelines for developing Zowe CLI plug-ins in the [Zowe CLI GitHub repository](https://github.com/zowe/zowe-cli). The following information is critical to working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
+We provide specific guidelines for developing Zowe MQ plug-in in the [Zowe CLI GitHub repository](https://github.com/zowe/mq-config). The following information is critical to working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
 
 | For more information about ... | See: |
 | ------------------------------ | ----- |

@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mq mqsc should display the mqsc help 1`] = `
+"===============MQ MQSC HELP===============
+
+ COMMAND NAME
+ ------------
+
+   mqsc | mqsc
+
+ DESCRIPTION
+ -----------
+
+   MQ Utils
+
+ USAGE
+ -----
+
+   bright mq run mqsc <queuemgr> <cmd> [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   queuemgr		 (string)
+
+      The queue manager to apply the command to
+
+   cmd		 (string)
+
+      The MQ command
+
+ OPTIONS
+ -------
+
+   --csrf  (string)
+
+      The cross site forgery field
+
+ PROFILE OPTIONS
+ ---------------
+
+   --mq-profile  | --mq-p (string)
+
+      The name of a (mq) profile to load for this command execution.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce JSON formatted data from a command
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - The following sequence shows how to create a new
+   server-connection channel that is
+   called NEWSVRCONN on an MQ queue manager - our example queue manager is called
+   MQ99:
+
+      $ bright mq run mqsc MQ99 'DISPLAY CHANNEL(NEWSVRCONN)'
+
+"
+`;

@@ -95,7 +95,7 @@ def ARTIFACTORY_EMAIL = 'giza.jenkins@gmail.com'
  * This is the product name used by the build machine to store information about
  * the builds
  */
-def PRODUCT_NAME = "zowe-cli-sample-plugin"
+def PRODUCT_NAME = "zowe-cli-mq-plugin"
 
 // Setup conditional build options. Would have done this in the options of the declarative pipeline, but it is pretty
 // much impossible to have conditional options based on the branch :/
@@ -210,7 +210,7 @@ pipeline {
                 timeout(time: 10, unit: 'MINUTES') {
                     echo "Install Zowe CLI globaly"
                     sh("npm set @zowe:registry https://api.bintray.com/npm/ca/brightside/")
-                    sh("npm install -g @brightside/core@latest")
+                    sh("npm install -g @zowe/core@latest")
                     sh("zowe --version")
                 }
             }

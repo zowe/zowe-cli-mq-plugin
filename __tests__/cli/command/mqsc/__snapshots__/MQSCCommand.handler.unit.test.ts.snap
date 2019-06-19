@@ -7,6 +7,7 @@ exports[`MQ Command handler should provide a response 2`] = `""`;
 exports[`MQ Command handler should provide a response 3`] = `
 "
 Running MQ command: 'fakeNews' against testQ
+
 CSQN205ICOUNT=1, RETURN=00000000, REASON=00000000
 CSQM416I  MQ22 CHANNEL(SYSTEM.DEF.CLNTCONN)"
 `;
@@ -18,6 +19,7 @@ exports[`MQ Command handler should provide a response with quotes around the com
 exports[`MQ Command handler should provide a response with quotes around the command 3`] = `
 "
 Running MQ command: '\\"fakeNews\\"' against testQ
+
 CSQN205I COUNT=5, RETURN=00000000, REASON=00000000
 CSQM416I  MQ21 CHANNEL(SYSTEM.DEF.CLNTCONN) 
 	CHLTYPE(CLNTCONN) 
@@ -167,6 +169,7 @@ exports[`MQ Command handler should provide a response with single quotes around 
 exports[`MQ Command handler should provide a response with single quotes around the command 3`] = `
 "
 Running MQ command: ''fakeNew'' against testQ
+
 CSQN205ICOUNT=1, RETURN=00000000, REASON=00000000
 CSQM416I  MQ24 CHANNEL(SYSTEM.DEF.CLNTCONN)"
 `;

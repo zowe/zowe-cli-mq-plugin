@@ -9,7 +9,7 @@
 *
 */
 
-import { ITestPropertiesSchema } from "../ITestPropertiesSchema";
+import { ITestPropertiesSchema } from "../../../ITestPropertiesSchema";
 
 /**
  * The test environment for your test.
@@ -30,6 +30,11 @@ export interface ITestEnvironment {
      *
      */
     systemTestProperties: ITestPropertiesSchema;
+
+    /**
+     * The MQ Queue Manager to send the command to.
+     */
+    // queuemgr: string;
 
     /**
      * Set of environmental variables (such as profile/logging home directory)

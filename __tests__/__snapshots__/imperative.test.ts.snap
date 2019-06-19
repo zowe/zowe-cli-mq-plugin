@@ -19,7 +19,7 @@ Object {
         },
       ],
       "schema": Object {
-        "description": "CLI profile for MQ",
+        "description": "An MQREST profile is required to issue commands in the MQ command group that interacts with MQSC. The mq profile contains your host, port, user name, and password for the IBM MQ System Console interface",
         "properties": Object {
           "host": Object {
             "optionDefinition": Object {

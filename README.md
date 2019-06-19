@@ -12,7 +12,7 @@ MQSC commands enable you to perform administration tasks. For example, you can d
 - Creates a wrapping CLI around the local API to provide the command line function
 
 ### Using the command
-The CLI Command structure is explicit and requires a group, object and method so the command appears as ***zowe mq run mqsc MQ66 "DISPLAY CHANNEL (SYSTEM.DEF.C*) ALL"**. For further information regrading Zowe CLI commands and to create the profile please refer to [Using Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-usingcli.html)
+The CLI Command structure is explicit and requires a group, object and method so the command appears as ***zowe mq run mqsc MQ66 "DISPLAY CHANNEL (SYSTEM.DEF.C*) ALL"**. For further information regrading Zowe CLI commands and to create the profile please refer to [Using Zowe MQ CLI plugin](docs/MQReadme.md)
 
 ## Contributing to this plugin 
 Please refer to the Zowe CLI [contribution guidelines](CONTRIBUTING.md) which contain standards and conventions for developing Zowe CLI plug-ins. 

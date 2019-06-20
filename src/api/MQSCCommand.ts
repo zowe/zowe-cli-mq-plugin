@@ -10,8 +10,8 @@
 */
 
 import { AbstractSession, ImperativeExpect } from "@brightside/imperative";
-import { MQMessages } from "../constants/MQ.messages";
-import { MQConstants } from "../constants/MQ.constants";
+import { MQMessages } from "../rest/constants/MQ.messages";
+import { MQConstants } from "../rest/constants/MQ.constants";
 import { IHeaderContent } from "@brightside/core";
 import { IMQResponse } from "../doc/IMQResponse";
 import { MQRestClient } from "../rest/MQRestClient";

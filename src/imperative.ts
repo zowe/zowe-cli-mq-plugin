@@ -10,7 +10,7 @@
 */
 
 import { IImperativeConfig } from "@brightside/imperative";
-import { PluginConstants } from "./constants/PluginConstants";
+import { PluginConstants } from "./rest/constants/PluginConstants";
 import { MqSessionUtils } from "./cli/MQSessionUtils";
 
 const config: IImperativeConfig = {
@@ -19,7 +19,7 @@ const config: IImperativeConfig = {
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
     pluginHealthCheck: __dirname + "/healthCheck.Handler",
-    pluginAliases: ["zmqsc"],
+    pluginAliases: ["mqsc"],
     profiles: [
         {
           type: "mq",

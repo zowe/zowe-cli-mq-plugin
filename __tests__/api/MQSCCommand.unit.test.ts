@@ -10,7 +10,7 @@
 */
 
 import { RestClient } from "@brightside/imperative";
-import { MQConstants } from "../../src/constants/MQ.constants";
+import { MQConstants } from "../../src/rest/constants/MQ.constants";
 import MQSCCommand from "../../src/api/MQSCCommand";
 import { posix } from "path";
 import * as chai from "chai";

@@ -7,7 +7,7 @@ Object {
   ],
   "name": "mq",
   "pluginAliases": Array [
-    "zmqsc",
+    "mqsc",
   ],
   "productDisplayName": "CLI Plug-in for IBM MQ",
   "profiles": Array [

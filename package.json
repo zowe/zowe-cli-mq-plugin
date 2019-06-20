@@ -14,20 +14,20 @@
     "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
   },
   "scripts": {
-    "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
-    "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
     "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",
+    "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
+    "prepublishOnly": "npm run build",
+    "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install .",
+    "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
     "clean": "rimraf lib",
     "watch": "tsc --pretty --watch",
-    "prepublishOnly": "npm run build",
     "lint": "npm run lint:src && npm run lint:tests",
     "lint:src": "tslint --format stylish --exclude \"**/__tests__/**/*.ts\" \"src/**/*.ts\"",
     "lint:tests": "tslint --format stylish -c ./tslint-tests.json --exclude \"node_modules/**/*\" --exclude \"**__tests__/__results__/**\" \"**/__tests__/**/*.ts\"",
     "test": "npm run test:unit && npm run test:integration",
     "test:integration": "env-cmd __tests__/__resources__/env/integration.env jest .*/__integration__/.* ",
     "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false --runInBand",
-    "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" \"__integration__\"",
-    "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install ."
+    "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" \"__integration__\""
   },
   "imperative": {
     "configurationModule": "lib/imperative.js"
@@ -50,9 +50,9 @@
     "expect": "^24.8.0",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.4",
-    "jest": "^24.8.0",
-    "jest-cli": "^24.8.0",
-    "jest-environment-node": "^24.8.0",
+    "jest": ">=22.0.0 <24.0.0",
+    "jest-cli": ">=22.0.0 <24.0.0",
+    "jest-environment-node": ">=22.0.0 <24.0.0",
     "jest-environment-node-debug": "^2.0.0",
     "jest-html-reporter": "^2.5.0",
     "jest-junit": "6.3.0",
@@ -71,7 +71,7 @@
     "modulePathIgnorePatterns": [
       "__tests__/__snapshots__/"
     ],
-    "testResultsProcessor": "jest-stare",
+    "reporters": [ "default", "jest-stare"],
     "transform": {
       ".(ts)": "ts-jest"
     },

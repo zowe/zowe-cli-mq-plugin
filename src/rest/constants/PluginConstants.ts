@@ -14,12 +14,12 @@ export class PluginConstants {
     /**
      * The name of this plug-in
      */
-    public static readonly PLUGIN_NAME = "CLI Plug-in for IBM MQ";
+    public static readonly PLUGIN_NAME = "CLI Plug-in for IBM MQ for z/OS.";
 
     /**
      * The description of the group exposed by this plug-in
      */
-    public static readonly PLUGIN_DESCRIPTION = "Interact with IBM MQ.";
+    public static readonly PLUGIN_DESCRIPTION = "Interact with IBM MQ for z/OS.";
 
     /**
      * The name of the command group exposed by this plug-in

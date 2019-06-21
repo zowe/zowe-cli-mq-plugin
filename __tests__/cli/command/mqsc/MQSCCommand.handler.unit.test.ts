@@ -17,7 +17,7 @@ describe("MQ Command handler", () => {
             // Require the handler and create a new instance
             const handlerReq = require("../../../../src/cli/command/mqsc/MQSCCommand.handler");
             const handler = new handlerReq.default();
-            const queuemgr = "testQ";
+            const qmgr = "testQ";
             const cmd = "fakeNews";
 
             // Vars populated by the mocked function
@@ -66,7 +66,7 @@ describe("MQ Command handler", () => {
                     arguments: {
                         $0: "fake",
                         _: ["fake"],
-                        queuemgr, cmd,
+                        qmgr, cmd,
                         ...{
                             host: "somewhere.com",
                             port: "43443",
@@ -108,7 +108,7 @@ describe("MQ Command handler", () => {
             expect(error).toBeUndefined();
             expect(profFunc).toHaveBeenCalledWith("mq", false);
             expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
-            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, cmd);
+            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, cmd);
             expect(jsonObj).toMatchSnapshot();
             expect(apiMessage).toMatchSnapshot();
             expect(logMessage).toMatchSnapshot();
@@ -118,7 +118,7 @@ describe("MQ Command handler", () => {
             // Require the handler and create a new instance
             const handlerReq = require("../../../../src/cli/command/mqsc/MQSCCommand.handler");
             const handler = new handlerReq.default();
-            const queuemgr = "testQ";
+            const qmgr = "testQ";
             const cmd = "\"fakeNews\"";
 
             // Vars populated by the mocked function
@@ -173,7 +173,7 @@ describe("MQ Command handler", () => {
                     arguments: {
                         $0: "fake",
                         _: ["fake"],
-                        queuemgr, cmd,
+                        qmgr, cmd,
                         ...{
                             host: "somewhere.com",
                             port: "43443",
@@ -215,7 +215,7 @@ describe("MQ Command handler", () => {
             expect(error).toBeUndefined();
             expect(profFunc).toHaveBeenCalledWith("mq", false);
             expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
-            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, "fakeNews");
+            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, "fakeNews");
             expect(jsonObj).toMatchSnapshot();
             expect(apiMessage).toMatchSnapshot();
             expect(logMessage).toMatchSnapshot();
@@ -225,7 +225,7 @@ describe("MQ Command handler", () => {
             // Require the handler and create a new instance
             const handlerReq = require("../../../../src/cli/command/mqsc/MQSCCommand.handler");
             const handler = new handlerReq.default();
-            const queuemgr = "testQ";
+            const qmgr = "testQ";
             const cmd = "'fakeNew'";
 
             // Vars populated by the mocked function
@@ -274,7 +274,7 @@ describe("MQ Command handler", () => {
                     arguments: {
                         $0: "fake",
                         _: ["fake"],
-                        queuemgr, cmd,
+                        qmgr, cmd,
                         ...{
                             host: "somewhere.com",
                             port: "43443",
@@ -316,7 +316,7 @@ describe("MQ Command handler", () => {
             expect(error).toBeUndefined();
             expect(profFunc).toHaveBeenCalledWith("mq", false);
             expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
-            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, queuemgr, "fakeNew");
+            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, "fakeNew");
             expect(jsonObj).toMatchSnapshot();
             expect(apiMessage).toMatchSnapshot();
             expect(logMessage).toMatchSnapshot();

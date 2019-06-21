@@ -27,7 +27,7 @@ describe.only("mq mqsc cli", () => {
         mqProperties = await testEnvironment.systemTestProperties.mq;
 
         const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
-            [mqProperties.queuemgr, mqProperties.script1]);
+            [mqProperties.qmgr, mqProperties.script1]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
@@ -37,7 +37,7 @@ describe.only("mq mqsc cli", () => {
 
     afterAll(async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
-            [mqProperties.queuemgr, mqProperties.script3]);
+            [mqProperties.qmgr, mqProperties.script3]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
@@ -49,7 +49,7 @@ describe.only("mq mqsc cli", () => {
 
     it.only("should be able to successfully get resources using profile options", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
-            [mqProperties.queuemgr, mqProperties.script2]);
+            [mqProperties.qmgr, mqProperties.script2]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");

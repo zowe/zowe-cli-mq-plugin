@@ -71,7 +71,10 @@
     "modulePathIgnorePatterns": [
       "__tests__/__snapshots__/"
     ],
-    "reporters": [ "default", "jest-stare"],
+    "reporters": [
+      "default",
+      "jest-stare"
+    ],
     "transform": {
       ".(ts)": "ts-jest"
     },

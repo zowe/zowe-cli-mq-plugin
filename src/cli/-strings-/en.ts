@@ -11,12 +11,12 @@
 
 export default {
     COMMAND: {
-        DESCRIPTION: "MQ Utils",
-        SUMMARY: "MQ Utility Functions",
+        DESCRIPTION: "MQ Utilities",
+        SUMMARY: " Run an MQSC command",
         MQSC: {
             DESCRIPTION: "Runs an MQSC command against a Queue Manager",
             POSITIONALS: {
-                THECOMMAND: "The MQ command",
+                THECOMMAND: "The MQSC command",
                 QUEUEMANAGER: "The queue manager to apply the command to",
                 CSRF: "The cross site forgery field"
             },

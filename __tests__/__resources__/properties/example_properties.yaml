@@ -23,7 +23,7 @@ mq:
   protocol: my_protocol 
   rejectUnauthorized: false
   # queue manager
-  queuemgr: my-mq-manager
+  qmgr: my-mq-manager
   # payloads
   script1: DEFINE QL(ZOWE.TEST.DONT.USE) DESCR('A test queue to play with for Zowe') HARDENBO INDXTYPE(MSGID)
   script2: DISPLAY QL(ZOWE.TEST.DONT.USE) ALL

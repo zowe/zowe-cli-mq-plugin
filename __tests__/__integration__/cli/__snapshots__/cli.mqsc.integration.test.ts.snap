@@ -11,30 +11,23 @@ exports[`mq mqsc should display the mqsc help 1`] = `
  DESCRIPTION
  -----------
 
-   MQ Utils
+   MQ Utilities
 
  USAGE
  -----
 
-   bright mq run mqsc <queuemgr> <cmd> [options]
+   bright mq run mqsc <qmgr> <cmd> [options]
 
  POSITIONAL ARGUMENTS
  --------------------
 
-   queuemgr		 (string)
+   qmgr		 (string)
 
       The queue manager to apply the command to
 
    cmd		 (string)
 
-      The MQ command
-
- OPTIONS
- -------
-
-   --csrf  (string)
-
-      The cross site forgery field
+      The MQSC command
 
  PROFILE OPTIONS
  ---------------

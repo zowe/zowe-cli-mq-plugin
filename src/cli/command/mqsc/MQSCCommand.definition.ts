@@ -25,7 +25,7 @@ export const MQSCCommandDefinition: ICommandDefinition = {
     handler: __dirname + "/MQSCCommand.handler",
     positionals: [
         {
-            name: "queuemgr",
+            name: "qmgr",
             description: strings.MQSC.POSITIONALS.QUEUEMANAGER,
             type: "string",
             required: true
@@ -37,12 +37,7 @@ export const MQSCCommandDefinition: ICommandDefinition = {
             required: true
         }
     ],
-    options: [
-        {
-            name: "csrf",
-            description: strings.MQSC.POSITIONALS.CSRF,
-            type: "string"
-        }],
+    options: [],
     profile: {
         required: ["mq"],
     },

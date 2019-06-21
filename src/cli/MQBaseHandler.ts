@@ -36,10 +36,10 @@ export default abstract class MqBaseHandler implements ICommandHandler {
             statusMessage: "Running MQ Command",
             stageName: TaskStage.IN_PROGRESS
         };
-        if (commandParameters.arguments.cmd && commandParameters.arguments.queuemgr) {
-            commandParameters.response.console.log("Running MQ command: " +
+        if (commandParameters.arguments.cmd && commandParameters.arguments.qmgr) {
+            commandParameters.response.console.log("Running MQSC command: " +
                 "'" + commandParameters.arguments.cmd + "'"  + " against " +
-                     commandParameters.arguments.queuemgr + "\n");
+                     commandParameters.arguments.qmgr + "\n");
         }
 
         // commandParameters.response.progress.startBar({task});
@@ -58,19 +58,25 @@ export default abstract class MqBaseHandler implements ICommandHandler {
             for (const line of mqJSON) {
                 let modifiedLine = line;
                 modifiedLine = modifiedLine.replace(/\s+(?=(COUNT=)*(\d))/, ""); // remove whitespace after word COUNT=
-                if (start && modifiedLine.indexOf("CSQN205I") > -1 && modifiedLine.indexOf("RETURN=00000000") > -1 ) {
-                    success = true;
+                if (start && modifiedLine.indexOf("CSQN205I") > -1 ) {
+                    success = modifiedLine.indexOf("RETURN=00000000") > -1;
                 } else if (success) {
-                    modifiedLine = modifiedLine.replace(/\s+(?=[^()\"]*\))/g, ""); // remove whitespace between parenthesis but allow within quotes
+                    modifiedLine = modifiedLine.replace(/\s+(?=[^()\D\"]*\))/g, ""); // remove whitespace between parenthesis but allow within quotes
+                    modifiedLine = modifiedLine.replace(/\) /g, ") \n\t"); // New line and tab after each parenthesis
+                    modifiedLine = modifiedLine.replace(/\n\tNOHARDENBO /g, "\n\tNOHARDENBO\n\t"); // anything starting NO...
+                    modifiedLine = modifiedLine.replace(/\n\tHARDENBO /g, "\n\tHARDENBO\n\t"); // anything starting NO...
+                    modifiedLine = modifiedLine.replace(/\n\tNOTRIGGER /g, "\n\tNOTRIGGER\n\t"); // anything starting NO...
+                    modifiedLine = modifiedLine.replace(/\n\tTRIGGER /g, "\n\tTRIGGER\n\t"); // anything starting NO...
+                    modifiedLine = modifiedLine.replace(/\n\tNOSHARE /g, "\n\tNOSHARE\n\t"); // anything starting NO...
+                    modifiedLine = modifiedLine.replace(/\n\tSHARE /g, "\n\tSHARE\n\t"); // anything starting NO...
                     modifiedLine = modifiedLine.replace(/\] /g, " ");
                     modifiedLine = modifiedLine.replace(/\)\) /g, "%29"); // Special case parameter
-                    modifiedLine = modifiedLine.replace(/\) /g, ") \n\t"); // New line and tab after each parenthesis
                     modifiedLine = modifiedLine.replace(/%29 /g, "))"); // Special case parameter
                     modifiedLine = modifiedLine.replace("]", " "); // Remove ending "]"
+                    commandParameters.response.console.log(modifiedLine);
                 } else {
-                    // TODO
+                    commandParameters.response.console.log(modifiedLine);
                 }
-                commandParameters.response.console.log(modifiedLine);
                 start = false;
             }
         }

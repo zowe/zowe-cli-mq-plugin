@@ -18,8 +18,8 @@ describe("imperative config", () => {
         const config = require("../src/imperative");
         expect(config.name).toBe("mq");
         expect(config.pluginHealthCheck).toContain("healthCheck.Handler");
-        expect(config.productDisplayName).toBe("CLI Plug-in for IBM MQ");
-        expect(config.rootCommandDescription).toContain("Interact with IBM MQ.");
+        expect(config.productDisplayName).toBe("CLI Plug-in for IBM MQ for z/OS.");
+        expect(config.rootCommandDescription).toContain("Interact with IBM MQ for z/OS.");
     });
 
     // Will fail if imperative config object is changed. This is a sanity/protection check to ensure that any

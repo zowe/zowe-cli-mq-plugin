@@ -12,7 +12,7 @@
 import { ITestEnvironment } from "../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
 import MQSCCommand from "../../../src/api/MQSCCommand";
-import { Session, ICommandArguments } from "@brightside/imperative";
+import { Session } from "@brightside/imperative";
 import { IMQResponse } from "../../../src/doc/IMQResponse";
 let testEnvironment: ITestEnvironment;
 let mqProperties: any;
@@ -30,7 +30,7 @@ describe("MQSC API tests", () => {
 
         // Create queue
         try {
-            response = await MQSCCommand.qmgrAction(session, mqProperties.queuemgr, mqProperties.script1);
+            response = await MQSCCommand.qmgrAction(session, mqProperties.qmgr, mqProperties.script1);
         } catch (err) {
             expect(err).toBeFalsy();
         }
@@ -45,7 +45,7 @@ describe("MQSC API tests", () => {
      afterAll(async () => {
         // Delete queue
         try {
-            response = await MQSCCommand.qmgrAction(session, mqProperties.queuemgr, mqProperties.script3);
+            response = await MQSCCommand.qmgrAction(session, mqProperties.qmgr, mqProperties.script3);
         } catch (err) {
             expect(err).toBeFalsy();
         }
@@ -60,7 +60,7 @@ describe("MQSC API tests", () => {
 
      it.only("should query the server without options", async () => {
         try {
-            response = await MQSCCommand.qmgrAction(session, mqProperties.queuemgr, mqProperties.script2);
+            response = await MQSCCommand.qmgrAction(session, mqProperties.qmgr, mqProperties.script2);
         } catch (err) {
             expect(err).toBeFalsy();
         }

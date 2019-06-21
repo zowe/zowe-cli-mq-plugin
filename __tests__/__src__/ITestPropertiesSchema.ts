@@ -40,10 +40,10 @@ export interface ITestPropertiesSchema {
          */
         basepath: string,
         /**
-         * The name of the MQ queuemanager
+         * The name of the MQ queue manager
          * that will take the command
          */
-        queuemgr: string,
+        qmgr: string,
         /**
          * The name of the protocol
          * http/https

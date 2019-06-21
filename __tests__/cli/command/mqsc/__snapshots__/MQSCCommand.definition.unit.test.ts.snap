@@ -5,7 +5,7 @@ Object {
   "aliases": Array [
     "mqsc",
   ],
-  "description": "MQ Utils",
+  "description": "MQ Utilities",
   "examples": Array [
     Object {
       "description": "The following sequence shows how to query a server-connection channel that is
@@ -14,22 +14,16 @@ Object {
     },
   ],
   "name": "mqsc",
-  "options": Array [
-    Object {
-      "description": "The cross site forgery field",
-      "name": "csrf",
-      "type": "string",
-    },
-  ],
+  "options": Array [],
   "positionals": Array [
     Object {
       "description": "The queue manager to apply the command to",
-      "name": "queuemgr",
+      "name": "qmgr",
       "required": true,
       "type": "string",
     },
     Object {
-      "description": "The MQ command",
+      "description": "The MQSC command",
       "name": "cmd",
       "required": true,
       "type": "string",
@@ -40,7 +34,7 @@ Object {
       "mq",
     ],
   },
-  "summary": "MQ Utility Functions",
+  "summary": " Run an MQSC command",
   "type": "command",
 }
 `;

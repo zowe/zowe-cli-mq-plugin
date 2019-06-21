@@ -32,11 +32,6 @@ export interface ITestEnvironment {
     systemTestProperties: ITestPropertiesSchema;
 
     /**
-     * The MQ Queue Manager to send the command to.
-     */
-    // queuemgr: string;
-
-    /**
      * Set of environmental variables (such as profile/logging home directory)
      * that can be used when executing Zowe CLI commands
      */

@@ -9,7 +9,7 @@ Object {
   "pluginAliases": Array [
     "mqsc",
   ],
-  "productDisplayName": "CLI Plug-in for IBM MQ",
+  "productDisplayName": "CLI Plug-in for IBM MQ for z/OS.",
   "profiles": Array [
     Object {
       "createProfileExamples": Array [
@@ -122,6 +122,6 @@ Object {
       "type": "mq",
     },
   ],
-  "rootCommandDescription": "Interact with IBM MQ.",
+  "rootCommandDescription": "Interact with IBM MQ for z/OS.",
 }
 `;

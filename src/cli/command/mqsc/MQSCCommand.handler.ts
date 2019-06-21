@@ -34,7 +34,7 @@ export default class MQSCCommandHandler extends MqBaseHandler {
                 || ( endCommand[0] === "\"" && endCommand[endCommand.length - 1] === "\"" )) {
                 endCommand = endCommand.substring(1,endCommand.length - 1);
             }
-            return await MQSCCommand.qmgrAction(session, params.arguments.queuemgr, endCommand);
+            return await MQSCCommand.qmgrAction(session, params.arguments.qmgr, endCommand);
         } catch (except) {
             params.response.console.log("Exception thrown \n" +
                 "Reason = " + except.message +

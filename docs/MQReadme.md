@@ -3,7 +3,7 @@
 
 Welcome to Zowe MQ CLI!
 
-Zowe CLI is a command line interface (CLI) that provides a simple and streamlined way to interact with IBM MQ.
+Zowe CLI is a command line interface (CLI) that provides a simple and streamlined way to  for z/OS.
 
 For additional Zowe MQ CLI documentation, visit https://zowe.github.io/docs-site
 

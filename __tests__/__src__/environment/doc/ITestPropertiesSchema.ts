@@ -46,7 +46,7 @@ export interface ITestPropertiesSchema {
         /**
          * The Queue manager
          */
-        queuemgr: string,
+        qmgr: string,
         /**
          * The command payloads
          */

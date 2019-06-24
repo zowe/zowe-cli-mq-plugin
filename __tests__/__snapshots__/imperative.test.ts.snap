@@ -87,7 +87,7 @@ Object {
               "aliases": Array [
                 "ru",
               ],
-              "defaultValue": true,
+              "defaultValue": false,
               "description": "Reject self-signed certificates.",
               "group": "MQ Connection Options",
               "name": "reject-unauthorized",

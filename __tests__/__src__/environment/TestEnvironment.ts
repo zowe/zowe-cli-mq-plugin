@@ -153,8 +153,6 @@ export class TestEnvironment {
             logger.info("Reading yaml configuration file: " + propfile + "...");
             properties = yaml.safeLoad(fs.readFileSync(propfile, "utf8"));
             logger.info("Properties file read.");
-            // injectCliProps(properties);
-            // console.log(properties);
         } catch (error) {
             logger.error("Error reading test properties yaml configuration file. Tests cannot continue. " +
                 "Additional details:" + error);

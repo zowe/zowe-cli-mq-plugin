@@ -57,4 +57,18 @@ describe.only("mq mqsc cli", () => {
         expect(stdout).toContain("QDEPTHHI(80)");
         expect(stdout).toContain("CSQ9022I  MQ21 CSQMDRTS ' DISPLAY QLOCAL' NORMAL COMPLETION");
     });
+
+
+    it.only("should be able to successfully get resources using host options", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
+            [mqProperties.qmgr, mqProperties.script2, mqProperties.host,
+                mqProperties.port, mqProperties.user, mqProperties.password,
+            ]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(stdout).toContain("QDEPTHHI(80)");
+        expect(stdout).toContain("CSQ9022I  MQ21 CSQMDRTS ' DISPLAY QLOCAL' NORMAL COMPLETION");
+    });
 });

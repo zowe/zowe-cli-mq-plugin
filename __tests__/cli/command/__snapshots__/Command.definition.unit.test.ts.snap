@@ -4,6 +4,88 @@ exports[`mq get resource should not have changed 1`] = `
 Object {
   "description": "MQ Utilities",
   "name": "run",
+  "passOn": Array [
+    Object {
+      "ignoreNodes": Array [
+        Object {
+          "type": "group",
+        },
+      ],
+      "merge": true,
+      "property": "options",
+      "value": Array [
+        Object {
+          "aliases": Array [
+            "H",
+          ],
+          "description": "The MQ server host name.",
+          "group": "MQ Connection Options",
+          "name": "host",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "P",
+          ],
+          "defaultValue": 443,
+          "description": "The MQ server port.",
+          "group": "MQ Connection Options",
+          "name": "port",
+          "type": "number",
+        },
+        Object {
+          "aliases": Array [
+            "u",
+          ],
+          "description": "Mainframe (MQ) user name, which can be the same as your TSO login.",
+          "group": "MQ Connection Options",
+          "name": "user",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "pw",
+          ],
+          "description": "Mainframe (MQ) password, which can be the same as your TSO password.",
+          "group": "MQ Connection Options",
+          "name": "password",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "ru",
+          ],
+          "defaultValue": false,
+          "description": "Reject self-signed certificates.",
+          "group": "MQ Connection Options",
+          "name": "reject-unauthorized",
+          "required": false,
+          "type": "boolean",
+        },
+        Object {
+          "aliases": Array [
+            "o",
+          ],
+          "allowableValues": Object {
+            "caseSensitive": false,
+            "values": Array [
+              "http",
+              "https",
+            ],
+          },
+          "defaultValue": "http",
+          "description": "Specifies MQ protocol (http or https).",
+          "group": "MQ Connection Options",
+          "name": "protocol",
+          "required": true,
+          "type": "string",
+        },
+      ],
+    },
+  ],
   "summary": " Run an MQSC command",
   "type": "group",
 }

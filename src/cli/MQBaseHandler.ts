@@ -29,7 +29,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      */
     public async process(commandParameters: IHandlerParameters) {
         const profile = commandParameters.profiles.get("mq", false) || {};
-        const session = MqSessionUtils.createBasicMqSession(profile);
+        const session = MqSessionUtils.createBasicMqSessionFromArguments(commandParameters.arguments);
 
         const task: ITaskWithStatus = {
             percentComplete: 0,

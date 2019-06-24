@@ -11,6 +11,7 @@
 
 import { ICommandDefinition } from "@brightside/imperative";
 import { MQSCCommandDefinition } from "./mqsc/MQSCCommand.definition";
+import { MqSessionUtils } from "../MQSessionUtils";
 
 import i18nTypings from "../-strings-/en";
 
@@ -23,5 +24,15 @@ const CommandDefinition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     type: "group",
     children: [MQSCCommandDefinition],
+    passOn: [
+        {
+            property: "options",
+            value: MqSessionUtils.MQ_CONNECTION_OPTIONS,
+            merge: true,
+            ignoreNodes: [
+                {type: "group"}
+            ]
+        }
+    ]
 };
 export = CommandDefinition;

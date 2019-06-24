@@ -76,7 +76,7 @@ export class MqSessionUtils {
         aliases: ["ru"],
         description: "Reject self-signed certificates.",
         type: "boolean",
-        defaultValue: true,
+        defaultValue: false,
         required: false,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
@@ -136,7 +136,7 @@ export class MqSessionUtils {
     public static createBasicMqSessionFromArguments(args: ICommandArguments): Session {
         MqSessionUtils.log.trace("Creating an MQ session from arguments", args.name);
         return new Session({
-            type: "basic",
+            type: args.password && args.user? "basic": "none",
             hostname: args.host,
             port: args.port,
             user: args.user,

@@ -12,7 +12,7 @@ Before you install the plug-in, the following prerequisites need to be met:
 * Install Zowe CLI on your PC.
    **Note:** For more information, see [Installing Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-installcli.html).
 
-* Ensure that [IBM® MQ™ v?????](https://www.ibm.com/support/knowledgecenter/en/) or later is installed and running in your mainframe environment.
+* Ensure that [IBM® MQ™ v9.1.0](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.sce.doc/q121910_.htm) or later is installed and running in your mainframe environment.
 
 * Zowe installation with MQ. Please read this blog for more information: [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/)
 

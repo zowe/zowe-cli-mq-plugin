@@ -18,7 +18,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).CO
 
 export const MQSCCommandDefinition: ICommandDefinition = {
     name: "mqsc",
-    aliases: ["mqsc"],
+    aliases: [],
     summary: strings.SUMMARY,
     description: strings.DESCRIPTION,
     type: "command",

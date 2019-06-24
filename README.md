@@ -1,6 +1,6 @@
 # Zowe MQ Plug-in
 This repository contains a Zowe CLI plug-in for MQ that enables users to issue MQSC commands to a queue manager. 
-MQSC commands enable you to perform administration tasks. For example, you can define, alter, or delete a local queue object. MQSC commands and their syntax are described in [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.ref.adm.doc/q085130_.htm) 
+MQSC commands enable you to perform administration tasks. For example, you can define, alter, or delete a local queue object. MQSC commands and their syntax are described in [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.ref.adm.doc/q085130_.htm) 
 
 ## Contributing to this plugin 
 Please refer to the Zowe CLI [contribution guidelines](CONTRIBUTING.md) which contain standards and conventions for developing Zowe CLI plug-ins. 

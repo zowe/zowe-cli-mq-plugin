@@ -52,14 +52,13 @@ export default abstract class MqBaseHandler implements ICommandHandler {
             const mqResponse = response.commandResponse[0].text;
             const result = JSON.stringify(mqResponse);
             const mqJSON = JSON.parse(result);
-
             let start = true;
             let success = false;
             for (const line of mqJSON) {
                 let modifiedLine = line;
-                modifiedLine = modifiedLine.replace(/\s+(?=(COUNT=)*(\d))/, ""); // remove whitespace after word COUNT=
-                if (start && modifiedLine.indexOf("CSQN205I") > -1 ) {
-                    success = modifiedLine.indexOf("RETURN=00000000") > -1;
+                // modifiedLine = modifiedLine.replace(/\s+(?=(COUNT=)*(\d))/, ""); // remove whitespace after word COUNT=
+                if ( modifiedLine.indexOf("CSQN205I") >= 0 ) {
+                        success = modifiedLine.indexOf("RETURN=00000000") >= 0;
                 } else if (success) {
                     modifiedLine = modifiedLine.replace(/\s+(?=[^()\D\"]*\))/g, ""); // remove whitespace between parenthesis but allow within quotes
                     modifiedLine = modifiedLine.replace(/\) /g, ") \n\t"); // New line and tab after each parenthesis
@@ -75,7 +74,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
                     modifiedLine = modifiedLine.replace("]", " "); // Remove ending "]"
                     commandParameters.response.console.log(modifiedLine);
                 } else {
-                    commandParameters.response.console.log(modifiedLine);
+                    commandParameters.response.console.log(line);
                 }
                 start = false;
             }

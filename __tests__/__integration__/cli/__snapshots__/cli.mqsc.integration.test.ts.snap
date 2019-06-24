@@ -6,7 +6,7 @@ exports[`mq mqsc should display the mqsc help 1`] = `
  COMMAND NAME
  ------------
 
-   mqsc | mqsc
+   mqsc
 
  DESCRIPTION
  -----------

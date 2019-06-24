@@ -2,9 +2,7 @@
 
 exports[`mq get MQSC command should not have changed 1`] = `
 Object {
-  "aliases": Array [
-    "mqsc",
-  ],
+  "aliases": Array [],
   "description": "MQ Utilities",
   "examples": Array [
     Object {

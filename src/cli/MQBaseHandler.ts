@@ -49,34 +49,36 @@ export default abstract class MqBaseHandler implements ICommandHandler {
 
         // Print out the response
         if (response  && response.commandResponse && response.commandResponse[0]) {
-            const mqResponse = response.commandResponse[0].text;
-            const result = JSON.stringify(mqResponse);
-            const mqJSON = JSON.parse(result);
-            let start = true;
-            let success = false;
-            for (const line of mqJSON) {
-                let modifiedLine = line;
-                // modifiedLine = modifiedLine.replace(/\s+(?=(COUNT=)*(\d))/, ""); // remove whitespace after word COUNT=
-                if ( modifiedLine.indexOf("CSQN205I") >= 0 ) {
+            for (const resp of response.commandResponse) {
+                const mqResponse = resp.text;
+                const result = JSON.stringify(mqResponse);
+                const mqJSON = JSON.parse(result);
+                let start = true;
+                let success = false;
+                for (const line of mqJSON) {
+                    let modifiedLine = line;
+                    if (start && modifiedLine.indexOf("CSQN205I") >= 0 ) {
                         success = modifiedLine.indexOf("RETURN=00000000") >= 0;
-                } else if (success) {
-                    modifiedLine = modifiedLine.replace(/\s+(?=[^()\D\"]*\))/g, ""); // remove whitespace between parenthesis but allow within quotes
-                    modifiedLine = modifiedLine.replace(/\) /g, ") \n\t"); // New line and tab after each parenthesis
-                    modifiedLine = modifiedLine.replace(/\n\tNOHARDENBO /g, "\n\tNOHARDENBO\n\t"); // anything starting NO...
-                    modifiedLine = modifiedLine.replace(/\n\tHARDENBO /g, "\n\tHARDENBO\n\t"); // anything starting NO...
-                    modifiedLine = modifiedLine.replace(/\n\tNOTRIGGER /g, "\n\tNOTRIGGER\n\t"); // anything starting NO...
-                    modifiedLine = modifiedLine.replace(/\n\tTRIGGER /g, "\n\tTRIGGER\n\t"); // anything starting NO...
-                    modifiedLine = modifiedLine.replace(/\n\tNOSHARE /g, "\n\tNOSHARE\n\t"); // anything starting NO...
-                    modifiedLine = modifiedLine.replace(/\n\tSHARE /g, "\n\tSHARE\n\t"); // anything starting NO...
-                    modifiedLine = modifiedLine.replace(/\] /g, " ");
-                    modifiedLine = modifiedLine.replace(/\)\) /g, "%29"); // Special case parameter
-                    modifiedLine = modifiedLine.replace(/%29 /g, "))"); // Special case parameter
-                    modifiedLine = modifiedLine.replace("]", " "); // Remove ending "]"
-                    commandParameters.response.console.log(modifiedLine);
-                } else {
-                    commandParameters.response.console.log(line);
+                    } else if (success) {
+                        // remove whitespace between parenthesis but allow within quotes
+                        modifiedLine = modifiedLine.replace(/\s+(?=[^()\D\"]*\))/g, "");
+                        modifiedLine = modifiedLine.replace(/\) /g, ") \n\t"); // New line and tab after each parenthesis
+                        modifiedLine = modifiedLine.replace(/\n\tNOHARDENBO /g, "\n\tNOHARDENBO\n\t"); // anything starting NO...
+                        modifiedLine = modifiedLine.replace(/\n\tHARDENBO /g, "\n\tHARDENBO\n\t"); // anything starting NO...
+                        modifiedLine = modifiedLine.replace(/\n\tNOTRIGGER /g, "\n\tNOTRIGGER\n\t"); // anything starting NO...
+                        modifiedLine = modifiedLine.replace(/\n\tTRIGGER /g, "\n\tTRIGGER\n\t"); // anything starting NO...
+                        modifiedLine = modifiedLine.replace(/\n\tNOSHARE /g, "\n\tNOSHARE\n\t"); // anything starting NO...
+                        modifiedLine = modifiedLine.replace(/\n\tSHARE /g, "\n\tSHARE\n\t"); // anything starting NO...
+                        modifiedLine = modifiedLine.replace(/\] /g, " ");
+                        modifiedLine = modifiedLine.replace(/\)\) /g, "%29"); // Special case parameter
+                        modifiedLine = modifiedLine.replace(/%29 /g, "))"); // Special case parameter
+                        modifiedLine = modifiedLine.replace("]", " "); // Remove ending "]"
+                        commandParameters.response.console.log(modifiedLine);
+                    } else {
+                        commandParameters.response.console.log(line);
+                    }
+                    start = false;
                 }
-                start = false;
             }
         }
         commandParameters.response.progress.endBar(); // end any progress bars

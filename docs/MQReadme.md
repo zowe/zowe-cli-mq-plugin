@@ -52,7 +52,7 @@ Issues an MQ command against a MQ Rest API server
 
 ### Examples
 
-*  Dsiplay information about channel NEWSVRCONN on queue manager MQ99:
+*  Display information about channel NEWSVRCONN on queue manager MQ99:
 
       * `$  zowe mq run mqsc MQ99 'DISPLAY CHANNEL(NEWSVRCONN) `
 

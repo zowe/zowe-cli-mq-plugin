@@ -21,8 +21,8 @@ export default {
                 CSRF: "The cross site forgery field"
             },
             EXAMPLES: {
-                EX1: `The following sequence shows how to query a server-connection channel that is
-                    called NEWSVRCONN on an MQ queue manager - our example queue manager is called MQ99`
+                EX1: `The following sequence shows how to query a server-connection channel that is ` +
+                   `called NEWSVRCONN on an MQ queue manager - our example queue manager is called MQ99`
             }
         }
     }

@@ -19,7 +19,6 @@ const config: IImperativeConfig = {
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
     pluginHealthCheck: __dirname + "/healthCheck.Handler",
-    pluginAliases: ["mqsc"],
     profiles: [
         {
           type: "mq",

@@ -43,6 +43,6 @@ export const MQSCCommandDefinition: ICommandDefinition = {
     },
     examples: [{
         description: strings.MQSC.EXAMPLES.EX1,
-        options: "MQ99 'DISPLAY CHANNEL(NEWSVRCONN)'"
+        options: "MQ99 \"DISPLAY CHANNEL(NEWSVRCONN)\""
     }]
 };

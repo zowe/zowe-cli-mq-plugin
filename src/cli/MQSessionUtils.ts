@@ -50,7 +50,7 @@ export class MqSessionUtils {
     public static MQ_OPTION_USER: ICommandOptionDefinition = {
         name: "user",
         aliases: ["u"],
-        description: "Mainframe (MQ) user name, which can be the same as your TSO login.",
+        description: "The mainframe (MQ) user name, which can be the same as your TSO login.",
         type: "string",
         required: true,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
@@ -61,8 +61,8 @@ export class MqSessionUtils {
      */
     public static MQ_OPTION_PASSWORD: ICommandOptionDefinition = {
         name: "password",
-        aliases: ["pw"],
-        description: "Mainframe (MQ) password, which can be the same as your TSO password.",
+        aliases: ["pass", "pw"],
+        description: "The mainframe (MQ) password, which can be the same as your TSO password.",
         type: "string",
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP,
         required: true
@@ -86,7 +86,7 @@ export class MqSessionUtils {
     public static MQ_OPTION_PROTOCOL: ICommandOptionDefinition = {
         name: "protocol",
         aliases: ["o"],
-        description: "Specifies MQ protocol (http or https).",
+        description: "Specifies the MQ protocol (http or https).",
         type: "string",
         defaultValue: "http",
         required: true,

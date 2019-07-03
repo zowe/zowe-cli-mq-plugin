@@ -48,7 +48,7 @@ Issues an MQ command against a MQ Rest API server
 
 *   `--mq-profile`  | `--mq-p` *(string)*
 
-	* The name of a (mq) profile to load for this command execution\.
+	* The name of an mq profile to load for the command execution\.
 
 ### Examples
 

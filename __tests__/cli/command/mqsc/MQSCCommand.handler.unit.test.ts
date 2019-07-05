@@ -215,7 +215,7 @@ describe("MQ Command handler", () => {
             expect(error).toBeUndefined();
             expect(profFunc).toHaveBeenCalledWith("mq", false);
             expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
-            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, "fakeNews");
+            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, cmd);
             expect(jsonObj).toMatchSnapshot();
             expect(apiMessage).toMatchSnapshot();
             expect(logMessage).toMatchSnapshot();
@@ -316,7 +316,7 @@ describe("MQ Command handler", () => {
             expect(error).toBeUndefined();
             expect(profFunc).toHaveBeenCalledWith("mq", false);
             expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
-            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, "fakeNew");
+            expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, cmd);
             expect(jsonObj).toMatchSnapshot();
             expect(apiMessage).toMatchSnapshot();
             expect(logMessage).toMatchSnapshot();

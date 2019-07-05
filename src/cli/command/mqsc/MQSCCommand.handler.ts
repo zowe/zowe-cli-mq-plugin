@@ -29,16 +29,6 @@ export default class MQSCCommandHandler extends MqBaseHandler {
      * @memberof MQSCCommandHandler
      */
     public async processWithSession(params: IHandlerParameters, session: MQSession, profile: IProfile ): Promise<IMQResponse> {
-        let endCommand = params.arguments.cmd;
-        /* Manage double quoted start and end scripts by removing them */
-        if ( ( endCommand[0] === "\"" && endCommand[endCommand.length - 1] === "\"" )) {
-            endCommand = endCommand.substring(1,endCommand.length - 1);
-
-        /* Manage single quoted start and end scripts by removing them and changing any enclosed double quotes to single */
-        } else if (( endCommand[0] === "'" && endCommand[endCommand.length - 1] === "'" )) {
-            endCommand = endCommand.substring(1,endCommand.length - 1);
-            endCommand = endCommand.replace("\"", "'");
-        }
-        return MQSCCommand.qmgrAction(session, params.arguments.qmgr, endCommand);
+        return MQSCCommand.qmgrAction(session, params.arguments.qmgr, params.arguments.cmd);
     }
 }

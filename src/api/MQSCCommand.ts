@@ -9,13 +9,14 @@
 *
 */
 
-import { AbstractSession, ImperativeExpect } from "@brightside/imperative";
-import { MQMessages } from "../rest/constants/MQ.messages";
-import { MQConstants } from "../rest/constants/MQ.constants";
+import { ImperativeExpect } from "@brightside/imperative";
+import { MQMessages } from "./rest/constants/MQ.messages";
+import { MQConstants } from "./rest/constants/MQ.constants";
 import { IHeaderContent } from "@brightside/core";
-import { IMQResponse } from "../doc/IMQResponse";
-import { MQRestClient } from "../rest/MQRestClient";
+import { IMQResponse } from "./doc/IMQResponse";
+import { MQRestClient } from "./rest/MQRestClient";
 import { posix } from "path";
+import { MQSession } from "./rest/MQSession";
 
 /**
  * Class of utility file APIs for usage within the CLI and programmatically from node scripts.
@@ -25,14 +26,14 @@ import { posix } from "path";
 export default class MQSCCommand {
     /**
      * Runs the specified MQSC command on the specified queue manager.
-     * @param {AbstractSession}  session      - MQ connection info
+     * @param {MQSession}  session      - MQ connection info
      * @param {string} queueMgrName - The Queue manager to apply command to
      * @param {string} command - The command to be run.
      * @param {boolean} csrfHeader - Set the CSRF protection header, default is true
      * @throws ImperativeError
      * @memberof Command
      */
-    public static async qmgrAction(session: AbstractSession, queueMgrName: string,
+    public static async qmgrAction(session: MQSession, queueMgrName: string,
                                    thecommand: string, csrfHeader: boolean = true): Promise<IMQResponse> {
         ImperativeExpect.toNotBeNullOrUndefined(queueMgrName, MQMessages.missingQueueManagerName.message);
         ImperativeExpect.toNotBeEqual(queueMgrName, "", MQMessages.missingQueueManagerName.message);

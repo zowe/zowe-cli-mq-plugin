@@ -26,9 +26,10 @@ export class MqSessionUtils {
     public static MQ_OPTION_HOST: ICommandOptionDefinition = {
         name: "host",
         aliases: ["H"],
-        description: "The MQ server host name.",
+        description: "The host name used to access the IBM MQ REST API. " +
+            "This might be the host name of the IBM MQ mqweb server, or the Zowe API Mediation Layer..",
         type: "string",
-        required: true,
+        required: false,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
@@ -38,9 +39,10 @@ export class MqSessionUtils {
     public static MQ_OPTION_PORT: ICommandOptionDefinition = {
         name: "port",
         aliases: ["P"],
-        description: "The MQ server port.",
+        description: "The port number used to access the IBM MQ REST API. " +
+            "This might be the port number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.",
         type: "number",
-        defaultValue: 443,
+        required: false,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
@@ -52,7 +54,7 @@ export class MqSessionUtils {
         aliases: ["u"],
         description: "The mainframe (MQ) user name, which can be the same as your TSO login.",
         type: "string",
-        required: true,
+        required: false,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
@@ -65,7 +67,7 @@ export class MqSessionUtils {
         description: "The mainframe (MQ) password, which can be the same as your TSO password.",
         type: "string",
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP,
-        required: true
+        required: false
     };
 
     /**
@@ -89,7 +91,7 @@ export class MqSessionUtils {
         description: "Specifies the MQ protocol (http or https).",
         type: "string",
         defaultValue: "http",
-        required: true,
+        required: false,
         allowableValues: {values: ["http", "https"], caseSensitive: false},
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };

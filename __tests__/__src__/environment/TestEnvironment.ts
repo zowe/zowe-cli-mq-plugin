@@ -10,7 +10,7 @@
 */
 
 import { ISetupEnvironmentParms } from "./doc/parms/ISetupEnvironmentParms";
-import { ImperativeError, ImperativeExpect, IO, Logger, TextUtils, AbstractSession, Session } from "@brightside/imperative";
+import { ImperativeError, ImperativeExpect, IO, Logger, TextUtils } from "@brightside/imperative";
 import * as nodePath from "path";
 import { mkdirpSync } from "fs-extra";
 import { ITestEnvironment } from "./doc/response/ITestEnvironment";
@@ -20,6 +20,7 @@ import { TemporaryScripts } from "./TemporaryScripts";
 import { runCliScript } from "../TestUtils";
 import { ITestPropertiesSchema } from "../ITestPropertiesSchema";
 import { TEST_RESULT_DATA_DIR } from "../TestConstants";
+import { MQSession } from "../../../src/api/rest/MQSession";
 
 const uuidv4 = require("uuid");
 const yaml = require("js-yaml");
@@ -112,9 +113,9 @@ export class TestEnvironment {
      * Create an MQ based session from properties present in your test environment
      * @param testEnvironment - your test environment with system test properties populated
      */
-    public static createSession(testEnvironment: ITestEnvironment): AbstractSession {
+    public static createSession(testEnvironment: ITestEnvironment): MQSession {
         const SYSTEM_PROPS = testEnvironment.systemTestProperties;
-        return new Session({
+        return new MQSession({
             user: SYSTEM_PROPS.mq.user,
             password: SYSTEM_PROPS.mq.password,
             hostname: SYSTEM_PROPS.mq.host,

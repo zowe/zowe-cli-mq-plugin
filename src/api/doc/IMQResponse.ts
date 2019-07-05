@@ -34,11 +34,6 @@ interface ICommandResponses {
  * @export
  */
 export interface IMQResponse {
-    // /**
-    //  * indicates if the command ran successfully.
-    //  * @type {boolean}
-    //  */
-    // success: boolean;
 
     /**
      * The command response text.

@@ -6,9 +6,8 @@ Object {
   "description": "MQ Utilities",
   "examples": Array [
     Object {
-      "description": "The following sequence shows how to query a server-connection channel that is
-                    called NEWSVRCONN on an MQ queue manager - our example queue manager is called MQ99",
-      "options": "MQ99 'DISPLAY CHANNEL(NEWSVRCONN)'",
+      "description": "The following sequence shows how to query a server-connection channel that is called NEWSVRCONN on an MQ queue manager - our example queue manager is called MQ99",
+      "options": "MQ99 \\"DISPLAY CHANNEL(NEWSVRCONN)\\"",
     },
   ],
   "name": "mqsc",
@@ -28,11 +27,11 @@ Object {
     },
   ],
   "profile": Object {
-    "required": Array [
+    "optional": Array [
       "mq",
     ],
   },
-  "summary": " Run an MQSC command",
+  "summary": " Run an IBM MQ script command for queue manager configuration",
   "type": "command",
 }
 `;

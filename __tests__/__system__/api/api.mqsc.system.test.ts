@@ -13,7 +13,7 @@ import { ITestEnvironment } from "../../__src__/environment/doc/response/ITestEn
 import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
 import MQSCCommand from "../../../src/api/MQSCCommand";
 import { Session } from "@brightside/imperative";
-import { IMQResponse } from "../../../src/doc/IMQResponse";
+import { IMQResponse } from "../../../src/api/doc/IMQResponse";
 let testEnvironment: ITestEnvironment;
 let mqProperties: any;
 let session: Session;

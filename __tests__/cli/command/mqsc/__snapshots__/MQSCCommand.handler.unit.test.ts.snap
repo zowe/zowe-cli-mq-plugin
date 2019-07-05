@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MQ Command handler should provide a response 1`] = `undefined`;
+exports[`MQ Command handler should provide a response 1`] = `
+Object {
+  "commandResponse": Array [
+    Object {
+      "completionCode": 0,
+      "reasonCode": 0,
+      "text": Array [
+        "CSQN205I   COUNT=1, RETURN=00000000, REASON=00000000",
+        "CSQM416I  MQ22 CHANNEL(SYSTEM.DEF.CLNTCONN)",
+      ],
+    },
+  ],
+  "overallCompletionCode": "200",
+  "overallReasonCode": "Great",
+  "success": true,
+}
+`;
 
 exports[`MQ Command handler should provide a response 2`] = `""`;
 
@@ -11,7 +27,26 @@ Running MQSC command: 'fakeNews' against testQ
 CSQM416I  MQ22 CHANNEL(SYSTEM.DEF.CLNTCONN)"
 `;
 
-exports[`MQ Command handler should provide a response with quotes around the command 1`] = `undefined`;
+exports[`MQ Command handler should provide a response with quotes around the command 1`] = `
+Object {
+  "commandResponse": Array [
+    Object {
+      "completionCode": 0,
+      "reasonCode": 0,
+      "text": Array [
+        "CSQN205I COUNT= 5, RETURN=00000000, REASON=00000000",
+        "CSQM416I ]MQ21 CHANNEL(SYSTEM.DEF.CLNTCONN ) CHLTYPE(CLNTCONN ) QSGDISP(QMGR ) QMNAME( ) USERID( ) PASSWORD( ) TRPTYPE(LU62 ) CONNAME( ) DESCR( ) MODENAME( ) TPNAME( ) SCYEXIT( ) SCYDATA( ) SENDEXIT() SENDDATA() RCVEXIT() RCVDATA() CLNTWGHT( 0) AFFINITY(PREFERRED ) SHARECNV( 10) KAINT(AUTO ) ALTDATE(2018-12-05 ) ALTTIME(11.39.18) SSLCIPH( ) SSLPEER( ) DEFRECON(NO ) LOCLADDR( ) MAXMSGL( 4194304) COMPHDR(NONE ) COMPMSG(NONE ) HBINT( 300)",
+        "CSQM417I ]MQ21 CHANNEL(SYSTEM.DEF.CLUSRCVR ) CHLTYPE(CLUSRCVR ) QSGDISP(QMGR ) CLUSTER( ) CLUSNL( ) TRPTYPE(LU62 ) CONNAME( ) DESCR( ) MODENAME( ) TPNAME( ) DISCINT( 6000) SHORTRTY( 10) SHORTTMR( 60) LONGRTY( 999999999) LONGTMR( 1200) SCYEXIT( ) SCYDATA( ) MSGEXIT() MSGDATA() SENDEXIT() SENDDATA() RCVEXIT() RCVDATA() MREXIT( ) MRDATA( ) MRRTY( 10) MRTMR( 1000) PROPCTL(COMPAT ) PUTAUT(DEF ) SEQWRAP( 999999999) CONVERT(NO ) BATCHINT( 0) BATCHHB( 0) KAINT(AUTO ) NETPRTY( 0) CLWLRANK( 0) CLWLPRTY( 0) CLWLWGHT( 50) MCATYPE(THREAD ) MONCHL(QMGR ) ALTDATE(2018-12-05 ) ALTTIME(11.39.18) SSLCAUTH(REQUIRED ) SSLCIPH( ) SSLPEER( ) CERTLABL( ) BATCHLIM( 5000) USEDLQ(YES ) STATCHL(QMGR ) MCAUSER( ) LOCLADDR( ) BATCHSZ( 50) MAXMSGL( 4194304) COMPHDR(NONE ) COMPMSG(NONE ) HBINT( 300) NPMSPEED(FAST )",
+        "CSQM418I ]MQ21 CHANNEL(SYSTEM.DEF.CLUSSDR ) CHLTYPE(CLUSSDR ) QSGDISP(QMGR ) CLUSTER( ) CLUSNL( ) TRPTYPE(LU62 ) CONNAME( ) DESCR( ) MCANAME( ) MODENAME( ) TPNAME( ) DISCINT( 6000) SHORTRTY( 10) SHORTTMR( 60) LONGRTY( 999999999) LONGTMR( 1200) SCYEXIT( ) SCYDATA( ) MSGEXIT() MSGDATA() SENDEXIT() SENDDATA() RCVEXIT() RCVDATA() PROPCTL(COMPAT ) SEQWRAP( 999999999) CONVERT(NO ) BATCHINT( 0) BATCHHB( 0) KAINT(AUTO ) CLWLRANK( 0) CLWLPRTY( 0) CLWLWGHT( 50) MONCHL(QMGR ) ALTDATE(2018-12-05 ) ALTTIME(11.39.18) SSLCIPH( ) SSLPEER( ) CERTLABL( ) BATCHLIM( 5000) USEDLQ(YES ) STATCHL(QMGR ) MCAUSER( ) LOCLADDR( ) BATCHSZ( 50) MAXMSGL( 4194304) COMPHDR(NONE ) COMPMSG(NONE ) HBINT( 300) NPMSPEED(FAST )",
+        "CSQ9022I ]MQ21 CSQMDRTS ' DISPLAY CHANNEL' NORMAL COMPLETION ",
+      ],
+    },
+  ],
+  "overallCompletionCode": "200",
+  "overallReasonCode": "Great",
+  "success": true,
+}
+`;
 
 exports[`MQ Command handler should provide a response with quotes around the command 2`] = `""`;
 
@@ -160,7 +195,23 @@ CSQM418I  MQ21 CHANNEL(SYSTEM.DEF.CLUSSDR)
 CSQ9022I  MQ21 CSQMDRTS ' DISPLAY CHANNEL' NORMAL COMPLETION "
 `;
 
-exports[`MQ Command handler should provide a response with single quotes around the command 1`] = `undefined`;
+exports[`MQ Command handler should provide a response with single quotes around the command 1`] = `
+Object {
+  "commandResponse": Array [
+    Object {
+      "completionCode": 0,
+      "reasonCode": 0,
+      "text": Array [
+        "CSQN205I   COUNT=1, RETURN=00000000, REASON=00000000",
+        "CSQM416I  MQ24 CHANNEL(SYSTEM.DEF.CLNTCONN)",
+      ],
+    },
+  ],
+  "overallCompletionCode": "200",
+  "overallReasonCode": "Great",
+  "success": true,
+}
+`;
 
 exports[`MQ Command handler should provide a response with single quotes around the command 2`] = `""`;
 

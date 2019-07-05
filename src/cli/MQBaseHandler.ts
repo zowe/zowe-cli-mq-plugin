@@ -9,9 +9,10 @@
 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { IMQResponse } from "../doc/IMQResponse";
+import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IMQResponse } from "../api/doc/IMQResponse";
 import { MqSessionUtils } from "./MQSessionUtils";
+import { MQSession } from "../api/rest/MQSession";
 
 /**
  * This class is used by the various mq handlers as the base class for their implementation.
@@ -42,11 +43,9 @@ export default abstract class MqBaseHandler implements ICommandHandler {
                      commandParameters.arguments.qmgr + "\n");
         }
 
-        // commandParameters.response.progress.startBar({task});
-        // tslint:disable-next-line:no-magic-numbers
-        // await this.delay(7000);
+        commandParameters.response.progress.startBar({task});
         const response = await this.processWithSession(commandParameters, session, profile);
-
+        commandParameters.response.data.setObj(response);
         // Print out the response
         if (response  && response.commandResponse && response.commandResponse[0]) {
             for (const resp of response.commandResponse) {
@@ -89,14 +88,14 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      * be used so that every class does not have to instantiate the session object.
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent to the handler.
-     * @param {AbstractSession} session The session object generated from the mq profile.
+     * @param {MQSession} session The session object generated from the mq profile.
      * @param {IProfile} mqProfile The mq profile that was loaded for the command.
      *
      * @returns {Promise<IMQResponse>} The response from the underlying mq api call.
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
-        session: AbstractSession,
+        session: MQSession,
         mqProfile: IProfile
     ): Promise<IMQResponse>;
 }

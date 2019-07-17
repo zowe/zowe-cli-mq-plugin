@@ -10,7 +10,7 @@
 */
 
 import { IImperativeConfig } from "@brightside/imperative";
-import { PluginConstants } from "./rest/constants/PluginConstants";
+import { PluginConstants } from "./api/rest/constants/PluginConstants";
 import { MqSessionUtils } from "./cli/MQSessionUtils";
 
 const config: IImperativeConfig = {

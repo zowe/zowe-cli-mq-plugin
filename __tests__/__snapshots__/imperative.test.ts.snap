@@ -6,9 +6,6 @@ Object {
     "**/cli/*/*.definition!(.d).*s",
   ],
   "name": "mq",
-  "pluginAliases": Array [
-    "mqsc",
-  ],
   "productDisplayName": "CLI Plug-in for IBM MQ for z/OS.",
   "profiles": Array [
     Object {
@@ -74,10 +71,10 @@ Object {
                 ],
               },
               "defaultValue": "http",
-              "description": "Specifies MQ protocol (http or https).",
+              "description": "Specifies the MQ protocol (http or https).",
               "group": "MQ Connection Options",
               "name": "protocol",
-              "required": true,
+              "required": false,
               "type": "string",
             },
             "type": "string",

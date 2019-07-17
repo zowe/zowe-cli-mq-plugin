@@ -12,9 +12,9 @@
 export default {
     COMMAND: {
         DESCRIPTION: "MQ Utilities",
-        SUMMARY: " Run an MQSC command",
+        SUMMARY: " Run an IBM MQ script command for queue manager configuration",
         MQSC: {
-            DESCRIPTION: "Runs an MQSC command against a Queue Manager",
+            DESCRIPTION: "Runs an MQSC script command against a Queue Manager for configuration ",
             POSITIONALS: {
                 THECOMMAND: "The MQSC command",
                 QUEUEMANAGER: "The queue manager to apply the command to",

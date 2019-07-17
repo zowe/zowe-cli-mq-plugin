@@ -9,37 +9,26 @@
 *
 */
 
-import { AbstractSession, IHandlerParameters, IProfile } from "@brightside/imperative";
+import { IHandlerParameters, IProfile } from "@brightside/imperative";
 import MQSCCommand from "../../../api/MQSCCommand";
-import { IMQResponse } from "../../../doc/IMQResponse";
+import { IMQResponse } from "../../../api/doc/IMQResponse";
 import MqBaseHandler from "../../MQBaseHandler";
+import { MQSession } from "../../../api/rest/MQSession";
 
 /**
- * Command handler for listing directory contents
+ * Command handler for MQSC script commands
  * @export
  * @class MQSCCommandHandler
  * @implements {ICommandHandler}
  */
 export default class MQSCCommandHandler extends MqBaseHandler {
     /**
-     * Process the list directory contents command.
+     * Process the MQSC script command.
      * @param {IHandlerParameters} params
      * @returns {Promise<void>}
      * @memberof MQSCCommandHandler
      */
-    public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile ): Promise<IMQResponse> {
-        try {
-            let endCommand = params.arguments.cmd;
-            if (( endCommand[0] === "'" && endCommand[endCommand.length - 1] === "'" )
-                || ( endCommand[0] === "\"" && endCommand[endCommand.length - 1] === "\"" )) {
-                endCommand = endCommand.substring(1,endCommand.length - 1);
-            }
-            return await MQSCCommand.qmgrAction(session, params.arguments.qmgr, endCommand);
-        } catch (except) {
-            params.response.console.log("Exception thrown \n" +
-                "Reason = " + except.message +
-                "\nWe will continue on anyway.\n"
-            );
-        }
+    public async processWithSession(params: IHandlerParameters, session: MQSession, profile: IProfile ): Promise<IMQResponse> {
+        return MQSCCommand.qmgrAction(session, params.arguments.qmgr, params.arguments.cmd);
     }
 }

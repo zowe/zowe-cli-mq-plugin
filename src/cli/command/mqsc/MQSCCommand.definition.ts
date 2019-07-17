@@ -39,7 +39,7 @@ export const MQSCCommandDefinition: ICommandDefinition = {
     ],
     options: [],
     profile: {
-        required: ["mq"],
+        optional: ["mq"],
     },
     examples: [{
         description: strings.MQSC.EXAMPLES.EX1,

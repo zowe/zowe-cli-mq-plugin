@@ -9,7 +9,7 @@
 *
 */
 
-import { MQRestClient } from "../../rest/MQRestClient";
+import { MQRestClient } from "../MQRestClient";
 import { IImperativeError, Session } from "@brightside/imperative";
 
 describe("ZosmfRestClient tests", () => {

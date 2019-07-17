@@ -34,21 +34,21 @@ exports[`mq mqsc should display the mqsc help 1`] = `
 
    --host  | -H (string)
 
-      The MQ server host name.
+      The host name used to access the IBM MQ REST API. This might be the host name of
+      the IBM MQ mqweb server, or the Zowe API Mediation Layer..
 
    --port  | -P (number)
 
-      The MQ server port.
-
-      Default value: 443
+      The port number used to access the IBM MQ REST API. This might be the port
+      number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.
 
    --user  | -u (string)
 
-      Mainframe (MQ) user name, which can be the same as your TSO login.
+      The mainframe (MQ) user name, which can be the same as your TSO login.
 
-   --password  | --pw (string)
+   --password  | --pass | --pw (string)
 
-      Mainframe (MQ) password, which can be the same as your TSO password.
+      The mainframe (MQ) password, which can be the same as your TSO password.
 
    --reject-unauthorized  | --ru (boolean)
 
@@ -56,7 +56,7 @@ exports[`mq mqsc should display the mqsc help 1`] = `
 
    --protocol  | -o (string)
 
-      Specifies MQ protocol (http or https).
+      Specifies the MQ protocol (http or https).
 
       Default value: http
       Allowed values: http, https
@@ -84,11 +84,10 @@ exports[`mq mqsc should display the mqsc help 1`] = `
  --------
 
    - The following sequence shows how to query a
-   server-connection channel that is
-   called NEWSVRCONN on an MQ queue manager - our example queue manager is called
-   MQ99:
+   server-connection channel that is called NEWSVRCONN on an MQ queue manager - our
+   example queue manager is called MQ99:
 
-      $ bright mq run mqsc MQ99 'DISPLAY CHANNEL(NEWSVRCONN)'
+      $ bright mq run mqsc MQ99 \\"DISPLAY CHANNEL(NEWSVRCONN)\\"
 
 "
 `;

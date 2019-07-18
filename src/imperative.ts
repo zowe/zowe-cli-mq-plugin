@@ -9,7 +9,7 @@
 *
 */
 
-import { IImperativeConfig } from "@brightside/imperative";
+import { IImperativeConfig } from "@zowe/imperative";
 import { PluginConstants } from "./api/rest/constants/PluginConstants";
 import { MqSessionUtils } from "./cli/MQSessionUtils";
 

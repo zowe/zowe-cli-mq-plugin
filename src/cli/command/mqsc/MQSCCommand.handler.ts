@@ -9,7 +9,7 @@
 *
 */
 
-import { IHandlerParameters, IProfile } from "@brightside/imperative";
+import { IHandlerParameters, IProfile } from "@zowe/imperative";
 import MQSCCommand from "../../../api/MQSCCommand";
 import { IMQResponse } from "../../../api/doc/IMQResponse";
 import MqBaseHandler from "../../MQBaseHandler";

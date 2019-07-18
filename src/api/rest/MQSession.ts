@@ -9,7 +9,7 @@
 *
 */
 
-import { Session, ISession } from "@brightside/imperative";
+import { Session, ISession } from "@zowe/imperative";
 
 export class MQSession extends Session {
 

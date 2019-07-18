@@ -10,7 +10,7 @@
 */
 
 import { MqSessionUtils } from "../../src/cli/MQSessionUtils";
-import { Session, ICommandArguments, Logger } from "@brightside/imperative";
+import { Session, ICommandArguments, Logger } from "@zowe/imperative";
 
 describe.only("Tests utils functions not covered elsewhere", () => {
     it.only("should create a session object", async () => {

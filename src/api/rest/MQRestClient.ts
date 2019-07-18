@@ -9,7 +9,7 @@
 *
 */
 
-import { IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
+import { IImperativeError, Logger, RestClient, TextUtils } from "@zowe/imperative";
 
 /**
  * Wrapper for invoke MQ API through the RestClient to perform common error

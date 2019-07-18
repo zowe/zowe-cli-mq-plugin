@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
 import { IMQResponse } from "../api/doc/IMQResponse";
 import { MqSessionUtils } from "./MQSessionUtils";
 import { MQSession } from "../api/rest/MQSession";

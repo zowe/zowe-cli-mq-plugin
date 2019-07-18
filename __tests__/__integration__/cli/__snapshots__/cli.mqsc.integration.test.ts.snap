@@ -16,7 +16,7 @@ exports[`mq mqsc should display the mqsc help 1`] = `
  USAGE
  -----
 
-   bright mq run mqsc <qmgr> <cmd> [options]
+   zowe mq run mqsc <qmgr> <cmd> [options]
 
  POSITIONAL ARGUMENTS
  --------------------
@@ -79,7 +79,6 @@ exports[`mq mqsc should display the mqsc help 1`] = `
 
       Display help text
 
-
  EXAMPLES
  --------
 
@@ -87,7 +86,7 @@ exports[`mq mqsc should display the mqsc help 1`] = `
    server-connection channel that is called NEWSVRCONN on an MQ queue manager - our
    example queue manager is called MQ99:
 
-      $ bright mq run mqsc MQ99 \\"DISPLAY CHANNEL(NEWSVRCONN)\\"
+      $ zowe mq run mqsc MQ99 \\"DISPLAY CHANNEL(NEWSVRCONN)\\"
 
 "
 `;

@@ -9,7 +9,7 @@
 *
 */
 
-import { RestClient } from "@brightside/imperative";
+import { RestClient } from "@zowe/imperative";
 import { MQConstants } from "../../src/api/rest/constants/MQ.constants";
 import MQSCCommand from "../../src/api/MQSCCommand";
 import { posix } from "path";

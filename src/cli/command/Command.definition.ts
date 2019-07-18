@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandDefinition } from "@brightside/imperative";
+import { ICommandDefinition } from "@zowe/imperative";
 import { MQSCCommandDefinition } from "./mqsc/MQSCCommand.definition";
 import { MqSessionUtils } from "../MQSessionUtils";
 

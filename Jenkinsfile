@@ -104,7 +104,8 @@ node('ca-jenkins-agent') {
             methodCoverageTargets: '80, 70, 50',
             onlyStable: false,
             sourceEncoding: 'ASCII',
-            zoomCoverageChart: false
+            zoomCoverageChart: false,
+            fileCoverageTargets: '80, 80, 80'
         ]
     )
 

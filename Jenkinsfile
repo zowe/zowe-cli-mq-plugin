@@ -25,7 +25,7 @@ node('ca-jenkins-agent') {
 
     // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("zfernand0", "markackert")
+    pipeline.admins.add("zfernand0", "markackert, Colin-Stone")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
@@ -105,7 +105,7 @@ node('ca-jenkins-agent') {
             onlyStable: false,
             sourceEncoding: 'ASCII',
             zoomCoverageChart: false,
-            fileCoverageTargets: '80, 80, 80'
+            fileCoverageTargets: '80, 75, 70'
         ]
     )
 

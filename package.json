@@ -1,6 +1,6 @@
 {
   "name": "@zowe/mq",
-  "version": "0.9.0",
+  "version": "0.9.0-alpha.201907191728",
   "description": "MQ Command runner",
   "repository": {
     "type": "git",

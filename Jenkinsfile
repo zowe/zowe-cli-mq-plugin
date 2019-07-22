@@ -29,11 +29,8 @@ node('ca-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "daily", prerelease: "alpha", dependencies: ["@zowe/imperative": "daily"]],
-        [name: "latest", tag: "latest", dependencies: ["@zowe/imperative": "latest"], autoDeploy: true],
-        [name: "lts-incremental", tag: "lts-incremental", level: SemverLevel.MINOR, dependencies: ["@zowe/imperative": "lts-incremental"]]
+        [name: "master", tag: "latest", dependencies: ["@zowe/imperative": "latest"], autoDeploy: true]
     ])
-
     // Git configuration information
     pipeline.gitConfig = [
         email: 'zowe.robot@gmail.com',

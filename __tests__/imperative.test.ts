@@ -28,6 +28,5 @@ describe("imperative config", () => {
         const config = require("../src/imperative");
         delete config.pluginHealthCheck; // this path changes depending on your system and can't be snapshotted.
         expect(config).toMatchSnapshot();
-});
-
+    });
 });

@@ -127,6 +127,6 @@
   "dependencies": {
     "@types/fs-extra": "^7.0.0",
     "@zowe/cli": "^5.11.0",
-    "@zowe/imperative": "^4.1.11"
+    "@zowe/imperative": "^4.1.12-alpha.201907111518"
   }
 }

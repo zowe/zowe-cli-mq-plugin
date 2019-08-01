@@ -1,12 +1,12 @@
-# Zowe MQ Plug-in
+# IBM MQ Plug-in for Zowe CLI
 
 [![codecov](https://codecov.io/gh/zowe/zowe-cli-ims-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-mq-plugin)
 
-This repository contains a Zowe CLI plug-in for MQ that enables users to issue MQSC commands to a queue manager. 
+This repository contains a IBM MQ Plug-in for Zowe CLI that enables users to issue MQSC commands to a queue manager. 
 MQSC commands enable you to perform administration tasks. For example, you can define, alter, or delete a local queue object. MQSC commands and their syntax are described in [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.ref.adm.doc/q085130_.htm) 
 
 ## Contributing to this plugin 
-Please refer to the Zowe CLI [contribution guidelines](CONTRIBUTING.md) which contain standards and conventions for developing Zowe CLI plug-ins. 
+Please refer to the Zowe CLI [contribution guidelines](CONTRIBUTING.md) which contain standards and conventions for developing plug-ins for Zowe CLI. 
 
 The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly.
 
@@ -26,12 +26,12 @@ Before you install the plug-in, the following prerequisites need to be met:
 
 ## Build the Plug-in from Source
 **Follow these steps:**
-1. The first time that you clone the Zowe CLI plug-in for MQ from the GitHub repository, issue the following command against the local directory:
+1. The first time that you clone the IBM MQ Plug-in for Zowe CLI from the GitHub repository, issue the following command against the local directory:
 
     ```
     npm install
     ```
-    The command installs the required Zowe CLI Plug-in for MQ dependencies and several development tools. When necessary, you can run the task at any time to update the tools.
+    The command installs the required IBM MQ Plug-in for Zowe CLI dependencies and several development tools. When necessary, you can run the task at any time to update the tools.
 
 2. To build your code changes, issue the following command:
 
@@ -43,7 +43,7 @@ Before you install the plug-in, the following prerequisites need to be met:
 
     **Note:** When you update `package.json` to include new dependencies, or when you pull changes that affect `package.json`, issue the `npm update` command to download the dependencies.
 
-## Install the Zowe CLI Plug-in for MQ
+## Install the IBM MQ Plug-in for Zowe CLI
 
 **Follow these steps:**
 
@@ -51,14 +51,14 @@ Before you install the plug-in, the following prerequisites need to be met:
 
 2.  Install the plug-in:
     ```
-    zowe plugins install @zowe/mq@latest
+    zowe plugins install @zowe/mq-for-zowe-cli
     ``` 
     
     **Note**: The `latest` npm tag installs a version of the product that is intended for public consumption. You can use different npm tags to install other versions of the product. For example, you can install with the `@beta` tag to try new features that have not been fully validated. For more information about tag usage, see [NPM Tag Names](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md#npm-tag-names).
     
 3.  (Optional) Verify the installation:
     ```
-    zowe plugins validate @zowe/mq
+    zowe plugins validate @zowe/mq-for-zowe-cli
     ```
     When you install the plug-in successfully, the following message displays:
     ```
@@ -87,7 +87,7 @@ zowe profiles create mq-profile -h
 ```
 
 ## Run Tests
-The Zowe CLI plug-in for MQ plugin uses three sets of tests; unit, integration and system.
+The IBM MQ Plug-in for Zowe CLI uses three sets of tests; unit, integration and system.
 
 Before running the integration and system tests it is necessary to have a server connection to run against as described in the [Prerequisites](#prerequisites) section.
 
@@ -106,13 +106,13 @@ Any failures potentially indicate an issue with the set-up of the Rest API or co
 **Follow these steps:**
 1.  To uninstall the plug-in from a base application, issue the following command:
     ```
-    zowe plugins uninstall @zowe/mq
+    zowe plugins uninstall @zowe/mq-for-zowe-cli
     ```
 After the uninstallation process completes successfully, the product no longer contains the plug-in. 
 
 
 ### Tutorials
-To learn about how to work with this sample plug-in, build new commands, or build a new Zowe CLI plug-in, see [Develop for Zowe CLI](https://zowe.github.io/docs-site/latest/extend/extend-cli/cli-devTutorials.html).
+To learn about how to work with this sample plug-in, build new commands, or build a new plug-in for Zowe CLI, see [Develop for Zowe CLI](https://zowe.github.io/docs-site/latest/extend/extend-cli/cli-devTutorials.html).
 
 ### Imperative CLI Framework Documentation
 [Imperative CLI Framework](https://github.com/zowe/imperative/wiki) documentation is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to these documents during development. 

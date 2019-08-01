@@ -29,6 +29,7 @@ node('ca-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
+        [name: "v1.x", tag: "latest", dependencies: ["@zowe/imperative": "latest"], autoDeploy: true],
         [name: "master", tag: "latest", dependencies: ["@zowe/imperative": "latest"], autoDeploy: true]
     ])
     // Git configuration information

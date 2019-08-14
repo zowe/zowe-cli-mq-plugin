@@ -2,17 +2,18 @@
 
 [![codecov](https://codecov.io/gh/zowe/zowe-cli-ims-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-mq-plugin)
 
-This repository contains a IBM MQ Plug-in for Zowe CLI lets you issue MQSC commands to a queue manager. MQSC commands let you perform administration tasks, such as defining, altering, and deleting local queue objects. For more infornation MQSC commands and syntax, see [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.ref.adm.doc/q085130_.htm).
+The IBM MQ Plug-in for Zowe CLI lets you issue MQSC commands to a queue manager. MQSC commands let you perform administration tasks, such as defining, altering, and deleting local queue objects. For more infornation MQSC commands and syntax, see [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.ref.adm.doc/q085130_.htm).
 
-## Contributing to this plug-in 
+## Contributing to the plug-in 
 For information about contributing to the plug-in, see the Zowe CLI [contribution guidelines](CONTRIBUTING.md), which contains standards and conventions for developing plug-ins for Zowe CLI.
 
 The guidelines contain critical information about working with the code, running, writing, maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates properly with Zowe CLI.
 
 ## Prerequisites
 Before you install the plug-in, complete the following prerequisites:
-* Install Zowe CLI on your PC.
-   **Note:** For more information, see [Installing Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-installcli.html).
+-   Install Zowe CLI on your computer.
+
+    **Note:** For more information, see [Installing Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-installcli.html).
 
 * Ensure that [IBM® MQ™ v9.1.0](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.sce.doc/q121910_.htm) or later is installed and running in your mainframe environment.
 
@@ -95,7 +96,6 @@ You can create an `mq` user profile to avoid typing your connection details on e
 1.  Create an `mq` profile: 
     ```
     zowe profiles create mq-profile <profileName> --host <hostname> --port <portnumber> --user <username> --password <password> --rejectUnauthorized false
-
     ```
     The result of the command displays as a success or failure message. You can use your profile when you issue commands in the mq command group.
 
@@ -106,7 +106,11 @@ zowe profiles create mq-profile -h
 ```
 
 ## Run Tests
-The IBM MQ Plug-in for Zowe CLI uses three sets of tests; unit, integration and system.
+
+The IBM MQ Plug-in for Zowe CLI uses the following tests:
+- unit
+- integration
+- system
 
 Before running the integration and system tests it is necessary to have a server connection to run against as described in the [Prerequisites](#prerequisites) section.
 
@@ -123,17 +127,19 @@ Any failures potentially indicate an issue with the set-up of the Rest API or co
 ## Uninstall the plug-in
 
 **Follow these steps:**
-1.  To uninstall the plug-in from a base application, issue the following command:
+1.  Issue the following command:
+
     ```
     zowe plugins uninstall @zowe/mq-for-zowe-cli
     ```
+    
 After the uninstallation process completes successfully, the product no longer contains the plug-in. 
 
 
 ### Tutorials
+
 To learn about how to work with this sample plug-in, build new commands, or build a new plug-in for Zowe CLI, see [Develop for Zowe CLI](https://zowe.github.io/docs-site/latest/extend/extend-cli/cli-devTutorials.html).
 
 ### Imperative CLI Framework Documentation
-[Imperative CLI Framework](https://github.com/zowe/imperative/wiki) documentation is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to these documents during development. 
 
-
+[Imperative CLI Framework](https://github.com/zowe/imperative/wiki) documentation is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to the documentation as you develop your plug-in.

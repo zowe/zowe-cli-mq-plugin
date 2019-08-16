@@ -2,7 +2,13 @@
 
 [![codecov](https://codecov.io/gh/zowe/zowe-cli-ims-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-mq-plugin)
 
-The IBM MQ Plug-in for Zowe CLI lets you issue MQSC commands to a queue manager. With MQSC commands you can perform administration tasks, such as defining, altering, and deleting local queue objects. For more infornation MQSC commands and syntax, see [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.ref.adm.doc/q085130_.htm).
+The IBM MQ Plug-in for Zowe CLI lets you issue MQSC commands to a queue manager. With MQSC commands, you can perform administration tasks, such as defining, altering, and deleting local queue objects. For more information MQSC commands and syntax, see [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.ref.adm.doc/q085130_.htm).
+
+## Understanding how the plug-in works
+
+-   The plug-in defines an MQ profile to manage the connection information, which is required to access the MQ API.
+-   It implements a local API to interface with the relevant API on the server.
+-   The plug-in creates a wrapping CLI around the local API to provide the command line function.
 
 ## Prerequisites
 
@@ -14,12 +20,6 @@ Before you install the plug-in, complete the following prerequisites:
 -   Ensure that [IBM® MQ™ v9.1.0](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.sce.doc/q121910_.htm) or later is installed and running in your mainframe environment.
 
 -   Zowe installation with MQ. For more insformation, see [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/)
-
-## Understanding how the plug-in works
-
--   The plug-in defines an MQ profile to manage the connection information that is required to access the MQ API.
--   It implements a local API to interface with the relevant API on the server.
--   The plug-in creates a wrapping CLI around the local API to provide the command line function.
 
 ## Installing the plug-in
 
@@ -146,4 +146,4 @@ To learn about how to work with this sample plug-in, build new commands, or buil
 
 For information about contributing to the plug-in, see the Zowe CLI [contribution guidelines](CONTRIBUTING.md). The guidelines contain standards and conventions for developing plug-ins for Zowe CLI.
 
-The guidelines contain critical information about working with the code, running, writing, maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates properly with Zowe CLI.
+The guidelines contain critical information about working with the code. This includes information about, running, writing, maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates properly with Zowe CLI.

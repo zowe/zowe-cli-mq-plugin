@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/zowe/zowe-cli-ims-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-mq-plugin)
 
-The IBM MQ Plug-in for Zowe CLI lets you issue MQSC commands to a queue manager. With MQSC commands, you can perform administration tasks, such as defining, altering, and deleting local queue objects. For more information MQSC commands and syntax, see [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.ref.adm.doc/q085130_.htm).
+The IBM MQ Plug-in for Zowe CLI lets you issue MQSC commands to a queue manager. With MQSC commands, you can perform administration tasks, such as defining, altering, and deleting local queue objects. For information MQSC commands and syntax, see [MQSC commands](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.ref.adm.doc/q085130_.htm).
 
 ## Understanding how the plug-in works
 
@@ -19,7 +19,7 @@ Before you install the plug-in, complete the following prerequisites:
 
 -   Ensure that [IBM® MQ™ v9.1.0](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.sce.doc/q121910_.htm) or later is installed and running in your mainframe environment.
 
--   Zowe installation with MQ. For more insformation, see [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/)
+-   Zowe installation with MQ. For more insformation, see [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/).
 
 ## Installing the plug-in
 
@@ -27,11 +27,11 @@ Use one of the following methods to install the plug-in:
 
 -   Install the plug-in from an online registry or a local package.
 
-    Use this method when you simply want to install the plug-in to Zowe CLI and start using it. For more information, see [Installing plug-ins](https://zowe.github.io/docs-site/latest/user-guide/cli-installplugins.html) on the [Zowe Docs](https://zowe.github.io/docs-site/latest/) website.
+    Use the online registry/local package method when you simply want to install the plug-in to Zowe CLI and start using it. For more information, see [Installing plug-ins](https://zowe.github.io/docs-site/latest/user-guide/cli-installplugins.html) on the [Zowe Docs](https://zowe.github.io/docs-site/latest/) website.
 
 -   Build the plug-in from source and install it into your Zowe CLI implementation.
 
-    Use this method when you want to install tha plug-in to Zowe CLI using the most current binaries and modify the behavior of the plug-in. For example, you want to create a new command and use the plug-in with the command that you created. For more information, see [Building the plug-in from source](#building-the-plug-in-from-source).
+    Use the build from source method when you want to install tha plug-in to Zowe CLI using the most current binaries and modify the behavior of the plug-in. For example, you want to create a new command and use the plug-in with the command that you created. For more information, see [Building the plug-in from source](#building-the-plug-in-from-source).
 
 ## Building the plug-in from source
 
@@ -104,14 +104,14 @@ zowe profiles create mq-profile -h
 
 ## Run Tests
 
-The IBM MQ Plug-in for Zowe CLI uses the following tests:
+You can perform the follwing types of tests:
 - unit
 - integration
 - system
 
 Before running the system and integration tests, you must have a server connection to run against. For more information, see [Prerequisites](#prerequisites).
 
-To define  access credentials to the server, copy the file named `__tests__/__resources__/properties/example_properties.yaml` and create a file named `__tests__/__resources__/properties/custom_properties.yaml`.
+To define  access credentials to the server, copy the  file named `.../__tests__/__resources__/properties/example_properties.yaml` and create a file named `.../__tests__/__resources__/properties/custom_properties.yaml`.
 
 **Note:** Information about how to customize the `custom_properties.yaml` file is provided in the yaml file itself.
 
@@ -125,14 +125,14 @@ Any failures potentially indicate an issue with the set-up of the Rest API or co
 ## Uninstall the plug-in
 
 **Follow these steps:**
+
 1.  Issue the following command:
 
     ```
     zowe plugins uninstall @zowe/mq-for-zowe-cli
     ```
     
-After the uninstallation process completes successfully, the product no longer contains the plug-in. 
-
+After the uninstallation process completes successfully, the product no longer contains the plug-in.
 
 ## Tutorials
 

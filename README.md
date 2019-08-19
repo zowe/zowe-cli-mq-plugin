@@ -150,6 +150,6 @@ To learn about how to work with the sample plug-in, build new commands, or build
 
 ## Contributing to the plug-in
 
-For information about contributing to the plug-in, see the Zowe CLI [contribution guidelines](CONTRIBUTING.md). The guidelines contain standards and conventions for developing plug-ins for Zowe CLI.
+For information about contributing to the plug-in, see the Zowe CLI [Contribution Guidelines](CONTRIBUTING.md). The guidelines contain standards and conventions for developing plug-ins for Zowe CLI.
 
 The guidelines contain critical information about working with the code. This includes information about, running, writing, maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates properly with Zowe CLI.

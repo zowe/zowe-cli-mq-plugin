@@ -19,7 +19,7 @@ Before you install the plug-in, complete the following prerequisites:
 
 -   Ensure that [IBM® MQ™ v9.1.0](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.sce.doc/q121910_.htm) or later is installed and running in your mainframe environment.
 
--   Zowe installation with MQ. For more insformation, see [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/).
+-   Zowe installation with MQ. For more information, see [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/).
 
 ## Installing the plug-in
 
@@ -27,11 +27,15 @@ Use one of the following methods to install the plug-in:
 
 -   Install the plug-in from an online registry or a local package.
 
-    Use the online registry/local package method when you simply want to install the plug-in to Zowe CLI and start using it. For more information, see [Installing plug-ins](https://zowe.github.io/docs-site/latest/user-guide/cli-installplugins.html) on the [Zowe Docs](https://zowe.github.io/docs-site/latest/) website.
+    Use the online registry/local package method when you simply want to install the plug-in to Zowe CLI and start using it.
+    
+    For more information, see [Installing plug-ins](https://zowe.github.io/docs-site/latest/user-guide/cli-installplugins.html) on the [Zowe Docs](https://zowe.github.io/docs-site/latest/) website.
 
 -   Build the plug-in from source and install it into your Zowe CLI implementation.
 
-    Use the build from source method when you want to install tha plug-in to Zowe CLI using the most current binaries and modify the behavior of the plug-in. For example, you want to create a new command and use the plug-in with the command that you created. For more information, see [Building the plug-in from source](#building-the-plug-in-from-source).
+    Use the build from source method when you want to install the plug-in to Zowe CLI using the most current binaries and modify the behavior of the plug-in. For example, you want to create a new command and use the plug-in with the command that you created.
+    
+    For more information, see [Building the plug-in from source](#building-the-plug-in-from-source).
 
 ## Building the plug-in from source
 
@@ -66,11 +70,11 @@ Use one of the following methods to install the plug-in:
     zowe plugins install .
     ```
 
-## (Optional) Validate the plug-in
+## (Optional) Validating the plug-in
 
 The validation process helps to ensure the following conditions:
 -   The installation process completed successfully.
--   The plug-in does ***not*** contain commands, options, and arguement that conflict (possess the same names) as the other plug-ins that are installed in your Zowe CLI installation.
+-   The plug-in does ***not*** contain commands, options, and arguments that conflict (possess the same names) as the other plug-ins that are installed in your Zowe CLI installation.
 
 **Follow these steps:**
 
@@ -85,7 +89,7 @@ The validation process helps to ensure the following conditions:
     ``` 
     **Tip:** When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.  
 
-## Create a User Profile
+## Creating a user profile
 You can create an `mq` user profile to avoid typing your connection details on every command. An `mq` profile contains the host, port, username, and password for the MQ Rest API server of your choice. You can create multiple profiles and switch between them as needed.
 
 **Follow these steps:**
@@ -102,16 +106,16 @@ You can create an `mq` user profile to avoid typing your connection details on e
 zowe profiles create mq-profile -h
 ```
 
-## Run Tests
+## Running tests
 
-You can perform the follwing types of tests:
-- unit
-- integration
-- system
+You can perform the following types of tests on the plug-in:
+- Unit
+- Integration
+- System
 
 Before running the system and integration tests, you must have a server connection to run against. For more information, see [Prerequisites](#prerequisites).
 
-To define  access credentials to the server, copy the  file named `.../__tests__/__resources__/properties/example_properties.yaml` and create a file named `.../__tests__/__resources__/properties/custom_properties.yaml`.
+To define access credentials to the server, copy the file named `.../__tests__/__resources__/properties/example_properties.yaml` and create a file named `.../__tests__/__resources__/properties/custom_properties.yaml`.
 
 **Note:** Information about how to customize the `custom_properties.yaml` file is provided in the yaml file itself.
 
@@ -122,7 +126,7 @@ Issue the following commands to run the tests:
 
 Any failures potentially indicate an issue with the set-up of the Rest API or configuration parameters that were passed in the `custom_properties.yaml` file.
 
-## Uninstall the plug-in
+## Uninstalling the plug-in
 
 **Follow these steps:**
 
@@ -138,7 +142,7 @@ After the uninstallation process completes successfully, the product no longer c
 
 To learn about how to work with this sample plug-in, build new commands, or build a new plug-in for Zowe CLI, see [Develop for Zowe CLI](https://zowe.github.io/docs-site/latest/extend/extend-cli/cli-devTutorials.html).
 
-## Imperative CLI Framework Documentation
+## Imperative CLI Framework documentation
 
 [Imperative CLI Framework](https://github.com/zowe/imperative/wiki) documentation is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to the documentation as you develop your plug-in.
 

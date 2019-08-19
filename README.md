@@ -142,7 +142,7 @@ After the uninstallation process completes successfully, the product no longer c
 
 ## Tutorials
 
-To learn about how to work with this sample plug-in, build new commands, or build a new plug-in for Zowe CLI, see [Develop for Zowe CLI](https://zowe.github.io/docs-site/latest/extend/extend-cli/cli-devTutorials.html).
+To learn about how to work with the sample plug-in, build new commands, or build a new plug-in for Zowe CLI, see [Develop for Zowe CLI](https://zowe.github.io/docs-site/latest/extend/extend-cli/cli-devTutorials.html).
 
 ## Imperative CLI Framework documentation
 

@@ -1,4 +1,4 @@
-# IBM MQ Plug-in for Zowe CLI
+# IBM® MQ Plug-in for Zowe CLI
 
 [![codecov](https://codecov.io/gh/zowe/zowe-cli-ims-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-mq-plugin)
 

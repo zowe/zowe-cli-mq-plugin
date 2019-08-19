@@ -108,10 +108,12 @@ zowe profiles create mq-profile -h
 
 ## Running tests
 
-You can perform the following types of tests on the plug-in:
+You can perform the following types of tests on the IBM MQ plug-in:
 - Unit
 - Integration
 - System
+
+**Note:** For detailed information about conventions and best practices for running tests against Zowe CLI plug-ins, see see [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md).
 
 Before running the system and integration tests, you must have a server connection to run against. For more information, see [Prerequisites](#prerequisites).
 

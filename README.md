@@ -31,7 +31,7 @@ Before you install and use the plug-in:
 
 -   Ensure that [IBM® MQ™ v9.1.0](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.sce.doc/q121910_.htm) or later is installed and running in your mainframe environment.
 
--   Zowe installation with MQ. For more information, see [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/).
+-   Expose the MQ API the API Mediation Layer (API ML), or, connect the plug-in directly to the MQ API. For more information, see [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/) and [Configuring the mqweb server](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.1.0/com.ibm.mq.con.doc/q019098_.htm).
 
 ## Installing
 

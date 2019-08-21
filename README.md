@@ -72,7 +72,7 @@ Use one of the following methods to install the plug-in:
 
 **Tip:** After the installation process completes, it validates that the plug-in was installed correct and the names of its commands, options, and arguments do not conflict with that of the other plug-ins that you installed into your Zowe CLi implimentation.
 
-When the validation process is successful, the following messaage displays:
+When the validation process is successful, the following message displays:
 
 ```
 Validation results for plugin 'mq':

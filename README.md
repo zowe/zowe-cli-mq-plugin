@@ -23,6 +23,8 @@ The IBM MQ Plug-in for Zowe CLI lets you issue MQSC commands to a queue manager.
 
 Before you install and use the plug-in:
 
+<!-- TODO When @latest branch of Zowe docs-site exists, we should give users the option to go and read about/install the @latest or the @lts-incremental versions of this plug-in. We can also explain which branches in the repo correspond to which CLI version. -->
+
 -   Install Zowe CLI on your computer.
 
     **Note:** For more information, see [Installing Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-installcli.html).

@@ -47,7 +47,7 @@ Use one of the following methods to install the plug-in:
 
     Use the build from source method when you want to install the plug-in to Zowe CLI using the most current binaries and modify the behavior of the plug-in. For example, you want to create a new command and use the plug-in with the command that you created.
     
-    For more information, see [Building the plug-in from source](#building-the-plug-in-from-source).
+    For more information, see [Building from source](#building-from-source).
 
 ## Building from source
 
@@ -82,7 +82,7 @@ Use one of the following methods to install the plug-in:
     zowe plugins install .
     ```
 
-**Tip:** After the installation process completes, it validates that the plug-in was installed correct and the names of its commands, options, and arguments do not conflict with that of the other plug-ins that you installed into your Zowe CLI implimentation.
+**Tip:** After the installation process completes, it validates that the plug-in was installed correct and the names of its commands, options, and arguments do not conflict with that of the other plug-ins that you installed into your Zowe CLI implementation.
 
 When the validation process is successful, the following message displays:
 
@@ -117,7 +117,7 @@ You can perform the following types of tests on the IBM MQ plug-in:
 - Integration
 - System
 
-**Note:** For detailed information about conventions and best practices for running tests against Zowe CLI plug-ins, see see [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md).
+**Note:** For detailed information about conventions and best practices for running tests against Zowe CLI plug-ins, see [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md).
 
 Before running the system and integration tests, you must have a server connection to run against. For more information, see [Software requirements](#software-requirements).
 

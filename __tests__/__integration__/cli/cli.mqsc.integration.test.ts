@@ -21,7 +21,8 @@ describe("mq mqsc", () => {
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
             testName: "mqsc_command",
-            installPlugin: true
+            installPlugin: true,
+            skipProperties: true
         });
     });
 

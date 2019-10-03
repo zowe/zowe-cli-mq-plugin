@@ -9,10 +9,9 @@
 *
 */
 
-import { ImperativeExpect } from "@zowe/imperative";
+import { ImperativeExpect, IHeaderContent } from "@zowe/imperative";
 import { MQMessages } from "./rest/constants/MQ.messages";
 import { MQConstants } from "./rest/constants/MQ.constants";
-import { IHeaderContent } from "@zowe/cli";
 import { IMQResponse } from "./doc/IMQResponse";
 import { MQRestClient } from "./rest/MQRestClient";
 import { posix } from "path";

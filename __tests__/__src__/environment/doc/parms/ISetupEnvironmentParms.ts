@@ -42,4 +42,12 @@ export interface ISetupEnvironmentParms {
      * Zowe CLI.
      */
     installPlugin?: boolean;
+
+    /**
+     * Skip trying to load custom_properties.yaml
+     * Useful for integration tests that don't need the properties
+     * but want a working directory and other test environment features
+     * Default: false
+     */
+    skipProperties?: boolean;
 }

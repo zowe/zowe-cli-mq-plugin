@@ -19,7 +19,8 @@ describe("Creating an MQ profile", () => {
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             installPlugin: true,
-            testName: "mq_profile"
+            testName: "mq_profile",
+            skipProperties: true
         });
     });
 

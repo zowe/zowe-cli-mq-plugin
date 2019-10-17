@@ -19,7 +19,7 @@ require("glob")("{__mocks__,src,gulp,__tests__,jenkins,scripts}{/**/*.js,/**/*.t
         // turn the license file into a multi line comment
         const desiredLineLength = 80;
         let alreadyContainedCopyright = 0;
-        const header = "/*\n" + fs.readFileSync("LICENSE_HEADER").toString()
+        const header = "/*\n" + fs.readFileSync("scripts/LICENSE_HEADER").toString()
                 .split(/\r?\n/g).map((line) => {
                     return `* ${line}`.trim();
                 })

@@ -11,3 +11,4 @@ __tests__/__results__/
 *.iml
 package-lock.json
 npm-shrinkwrap.json
+/docs/typedoc/

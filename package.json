@@ -11,7 +11,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
+    "registry": "https://zowe.jfrog.io/zowe/api/npm/npm-local-release/"
   },
   "scripts": {
     "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",

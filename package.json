@@ -34,14 +34,14 @@
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@zowe/cli": ">=5.0.0",
+    "@zowe/cli": ">=6.0.0",
     "@zowe/imperative": ">=4.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/expect": "^1.20.3",
-    "@types/fs-extra": "^1.20.3",
+    "@types/fs-extra": "^7.0.0",
     "@types/jest": "^22.1.0",
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.10.6",
@@ -127,10 +127,5 @@
     "includeFailureMsg": true
   },
   "author": "Brightside",
-  "license": "EPL-2.0",
-  "dependencies": {
-    "@types/fs-extra": "^7.0.0",
-    "@zowe/cli": "^5.11.0",
-    "@zowe/imperative": "^4.1.11"
-  }
+  "license": "EPL-2.0"
 }

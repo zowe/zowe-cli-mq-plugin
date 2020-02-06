@@ -29,9 +29,9 @@ node('ca-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", dependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true]
-        //[name: "master", tag: "latest", dependencies: ["@zowe/imperative": "latest"], autoDeploy: true],
-        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", dependencies: ["@zowe/imperative": "zowe-v1-lts"], autoDeploy: true]
+        [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true]
+        //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"], autoDeploy: true],
+        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], autoDeploy: true]
     ])
     // Git configuration information
     pipeline.gitConfig = [

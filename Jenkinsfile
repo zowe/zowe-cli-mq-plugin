@@ -29,7 +29,9 @@ node('ca-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", dependencies: ["@zowe/imperative": "latest"], autoDeploy: true]
+        [name: "master", tag: "latest", dependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true]
+        //[name: "master", tag: "latest", dependencies: ["@zowe/imperative": "latest"], autoDeploy: true],
+        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", dependencies: ["@zowe/imperative": "zowe-v1-lts"], autoDeploy: true]
     ])
     // Git configuration information
     pipeline.gitConfig = [
@@ -112,7 +114,8 @@ node('ca-jenkins-agent') {
     pipeline.test(
         name: "Integration",
         operation: {
-            sh "npm i -g @zowe/cli@daily --zowe:registry=${pipeline.registryConfig[0].url}"
+            def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print \$2 }' | sed 's/[\",]//g')").trim()
+            sh "npm i -g @zowe/cli@$zoweVersion --zowe:registry=${pipeline.registryConfig[0].url}"
             // create the custom properties file. contents don't matter for integration tests
             sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
             sh "npm run test:integration"

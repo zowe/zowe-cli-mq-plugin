@@ -34,17 +34,17 @@
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@zowe/cli": ">=6.0.0",
-    "@zowe/imperative": ">=4.0.0"
+    "@zowe/cli": "^6.0.0",
+    "@zowe/imperative": "^4.2.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/expect": "^1.20.3",
-    "@types/fs-extra": "^7.0.0",
+    "@types/fs-extra": "^8.0.0",
     "@types/jest": "^22.1.0",
     "@types/mocha": "^2.2.42",
-    "@types/node": "^7.10.6",
+    "@types/node": "^8.10.45",
     "@types/yargs": "^11.0.0",
     "@zowe/imperative": "^4.2.0",
     "chai": "^4.1.2",
@@ -59,17 +59,17 @@
     "jest-environment-node": "^24.9.0",
     "jest-environment-node-debug": "^2.0.0",
     "jest-html-reporter": "^2.5.0",
-    "jest-junit": "6.3.0",
-    "jest-sonar-reporter": "2.0.0",
-    "jest-stare": "1.11.1",
-    "jsdom": "11.11.0",
+    "jest-junit": "^6.3.0",
+    "jest-sonar-reporter": "^2.0.0",
+    "jest-stare": "^1.13.2",
+    "jsdom": "^11.11.0",
     "rimraf": "^2.7.1",
     "sinon": "^6.1.0",
     "ts-jest": "^24.1.0",
     "ts-node": "^3.3.0",
-    "tslint": "5.14.0",
+    "tslint": "^5.15.0",
     "typedoc": "^0.15.0",
-    "typescript": "^3.5.2",
+    "typescript": "^3.7.4",
     "uuid": "^3.2.1"
   },
   "jest": {

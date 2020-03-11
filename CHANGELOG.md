@@ -1,10 +1,6 @@
 # Changelog
 
-## Current Changes
-
-- Add typedoc and move license header
-- Update tests and snapshots
-- Update package versions
+All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
 ## `2.0.1`
 

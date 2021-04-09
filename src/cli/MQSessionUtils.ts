@@ -9,7 +9,8 @@
 *
 */
 
-import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@zowe/imperative";
+import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition, IProfile, ISession, Logger, SessConstants, Session } from "@zowe/imperative";
+import { MQSession } from "../api/rest/MQSession";
 
 /**
  * Utility Methods for Zowe
@@ -29,7 +30,6 @@ export class MqSessionUtils {
         description: "The host name used to access the IBM MQ REST API. " +
             "This might be the host name of the IBM MQ mqweb server, or the Zowe API Mediation Layer..",
         type: "string",
-        required: false,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
@@ -42,7 +42,6 @@ export class MqSessionUtils {
         description: "The port number used to access the IBM MQ REST API. " +
             "This might be the port number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.",
         type: "number",
-        required: false,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
@@ -54,7 +53,6 @@ export class MqSessionUtils {
         aliases: ["u"],
         description: "The mainframe (MQ) user name, which can be the same as your TSO login.",
         type: "string",
-        required: false,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
@@ -66,8 +64,7 @@ export class MqSessionUtils {
         aliases: ["pass", "pw"],
         description: "The mainframe (MQ) password, which can be the same as your TSO password.",
         type: "string",
-        group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP,
-        required: false
+        group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
     /**
@@ -79,7 +76,6 @@ export class MqSessionUtils {
         description: "Reject self-signed certificates.",
         type: "boolean",
         defaultValue: false,
-        required: false,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
     /**
@@ -87,11 +83,9 @@ export class MqSessionUtils {
      */
     public static MQ_OPTION_PROTOCOL: ICommandOptionDefinition = {
         name: "protocol",
-        aliases: ["o"],
         description: "Specifies the MQ protocol (http or https).",
         type: "string",
         defaultValue: "http",
-        required: false,
         allowableValues: {values: ["http", "https"], caseSensitive: false},
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
@@ -108,6 +102,32 @@ export class MqSessionUtils {
         MqSessionUtils.MQ_OPTION_REJECT_UNAUTHORIZED,
         MqSessionUtils.MQ_OPTION_PROTOCOL
     ];
+
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<MQSession> {
+        this.log.debug("Creating an MQ session from arguments");
+
+        const sessCfg: ISession = {
+            hostname: args.host,
+            port: args.port,
+            rejectUnauthorized: args.rejectUnauthorized,
+            basePath: args.basePath,
+            protocol: args.protocol?.toLowerCase() ?? "https"
+        };
+
+        if (args.tokenType && args.tokenValue) {
+            sessCfg.type = SessConstants.AUTH_TYPE_TOKEN;
+            sessCfg.tokenType = args.tokenType;
+            sessCfg.tokenValue = args.tokenValue;
+        } else if (args.user && args.password) {
+            sessCfg.user = args.user;
+            sessCfg.password = args.password;
+            sessCfg.type = SessConstants.AUTH_TYPE_BASIC;
+        }
+
+        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting});
+
+        return new MQSession(sessCfgWithCreds);
+    }
 
     /**
      * Given a MQ profile, create a REST Client Session.

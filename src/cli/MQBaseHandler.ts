@@ -30,7 +30,8 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      */
     public async process(commandParameters: IHandlerParameters) {
         const profile = commandParameters.profiles.get("mq", false) || {};
-        const session = MqSessionUtils.createBasicMqSessionFromArguments(commandParameters.arguments);
+
+        const session = await MqSessionUtils.createSessCfgFromArgs(commandParameters.arguments);
 
         const task: ITaskWithStatus = {
             percentComplete: 0,
@@ -45,6 +46,9 @@ export default abstract class MqBaseHandler implements ICommandHandler {
 
         commandParameters.response.progress.startBar({task});
         const response = await this.processWithSession(commandParameters, session, profile);
+
+        commandParameters.response.progress.endBar(); // end any progress bars
+
         commandParameters.response.data.setObj(response);
         // Print out the response
         if (response  && response.commandResponse && response.commandResponse[0]) {
@@ -80,7 +84,6 @@ export default abstract class MqBaseHandler implements ICommandHandler {
                 }
             }
         }
-        commandParameters.response.progress.endBar(); // end any progress bars
     }
 
     /**

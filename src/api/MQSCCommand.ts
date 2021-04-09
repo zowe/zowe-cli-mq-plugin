@@ -34,14 +34,12 @@ export default class MQSCCommand {
      */
     public static async qmgrAction(session: MQSession, queueMgrName: string,
                                    thecommand: string, csrfHeader: boolean = true): Promise<IMQResponse> {
-        ImperativeExpect.toBeDefinedAndNonBlank(queueMgrName, MQMessages.missingQueueManagerName.message);
-        ImperativeExpect.toBeDefinedAndNonBlank(thecommand, MQMessages.missingCommand.message);
+        ImperativeExpect.toBeDefinedAndNonBlank(queueMgrName, "qmgr", MQMessages.missingQueueManagerName.message);
+        ImperativeExpect.toBeDefinedAndNonBlank(thecommand, "cmd", MQMessages.missingCommand.message);
 
         const endpoint = posix.join(MQConstants.RESOURCE, MQConstants.RES_QUEUE_MANAGER_COMMAND, queueMgrName, MQConstants.RES_QUEUE_MANAGER_ACTION);
 
         const payload: any = { type: "runCommand", parameters: { command: thecommand } };
-        console.log("---------- ", endpoint, thecommand);
-        console.log(payload);
 
         const headers: IHeaderContent[] = (csrfHeader === true)
             ? [{"Content-Type": "application/json"}, {"ibm-mq-rest-csrf-token": "true"}]

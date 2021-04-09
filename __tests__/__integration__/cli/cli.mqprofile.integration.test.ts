@@ -12,6 +12,7 @@
 import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
 import { ITestEnvironment } from "../../__src__/environment/doc/response/ITestEnvironment";
 import { runCliScript } from "../../__src__/TestUtils";
+import { TempTestProfiles } from "../../__src__/environment/TempTestProfiles";
 
 let testEnvironment: ITestEnvironment;
 describe("Creating an MQ profile", () => {
@@ -30,7 +31,7 @@ describe("Creating an MQ profile", () => {
 
     it("should create an MQ profile successfully with fake connection details", () => {
         const output = runCliScript(__dirname + "/__scripts__/create_mq_profile.sh", testEnvironment);
-        expect(output.stderr.toString()).toEqual("");
+        expect(TempTestProfiles.isStderrEmpty(output.stderr)).toBeTruthy();
         expect(output.status).toEqual(0);
         expect(output.stdout.toString()).toContain("success");
     });

@@ -23,9 +23,9 @@ Object {
               "aliases": Array [
                 "H",
               ],
-              "description": "The MQ Rest server host name",
+              "description": "The host name used to access the IBM MQ REST API. This might be the host name of the IBM MQ mqweb server, or the Zowe API Mediation Layer..",
+              "group": "MQ Connection Options",
               "name": "host",
-              "required": true,
               "type": "string",
             },
             "type": "string",
@@ -33,14 +33,12 @@ Object {
           "password": Object {
             "optionDefinition": Object {
               "aliases": Array [
-                "p",
+                "pass",
+                "pw",
               ],
-              "description": "Password to authenticate to your MQ REST API server",
-              "implies": Array [
-                "user",
-              ],
+              "description": "The mainframe (MQ) password, which can be the same as your TSO password.",
+              "group": "MQ Connection Options",
               "name": "password",
-              "required": true,
               "type": "string",
             },
             "secure": true,
@@ -51,18 +49,15 @@ Object {
               "aliases": Array [
                 "P",
               ],
-              "description": "Port number of your MQ REST API server",
+              "description": "The port number used to access the IBM MQ REST API. This might be the port number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.",
+              "group": "MQ Connection Options",
               "name": "port",
-              "required": true,
               "type": "number",
             },
             "type": "number",
           },
           "protocol": Object {
             "optionDefinition": Object {
-              "aliases": Array [
-                "o",
-              ],
               "allowableValues": Object {
                 "caseSensitive": false,
                 "values": Array [
@@ -74,7 +69,6 @@ Object {
               "description": "Specifies the MQ protocol (http or https).",
               "group": "MQ Connection Options",
               "name": "protocol",
-              "required": false,
               "type": "string",
             },
             "type": "string",
@@ -88,7 +82,6 @@ Object {
               "description": "Reject self-signed certificates.",
               "group": "MQ Connection Options",
               "name": "reject-unauthorized",
-              "required": false,
               "type": "boolean",
             },
             "type": "boolean",
@@ -98,21 +91,16 @@ Object {
               "aliases": Array [
                 "u",
               ],
-              "description": "User name to authenticate to your MQ REST API server",
+              "description": "The mainframe (MQ) user name, which can be the same as your TSO login.",
+              "group": "MQ Connection Options",
               "name": "user",
-              "required": true,
               "type": "string",
             },
             "secure": true,
             "type": "string",
           },
         },
-        "required": Array [
-          "host",
-          "port",
-          "user",
-          "password",
-        ],
+        "required": Array [],
         "title": "CLI profile for MQ",
         "type": "object",
       },

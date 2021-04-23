@@ -34,7 +34,6 @@
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@zowe/cli": "7.0.0-next.202103152050",
     "@zowe/imperative": "5.0.0-next.202104071400"
   },
   "devDependencies": {

@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- Remove @zowe/cli peer dependency to better support NPM v7
+
 ## `2.0.1`
 
 - Fix plugin install warnings

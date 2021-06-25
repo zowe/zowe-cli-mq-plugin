@@ -57,7 +57,7 @@
     "jest-cli": "^26.6.3",
     "jest-environment-node": "^26.6.2",
     "jest-environment-node-debug": "^2.0.0",
-    "jest-html-reporter": "^2.8.2",
+    "jest-html-reporter": "^3.4.1",
     "jest-junit": "^6.4.0",
     "jest-sonar-reporter": "^2.0.0",
     "jest-stare": "^1.13.2",

@@ -19,6 +19,13 @@ const config: IImperativeConfig = {
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
     pluginHealthCheck: __dirname + "/healthCheck.Handler",
+    apimlConnLookup: [
+        {
+          apiId: "place_the_mq_apiId_here",
+          gatewayUrl: "api/v1",
+          connProfType: "mq"
+        }
+    ],
     profiles: [
         {
           type: "mq",

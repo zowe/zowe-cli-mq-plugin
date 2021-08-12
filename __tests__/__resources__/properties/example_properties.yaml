@@ -20,11 +20,18 @@ mq:
   password: my-password
   host: my-mq-host
   port: my-mq-port
-  protocol: my_protocol 
+  protocol: my_protocol
   rejectUnauthorized: false
   # queue manager
   qmgr: my-mq-manager
-  # payloads
-  script1: DEFINE QL(ZOWE.TEST.DONT.USE) DESCR('A test queue to play with for Zowe') HARDENBO INDXTYPE(MSGID)
-  script2: DISPLAY QL(ZOWE.TEST.DONT.USE) ALL
-  script3: DELETE QL(ZOWE.TEST.DONT.USE)
+# Test payload
+test:
+  setup:
+    cmd: DEFINE QL(ZOWE.TEST.DONT.USE) DESCR('A test queue to play with for Zowe') HARDENBO INDXTYPE(MSGID)
+    expect: CSQMAQLC ' DEFINE QL' NORMAL COMPLETION
+  run:
+    cmd: DISPLAY QL(ZOWE.TEST.DONT.USE) ALL
+    expect: CSQMDRTS ' DISPLAY QLOCAL' NORMAL COMPLETION
+  teardown:
+    cmd: DELETE QL(ZOWE.TEST.DONT.USE)
+    expect: CSQMUQLC ' DELETE QL' NORMAL COMPLETION

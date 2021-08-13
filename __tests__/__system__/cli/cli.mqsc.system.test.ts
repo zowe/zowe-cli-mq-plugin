@@ -12,11 +12,12 @@
 import { runCliScript } from "../../__src__/TestUtils";
 import { ITestEnvironment } from "../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
+import { ITestPropertiesSchema } from "../../__src__/environment/doc/ITestPropertiesSchema";
 
 let testEnvironment: ITestEnvironment;
-let mqProperties: any;
+let mqProperties: ITestPropertiesSchema;
 
-describe.only("mq mqsc cli", () => {
+describe("mq mqsc cli", () => {
     // Create the unique test environment
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
@@ -24,51 +25,48 @@ describe.only("mq mqsc cli", () => {
             installPlugin: true,
             tempProfileTypes: ["mq"]
         });
-        mqProperties = await testEnvironment.systemTestProperties.mq;
+        mqProperties = await testEnvironment.systemTestProperties;
 
         const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
-            [mqProperties.qmgr, mqProperties.script1]);
+            [mqProperties.mq.qmgr, mqProperties.test.setup.cmd]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("CSQ9022I  MQ21 CSQMAQLC ' DEFINE QL' NORMAL COMPLETION");
+        expect(stdout).toContain(mqProperties.test.setup.expect);
     });
 
     afterAll(async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
-            [mqProperties.qmgr, mqProperties.script3]);
+            [mqProperties.mq.qmgr, mqProperties.test.teardown.cmd]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("CSQ9022I  MQ21 CSQMUQLC ' DELETE QL' NORMAL COMPLETION");
+        expect(stdout).toContain(mqProperties.test.teardown.expect);
         await TestEnvironment.cleanUp(testEnvironment);
     });
 
 
-    it.only("should be able to successfully get resources using profile options", async () => {
+    it("should be able to successfully get resources using profile options", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
-            [mqProperties.qmgr, mqProperties.script2]);
+            [mqProperties.mq.qmgr, mqProperties.test.run.cmd]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("QDEPTHHI(80)");
-        expect(stdout).toContain("CSQ9022I  MQ21 CSQMDRTS ' DISPLAY QLOCAL' NORMAL COMPLETION");
+        expect(stdout).toContain(mqProperties.test.run.expect);
     });
 
-
-    it.only("should be able to successfully get resources using host options", async () => {
-        const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
-            [mqProperties.qmgr, mqProperties.script2, mqProperties.host,
-                mqProperties.port, mqProperties.user, mqProperties.password,
+    it("should be able to successfully get resources using host options", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.override.sh", testEnvironment,
+            [mqProperties.mq.qmgr, mqProperties.test.run.cmd, mqProperties.mq.host,
+                mqProperties.mq.port, mqProperties.mq.user, mqProperties.mq.password,
             ]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("QDEPTHHI(80)");
-        expect(stdout).toContain("CSQ9022I  MQ21 CSQMDRTS ' DISPLAY QLOCAL' NORMAL COMPLETION");
+        expect(stdout).toContain(mqProperties.test.run.expect);
     });
 });

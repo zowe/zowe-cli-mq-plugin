@@ -9,13 +9,12 @@
 *
 */
 
-import { ImperativeExpect, IHeaderContent } from "@zowe/imperative";
+import { ImperativeExpect, IHeaderContent, Session } from "@zowe/imperative";
 import { MQMessages } from "./rest/constants/MQ.messages";
 import { MQConstants } from "./rest/constants/MQ.constants";
 import { IMQResponse } from "./doc/IMQResponse";
 import { MQRestClient } from "./rest/MQRestClient";
 import { posix } from "path";
-import { MQSession } from "./rest/MQSession";
 
 /**
  * Class of utility file APIs for usage within the CLI and programmatically from node scripts.
@@ -25,15 +24,15 @@ import { MQSession } from "./rest/MQSession";
 export default class MQSCCommand {
     /**
      * Runs the specified MQSC command on the specified queue manager.
-     * @param {MQSession}  session      - MQ connection info
+     * @param {Session}  session      - MQ connection info
      * @param {string} queueMgrName - The Queue manager to apply command to
      * @param {string} command - The command to be run.
      * @param {boolean} csrfHeader - Set the CSRF protection header, default is true
      * @throws ImperativeError
      * @memberof Command
      */
-    public static async qmgrAction(session: MQSession, queueMgrName: string,
-                                   thecommand: string, csrfHeader: boolean = true): Promise<IMQResponse> {
+    public static async qmgrAction(session: Session, queueMgrName: string,
+        thecommand: string, csrfHeader: boolean = true): Promise<IMQResponse> {
         ImperativeExpect.toNotBeNullOrUndefined(queueMgrName, MQMessages.missingQueueManagerName.message);
         ImperativeExpect.toNotBeEqual(queueMgrName, "", MQMessages.missingQueueManagerName.message);
         ImperativeExpect.toNotBeNullOrUndefined(thecommand, MQMessages.missingCommand.message);
@@ -48,7 +47,6 @@ export default class MQSCCommand {
             : [{"Content-Type": "application/json"}];
 
         const content: IMQResponse = await MQRestClient.postExpectJSON<IMQResponse>(session, endpoint, headers, payload);
-
         return content;
     }
 }

@@ -9,10 +9,9 @@
 *
 */
 
-import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
+import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage, Session } from "@zowe/imperative";
 import { IMQResponse } from "../api/doc/IMQResponse";
 import { MqSessionUtils } from "./MQSessionUtils";
-import { MQSession } from "../api/rest/MQSession";
 
 /**
  * This class is used by the various mq handlers as the base class for their implementation.
@@ -49,9 +48,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
         // Print out the response
         if (response  && response.commandResponse && response.commandResponse[0]) {
             for (const resp of response.commandResponse) {
-                const mqResponse = resp.text;
-                const result = JSON.stringify(mqResponse);
-                const mqJSON = JSON.parse(result);
+                const mqJSON = JSON.parse(JSON.stringify(resp.text));
                 let start = true;
                 let success = false;
                 for (const line of mqJSON) {
@@ -60,7 +57,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
                         success = modifiedLine.indexOf("RETURN=00000000") >= 0;
                     } else if (success) {
                         // remove whitespace between parenthesis but allow within quotes
-                        modifiedLine = modifiedLine.replace(/\s+(?=[^()\D\"]*\))/g, "");
+                        modifiedLine = modifiedLine.replace(/\s+(?=[^()\D"]*\))/g, "");
                         modifiedLine = modifiedLine.replace(/\) /g, ") \n\t"); // New line and tab after each parenthesis
                         modifiedLine = modifiedLine.replace(/\n\tNOHARDENBO /g, "\n\tNOHARDENBO\n\t"); // anything starting NO...
                         modifiedLine = modifiedLine.replace(/\n\tHARDENBO /g, "\n\tHARDENBO\n\t"); // anything starting NO...
@@ -88,14 +85,14 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      * be used so that every class does not have to instantiate the session object.
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent to the handler.
-     * @param {MQSession} session The session object generated from the mq profile.
+     * @param {Session} session The session object generated from the mq profile.
      * @param {IProfile} mqProfile The mq profile that was loaded for the command.
      *
      * @returns {Promise<IMQResponse>} The response from the underlying mq api call.
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
-        session: MQSession,
+        session: Session,
         mqProfile: IProfile
     ): Promise<IMQResponse>;
 }

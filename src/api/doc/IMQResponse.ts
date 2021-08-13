@@ -25,9 +25,9 @@ interface ICommandResponses {
 
     /**
      * The command response text.
-     * @type{string}
+     * @type{string[]}
      */
-    text: string;
+    text: string[];
 }
 /**
  * The IMQResponse API response.
@@ -37,7 +37,7 @@ export interface IMQResponse {
 
     /**
      * The command response text.
-     * @type{string}
+     * @type{string[]}
      */
     commandResponse: ICommandResponses[];
 

@@ -10,7 +10,7 @@
 */
 
 import { ISetupEnvironmentParms } from "./doc/parms/ISetupEnvironmentParms";
-import { ImperativeError, ImperativeExpect, IO, Logger, TextUtils } from "@zowe/imperative";
+import { ImperativeError, ImperativeExpect, IO, Logger, TextUtils, Session } from "@zowe/imperative";
 import * as nodePath from "path";
 import { mkdirpSync } from "fs-extra";
 import { ITestEnvironment } from "./doc/response/ITestEnvironment";
@@ -18,9 +18,8 @@ import * as fs from "fs";
 import { TempTestProfiles } from "./TempTestProfiles";
 import { TemporaryScripts } from "./TemporaryScripts";
 import { runCliScript } from "../TestUtils";
-import { ITestPropertiesSchema } from "../ITestPropertiesSchema";
+import { ITestPropertiesSchema } from "./doc/ITestPropertiesSchema";
 import { TEST_RESULT_DATA_DIR } from "../TestConstants";
-import { MQSession } from "../../../src/api/rest/MQSession";
 
 const uuidv4 = require("uuid");
 const yaml = require("js-yaml");
@@ -116,9 +115,9 @@ export class TestEnvironment {
      * Create an MQ based session from properties present in your test environment
      * @param testEnvironment - your test environment with system test properties populated
      */
-    public static createSession(testEnvironment: ITestEnvironment): MQSession {
+    public static createSession(testEnvironment: ITestEnvironment): Session {
         const SYSTEM_PROPS = testEnvironment.systemTestProperties;
-        return new MQSession({
+        return new Session({
             user: SYSTEM_PROPS.mq.user,
             password: SYSTEM_PROPS.mq.password,
             hostname: SYSTEM_PROPS.mq.host,
@@ -139,7 +138,7 @@ export class TestEnvironment {
      *  @returns  The parsed test properties.
      */
     private static loadSystemTestProperties(filePath: string = null,
-                                            workingDir: string = process.cwd()): ITestPropertiesSchema {
+        workingDir: string = process.cwd()): ITestPropertiesSchema {
         const logger: Logger = this.getMockFileLogger(workingDir);
         // For now, I'm leaving the option for env specified properties in code. This will not be documented.
         const propfilename: string = process.env.propfile || TestEnvironment.DEFAULT_PROPERTIES;

@@ -56,7 +56,7 @@ exports[`mq mqsc should display the mqsc help 1`] = `
 
       Default value: false
 
-   --protocol  | -o (string)
+   --protocol  (string)
 
       Specifies the MQ protocol (http or https).
 
@@ -85,6 +85,14 @@ exports[`mq mqsc should display the mqsc help 1`] = `
    --token-value  | --tv (string)
 
       The value of the token to pass to the API.
+
+   --cert-file  (local file path)
+
+      The file path to a certificate file to use for authentication
+
+   --cert-key-file  (local file path)
+
+      The file path to a certificate key file to use for authentication
 
  GLOBAL OPTIONS
  --------------

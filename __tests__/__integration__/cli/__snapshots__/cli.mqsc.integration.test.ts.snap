@@ -56,7 +56,7 @@ exports[`mq mqsc should display the mqsc help 1`] = `
 
       Default value: false
 
-   --protocol  (string)
+   --protocol  | -o (string)
 
       Specifies the MQ protocol (http or https).
 

@@ -32,7 +32,10 @@ describe("Creating an MQ profile", () => {
     it("should create an MQ profile successfully with fake connection details", () => {
         const output = runCliScript(__dirname + "/__scripts__/create_mq_profile.sh", testEnvironment);
         expect(output.stderr.toString()).toContain("The command 'profiles create' is deprecated.");
-        expect(output.stdout.toString()).toContain("success");
+        if (output.stdout.toString().indexOf("Profile created successfully!") < 0) {
+            expect(output.stderr.toString()).toEqual("");
+        }
+        expect(output.stdout.toString()).toContain("Profile created successfully!");
         expect(output.status).toEqual(0);
     });
 });

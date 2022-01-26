@@ -7,4 +7,4 @@ port=$4
 user=$5
 password=$6
 
-zowe mq run mqsc $qmgr  "$script" --host $host --password $password --port $port --user $user
+zowe mq run mqsc $qmgr  "$script" --host $host --port $port --user $user --password $password

@@ -9,27 +9,26 @@
 *
 */
 
+import { ICommandArguments, Logger, Session } from "@zowe/imperative";
 import { MqSessionUtils } from "../../src/cli/MQSessionUtils";
-import { Session, ICommandArguments, Logger } from "@zowe/imperative";
 
-describe.only("Tests utils functions not covered elsewhere", () => {
-    it.only("should create a session object", async () => {
+describe("Tests utils functions not covered elsewhere", () => {
+    it("should create a session object", async () => {
         const args: ICommandArguments = {
             $0: "",
             _: [],
 
-            hostname: "boppyhost",
+            host: "boppyhost",
             port: "port",
             user: "auser",
             password: "apassword",
             basePath: "abasePath",
-            rejectUnauthorized: "arejectUnauthorized",
-            protocol: "aprotocol"
+            rejectUnauthorized: "arejectUnauthorized"
 
         };
-       // const session: Session = await MqSessionUtils.createBasicMqSessionFromArguments(args);
-        // Logger.getConsoleLogger().info(`hostname ${session.ISession.hostname}`);
-        // expect(session.ISession.hostname).toEqual("boppyhost");
-        // expect(session.ISession.protocol).toEqual("aprotocol");
+        const session: Session = await MqSessionUtils.createBasicMqSessionFromArguments(args);
+        Logger.getConsoleLogger().info(`hostname ${session.ISession.hostname}`);
+        expect(session.ISession.hostname).toEqual("boppyhost");
+        expect(session.ISession.protocol).toEqual("https");
     });
 });

@@ -14,23 +14,24 @@ import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
 import MQSCCommand from "../../../src/api/MQSCCommand";
 import { Session } from "@zowe/imperative";
 import { IMQResponse } from "../../../src/api/doc/IMQResponse";
+import { ITestPropertiesSchema } from "../../__src__/environment/doc/ITestPropertiesSchema";
 let testEnvironment: ITestEnvironment;
-let mqProperties: any;
+let mqProperties: ITestPropertiesSchema;
 let session: Session;
 let response: IMQResponse;
 
 describe("MQSC API tests", () => {
 
-     beforeAll(async () => {
+    beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "mq_mqsc",
         });
-        mqProperties = await testEnvironment.systemTestProperties.mq;
+        mqProperties = await testEnvironment.systemTestProperties;
         session = TestEnvironment.createSession(testEnvironment);
 
         // Create queue
         try {
-            response = await MQSCCommand.qmgrAction(session, mqProperties.qmgr, mqProperties.script1);
+            response = await MQSCCommand.qmgrAction(session, mqProperties.mq.qmgr, mqProperties.test.setup.cmd);
         } catch (err) {
             expect(err).toBeFalsy();
         }
@@ -39,13 +40,14 @@ describe("MQSC API tests", () => {
         expect(response.overallCompletionCode).toBe(0);
         expect(response.commandResponse[0].completionCode).toBe(0);
         expect(response.commandResponse[0].reasonCode).toBe(0);
-        expect(response.commandResponse[0].text[1]).toContain("CSQ9022I ]MQ21 CSQMAQLC ' DEFINE QL' NORMAL COMPLETION");
+        // Command Response modified after pop()
+        expect(response.commandResponse[0].text.pop()).toContain(mqProperties.test.setup.expect);
     });
 
-     afterAll(async () => {
+    afterAll(async () => {
         // Delete queue
         try {
-            response = await MQSCCommand.qmgrAction(session, mqProperties.qmgr, mqProperties.script3);
+            response = await MQSCCommand.qmgrAction(session, mqProperties.mq.qmgr, mqProperties.test.teardown.cmd);
         } catch (err) {
             expect(err).toBeFalsy();
         }
@@ -54,13 +56,14 @@ describe("MQSC API tests", () => {
         expect(response.overallCompletionCode).toBe(0);
         expect(response.commandResponse[0].completionCode).toBe(0);
         expect(response.commandResponse[0].reasonCode).toBe(0);
-        expect(response.commandResponse[0].text[1]).toContain("DESCR(A test queue to play with for Zowe");
+        // Command Response modified after pop()
+        expect(response.commandResponse[0].text.pop()).toContain(mqProperties.test.teardown.expect);
         await TestEnvironment.cleanUp(testEnvironment);
     });
 
-     it.only("should query the server without options", async () => {
+    it("should query the server without options", async () => {
         try {
-            response = await MQSCCommand.qmgrAction(session, mqProperties.qmgr, mqProperties.script2);
+            response = await MQSCCommand.qmgrAction(session, mqProperties.mq.qmgr, mqProperties.test.run.cmd);
         } catch (err) {
             expect(err).toBeFalsy();
         }
@@ -69,7 +72,7 @@ describe("MQSC API tests", () => {
         expect(response.overallCompletionCode).toBe(0);
         expect(response.commandResponse[0].completionCode).toBe(0);
         expect(response.commandResponse[0].reasonCode).toBe(0);
-        expect(response.commandResponse[0].text[1]).toContain("DESCR(A test queue to play with for Zowe");
-        expect(response.commandResponse[0].text[1]).toContain("QDPMAXEV(ENABLED");
+        // Command Response modified after pop()
+        expect(response.commandResponse[0].text.pop()).toContain(mqProperties.test.run.expect);
     });
 });

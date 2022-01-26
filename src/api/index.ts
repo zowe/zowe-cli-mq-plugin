@@ -9,4 +9,6 @@
 *
 */
 
+export * from "./doc";
+export * from "./rest";
 export * from "./MQSCCommand";

@@ -50,12 +50,11 @@ describe("Run a command", () => {
 
         it("should be able to submit a command with CSRF header", async () => {
             const response = await MQSCCommand.qmgrAction(dummySession, queueMgrName, command );
-            // tslint:disable-next-line:no-magic-numbers
             expect(response.commandResponse[0].reasonCode).toEqual(2085);
             expect(response.overallCompletionCode).toEqual(2);
             expect(mySpy).toHaveBeenCalledWith(dummySession, "/ibmmq/rest/v1/admin/action/qmgr/testing/mqsc",
-            [{"Content-Type": "application/json"}, {"ibm-mq-rest-csrf-token": "true"}],
-            {parameters: {command: "DEFINE CHANNEL(NEWSVRCONN) CHLTYPE(SVRCONN)"}, type: "runCommand"});
+                [{"Content-Type": "application/json"}, {"ibm-mq-rest-csrf-token": "true"}],
+                {parameters: {command: "DEFINE CHANNEL(NEWSVRCONN) CHLTYPE(SVRCONN)"}, type: "runCommand"});
         });
 
         it("should be fail to submit a command because queueMgrName is undefined", async () => {
@@ -112,5 +111,5 @@ describe("Run a command", () => {
             expect(error).toBeDefined();
             expect(error.message).toContain("Required parameter 'cmd' must not be blank");
         });
-     });
+    });
 });

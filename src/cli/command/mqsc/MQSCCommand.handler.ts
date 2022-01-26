@@ -9,11 +9,10 @@
 *
 */
 
-import { IHandlerParameters, IProfile } from "@zowe/imperative";
+import { IHandlerParameters, IProfile, Session } from "@zowe/imperative";
 import MQSCCommand from "../../../api/MQSCCommand";
 import { IMQResponse } from "../../../api/doc/IMQResponse";
 import MqBaseHandler from "../../MQBaseHandler";
-import { MQSession } from "../../../api/rest/MQSession";
 
 /**
  * Command handler for MQSC script commands
@@ -28,7 +27,7 @@ export default class MQSCCommandHandler extends MqBaseHandler {
      * @returns {Promise<void>}
      * @memberof MQSCCommandHandler
      */
-    public async processWithSession(params: IHandlerParameters, session: MQSession, profile: IProfile ): Promise<IMQResponse> {
+    public async processWithSession(params: IHandlerParameters, session: Session, profile: IProfile ): Promise<IMQResponse> {
         return MQSCCommand.qmgrAction(session, params.arguments.qmgr, params.arguments.cmd);
     }
 }

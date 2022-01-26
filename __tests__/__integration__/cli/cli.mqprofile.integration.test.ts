@@ -12,7 +12,6 @@
 import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
 import { ITestEnvironment } from "../../__src__/environment/doc/response/ITestEnvironment";
 import { runCliScript } from "../../__src__/TestUtils";
-import { TempTestProfiles } from "../../__src__/environment/TempTestProfiles";
 
 let testEnvironment: ITestEnvironment;
 describe("Creating an MQ profile", () => {

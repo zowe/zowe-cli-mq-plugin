@@ -25,20 +25,18 @@ node('zowe-jenkins-agent') {
 
     // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("zfernand0", "markackert", "stonecc")
+    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm", "stonecc")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true],
-        [name: "next", tag: "next", prerelease: "next", autoDeploy: true]
-        //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"], autoDeploy: true],
-        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], autoDeploy: true]
+        [name: "next", tag: "next", prerelease: "next"]
+        [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"]]
+        // [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true],
     ])
     // Git configuration information
     pipeline.gitConfig = [
         email: 'zowe.robot@gmail.com',
-        credentialsId: 'zowe-robot-github'  //,
-        // githubAPIEndpoint: 'https://api.github.com/'
+        credentialsId: 'zowe-robot-github'
     ]
 
     // npm publish configuration

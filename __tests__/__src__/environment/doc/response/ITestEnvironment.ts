@@ -9,7 +9,7 @@
 *
 */
 
-import { ITestPropertiesSchema } from "../../../ITestPropertiesSchema";
+import { ITestPropertiesSchema } from "../ITestPropertiesSchema";
 
 /**
  * The test environment for your test.

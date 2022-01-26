@@ -9,8 +9,16 @@
 *
 */
 
-import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition, IProfile, ISession, Logger, SessConstants, Session } from "@zowe/imperative";
-import { MQSession } from "../api/rest/MQSession";
+import {
+    ConnectionPropsForSessCfg,
+    ICommandArguments,
+    ICommandOptionDefinition,
+    IProfile,
+    ISession,
+    Logger,
+    SessConstants,
+    Session
+} from "@zowe/imperative";
 
 /**
  * Utility Methods for Zowe
@@ -86,7 +94,7 @@ export class MqSessionUtils {
         description: "Specifies the MQ protocol (http or https).",
         type: "string",
         defaultValue: "http",
-        allowableValues: {values: ["http", "https"], caseSensitive: false},
+        allowableValues: { values: ["http", "https"], caseSensitive: false },
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
 
@@ -103,7 +111,7 @@ export class MqSessionUtils {
         MqSessionUtils.MQ_OPTION_PROTOCOL
     ];
 
-    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<MQSession> {
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<Session> {
         this.log.debug("Creating an MQ session from arguments");
 
         const sessCfg: ISession = {
@@ -124,9 +132,9 @@ export class MqSessionUtils {
             sessCfg.type = SessConstants.AUTH_TYPE_BASIC;
         }
 
-        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting});
+        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, { doPrompting });
 
-        return new MQSession(sessCfgWithCreds);
+        return new Session(sessCfgWithCreds);
     }
 
     /**
@@ -158,7 +166,7 @@ export class MqSessionUtils {
     public static createBasicMqSessionFromArguments(args: ICommandArguments): Session {
         MqSessionUtils.log.trace("Creating an MQ session from arguments", args.name);
         return new Session({
-            type: args.password && args.user? "basic": "none",
+            type: args.password && args.user ? "basic" : "none",
             hostname: args.host,
             port: args.port,
             user: args.user,

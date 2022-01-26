@@ -46,13 +46,23 @@ export interface ITestPropertiesSchema {
         /**
          * The Queue manager
          */
-        qmgr: string,
-        /**
-         * The command payloads
-         */
-        script1: string
-        script2: string
-        script3: string
+        qmgr: string
+    };
+
+    test: {
+        setup: {
+            cmd: string,
+            expect: string
+        },
+        run: {
+            cmd: string,
+            expect: string
+        },
+        teardown: {
+            cmd: string,
+            expect: string
+        }
     };
 
 }
+

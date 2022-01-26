@@ -77,11 +77,11 @@ export class TempTestProfiles {
     }
 
     public static isStderrEmpty(output: Buffer): boolean {
-      return output.toString()
-          .replace(/Warning: The command 'profiles [a-z]+' is deprecated\./, "")
-          .replace(/Recommended replacement: The 'config [a-z]+' command/, "")
-          .replace(/Recommended replacement: Edit your Zowe V2 configuration\s+zowe\.config\.json/, "")
-          .trim().length === 0;
+        return output.toString()
+            .replace(/Warning: The command 'profiles [a-z]+' is deprecated\./, "")
+            .replace(/Recommended replacement: The 'config [a-z]+' command/, "")
+            .replace(/Recommended replacement: Edit your Zowe V2 configuration\s+zowe\.config\.json/, "")
+            .trim().length === 0;
     }
 
     /**

@@ -25,20 +25,18 @@ node('zowe-jenkins-agent') {
 
     // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("zfernand0", "markackert", "stonecc")
+    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm", "stonecc")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true],
-        [name: "next", tag: "next", prerelease: "next", autoDeploy: true]
-        //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"], autoDeploy: true],
-        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], autoDeploy: true]
+        [name: "next", tag: "next", prerelease: "next"],
+        [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"]]
+        // [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true],
     ])
     // Git configuration information
     pipeline.gitConfig = [
         email: 'zowe.robot@gmail.com',
-        credentialsId: 'zowe-robot-github'  //,
-        // githubAPIEndpoint: 'https://api.github.com/'
+        credentialsId: 'zowe-robot-github'
     ]
 
     // npm publish configuration
@@ -58,7 +56,7 @@ node('zowe-jenkins-agent') {
     ]
 
     // Initialize the pipeline library, should create 5 steps
-    pipeline.setup(nodeJsVersion: 'v10.23.2')
+    pipeline.setup(nodeJsVersion: 'v16.13.1')
 
     // Create a custom lint stage that runs immediately after the setup.
     pipeline.createStage(
@@ -116,7 +114,7 @@ node('zowe-jenkins-agent') {
         name: "Integration",
         operation: {
             def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print \$2 }' | sed 's/[\",]//g')").trim()
-            sh "npm i -g @zowe/cli@$zoweVersion --zowe:registry=${pipeline.registryConfig[0].url}"
+            sh "npm i -g \"@zowe/cli@$zoweVersion\" --zowe:registry=${pipeline.registryConfig[0].url}"
             // create the custom properties file. contents don't matter for integration tests
             sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
             sh "npm run test:integration"

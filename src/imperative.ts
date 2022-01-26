@@ -21,55 +21,55 @@ const config: IImperativeConfig = {
     pluginHealthCheck: __dirname + "/healthCheck.Handler",
     apimlConnLookup: [
         {
-          apiId: "place_the_mq_apiId_here",
-          gatewayUrl: "api/v1",
-          connProfType: "mq"
+            apiId: "place_the_mq_apiId_here",
+            gatewayUrl: "api/v1",
+            connProfType: "mq"
         }
     ],
     profiles: [
         {
-          type: "mq",
-          schema: {
-            type: "object",
-            title: "CLI profile for MQ",
-            description: "An MQREST profile is required to issue commands in the MQ command group that interacts with MQSC. " +
+            type: "mq",
+            schema: {
+                type: "object",
+                title: "CLI profile for MQ",
+                description: "An MQREST profile is required to issue commands in the MQ command group that interacts with MQSC. " +
                 "The mq profile contains your host, port, user name, and password for the IBM MQ System Console interface",
-            properties: {
-              host: {
-                type: "string",
-                optionDefinition: MqSessionUtils.MQ_OPTION_HOST,
-              },
-              port: {
-                type: "number",
-                optionDefinition: MqSessionUtils.MQ_OPTION_PORT,
-              },
-              user: {
-                type: "string",
-                optionDefinition: MqSessionUtils.MQ_OPTION_USER,
-                secure: true
-              },
-              password: {
-                type: "string",
-                optionDefinition: MqSessionUtils.MQ_OPTION_PASSWORD,
-                secure: true
-              },
-              rejectUnauthorized: {
-                  type: "boolean",
-                  optionDefinition: MqSessionUtils.MQ_OPTION_REJECT_UNAUTHORIZED
-              },
-              protocol: {
-                  type: "string",
-                  optionDefinition: MqSessionUtils.MQ_OPTION_PROTOCOL
-              }
+                properties: {
+                    host: {
+                        type: "string",
+                        optionDefinition: MqSessionUtils.MQ_OPTION_HOST,
+                    },
+                    port: {
+                        type: "number",
+                        optionDefinition: MqSessionUtils.MQ_OPTION_PORT,
+                    },
+                    user: {
+                        type: "string",
+                        optionDefinition: MqSessionUtils.MQ_OPTION_USER,
+                        secure: true
+                    },
+                    password: {
+                        type: "string",
+                        optionDefinition: MqSessionUtils.MQ_OPTION_PASSWORD,
+                        secure: true
+                    },
+                    rejectUnauthorized: {
+                        type: "boolean",
+                        optionDefinition: MqSessionUtils.MQ_OPTION_REJECT_UNAUTHORIZED
+                    },
+                    protocol: {
+                        type: "string",
+                        optionDefinition: MqSessionUtils.MQ_OPTION_PROTOCOL
+                    }
+                },
+                required: [],
             },
-            required: [],
-          },
-          createProfileExamples: [
-            {
-             options: "mq --host mq123 --port 1234 --user ibmuser --password myp4ss",
-             description: "Create an MQ profile named 'mqprofile' to connect to MQ at host zos123 and port 1234"
-            }
-          ]
+            createProfileExamples: [
+                {
+                    options: "mq --host mq123 --port 1234 --user ibmuser --password myp4ss",
+                    description: "Create an MQ profile named 'mqprofile' to connect to MQ at host zos123 and port 1234"
+                }
+            ]
         }
     ]
 };

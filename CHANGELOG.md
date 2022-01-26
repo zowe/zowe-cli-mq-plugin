@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- BugFix: Included an npm-shrinkwrap file to lock-down all transitive dependencies.
+
 ## `3.0.0-next.202107021902`
 
 - Enhancement: Add apimlConnLookup properties to enable auto-config through APIML. A valid apiId must still be identified.
@@ -9,6 +13,10 @@ All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in t
 ## `3.0.0-next.202104261401`
 
 - Remove @zowe/cli peer dependency to better support NPM v7
+
+## `2.0.2`
+
+- BugFix: Included an npm-shrinkwrap file to lock-down all transitive dependencies.
 
 ## `2.0.1`
 

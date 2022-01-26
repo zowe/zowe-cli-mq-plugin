@@ -1,6 +1,6 @@
 {
   "name": "@zowe/mq-for-zowe-cli",
-  "version": "3.0.0-next.202107021902",
+  "version": "3.0.0-next.202201261902",
   "description": "IBM MQ Plug-in for Zowe CLI",
   "repository": {
     "type": "git",

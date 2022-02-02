@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- BugFix: Pruned dev dependencies from npm-shrinkwrap file.
+
 ## `3.0.0-next.202201261902`
 
 - BugFix: Included an npm-shrinkwrap file to lock-down all transitive dependencies.

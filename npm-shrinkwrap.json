@@ -1,12 +1,12 @@
 {
   "name": "@zowe/mq-for-zowe-cli",
-  "version": "3.0.0-next.202201261902",
+  "version": "3.0.0-next.202202071746",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "@zowe/mq-for-zowe-cli",
-      "version": "3.0.0-next.202201261902",
+      "version": "3.0.0-next.202202071746",
       "license": "EPL-2.0",
       "devDependencies": {
         "@types/chai": "^4.2.16",

@@ -9,7 +9,7 @@
 *
 */
 
-import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage, Session } from "@zowe/imperative";
+import { ICommandHandler, IHandlerParameters, ITaskWithStatus, TaskStage, Session } from "@zowe/imperative";
 import { IMQResponse } from "../api/doc/IMQResponse";
 import { MqSessionUtils } from "./MQSessionUtils";
 
@@ -28,9 +28,12 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      * @returns {Promise<IMQResponse>}
      */
     public async process(commandParameters: IHandlerParameters) {
-        const profile = commandParameters.profiles.get("mq", false) || {};
 
-        const session = await MqSessionUtils.createSessCfgFromArgs(commandParameters.arguments);
+        const session = await MqSessionUtils.createSessCfgFromArgs(
+            commandParameters.arguments,
+            true,
+            commandParameters
+        );
 
         const task: ITaskWithStatus = {
             percentComplete: 0,
@@ -44,7 +47,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
         }
 
         commandParameters.response.progress.startBar({task});
-        const response = await this.processWithSession(commandParameters, session, profile);
+        const response = await this.processWithSession(commandParameters, session);
 
         commandParameters.response.progress.endBar(); // end any progress bars
 
@@ -89,13 +92,11 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent to the handler.
      * @param {Session} session The session object generated from the mq profile.
-     * @param {IProfile} mqProfile The mq profile that was loaded for the command.
      *
      * @returns {Promise<IMQResponse>} The response from the underlying mq api call.
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
-        session: Session,
-        mqProfile: IProfile
+        session: Session
     ): Promise<IMQResponse>;
 }

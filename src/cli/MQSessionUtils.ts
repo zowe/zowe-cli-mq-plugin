@@ -13,6 +13,7 @@ import {
     ConnectionPropsForSessCfg,
     ICommandArguments,
     ICommandOptionDefinition,
+    IHandlerParameters,
     IProfile,
     ISession,
     Logger,
@@ -111,7 +112,7 @@ export class MqSessionUtils {
         MqSessionUtils.MQ_OPTION_PROTOCOL
     ];
 
-    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<Session> {
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true, handlerParams: IHandlerParameters): Promise<Session> {
         this.log.debug("Creating an MQ session from arguments");
 
         const sessCfg: ISession = {
@@ -132,7 +133,7 @@ export class MqSessionUtils {
             sessCfg.type = SessConstants.AUTH_TYPE_BASIC;
         }
 
-        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, { doPrompting });
+        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, { doPrompting, parms: handlerParams });
 
         return new Session(sessCfgWithCreds);
     }

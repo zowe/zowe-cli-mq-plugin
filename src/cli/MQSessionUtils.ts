@@ -112,7 +112,7 @@ export class MqSessionUtils {
         MqSessionUtils.MQ_OPTION_PROTOCOL
     ];
 
-    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true, handlerParams: IHandlerParameters): Promise<Session> {
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true, handlerParams?: IHandlerParameters): Promise<Session> {
         this.log.debug("Creating an MQ session from arguments");
 
         const sessCfg: ISession = {

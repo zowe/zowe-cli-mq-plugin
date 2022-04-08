@@ -47,32 +47,18 @@ describe("MQ Command handler", () => {
             };
         });
 
-
-        // Mocked function references
-        const profFunc = jest.fn((args) => {
-            return {
-                host: "fake",
-                port: "fake",
-                user: "fake",
-                password: "fake",
-                auth: "fake",
-                rejectUnauthorized: "fake",
-            };
-        });
-
         try {
             // Invoke the handler with a full set of mocked arguments and response functions
             await handler.process({
                 arguments: {
                     $0: "fake",
                     _: ["fake"],
-                    qmgr, cmd,
-                    ...{
-                        host: "somewhere.com",
-                        port: "43443",
-                        user: "someone",
-                        password: "somesecret"
-                    }
+                    host: "somewhere.com",
+                    port: "43443",
+                    user: "someone",
+                    password: "somesecret",
+                    qmgr,
+                    cmd
                 },
                 response: {
                     data: {
@@ -96,9 +82,6 @@ describe("MQ Command handler", () => {
                             // do nothing
                         })
                     }
-                },
-                profiles: {
-                    get: profFunc
                 }
             } as any);
         } catch (e) {
@@ -106,7 +89,6 @@ describe("MQ Command handler", () => {
         }
 
         expect(error).toBeUndefined();
-        expect(profFunc).toHaveBeenCalledWith("mq", false);
         expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
         expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, cmd);
         expect(jsonObj).toMatchSnapshot();
@@ -154,32 +136,18 @@ describe("MQ Command handler", () => {
             };
         });
 
-
-        // Mocked function references
-        const profFunc = jest.fn((args) => {
-            return {
-                host: "fake",
-                port: "fake",
-                user: "fake",
-                password: "fake",
-                auth: "fake",
-                rejectUnauthorized: "fake",
-            };
-        });
-
         try {
             // Invoke the handler with a full set of mocked arguments and response functions
             await handler.process({
                 arguments: {
                     $0: "fake",
                     _: ["fake"],
-                    qmgr, cmd,
-                    ...{
-                        host: "somewhere.com",
-                        port: "43443",
-                        user: "someone",
-                        password: "somesecret"
-                    }
+                    host: "somewhere.com",
+                    port: "43443",
+                    user: "someone",
+                    password: "somesecret",
+                    qmgr,
+                    cmd
                 },
                 response: {
                     data: {
@@ -203,9 +171,6 @@ describe("MQ Command handler", () => {
                             // do nothing
                         })
                     }
-                },
-                profiles: {
-                    get: profFunc
                 }
             } as any);
         } catch (e) {
@@ -213,7 +178,6 @@ describe("MQ Command handler", () => {
         }
 
         expect(error).toBeUndefined();
-        expect(profFunc).toHaveBeenCalledWith("mq", false);
         expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
         expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, cmd);
         expect(jsonObj).toMatchSnapshot();
@@ -255,32 +219,18 @@ describe("MQ Command handler", () => {
             };
         });
 
-
-        // Mocked function references
-        const profFunc = jest.fn((args) => {
-            return {
-                host: "fake",
-                port: "fake",
-                user: "fake",
-                password: "fake",
-                auth: "fake",
-                rejectUnauthorized: "fake",
-            };
-        });
-
         try {
             // Invoke the handler with a full set of mocked arguments and response functions
             await handler.process({
                 arguments: {
                     $0: "fake",
                     _: ["fake"],
-                    qmgr, cmd,
-                    ...{
-                        host: "somewhere.com",
-                        port: "43443",
-                        user: "someone",
-                        password: "somesecret"
-                    }
+                    host: "somewhere.com",
+                    port: "43443",
+                    user: "someone",
+                    password: "somesecret",
+                    qmgr,
+                    cmd
                 },
                 response: {
                     data: {
@@ -304,9 +254,6 @@ describe("MQ Command handler", () => {
                             // do nothing
                         })
                     }
-                },
-                profiles: {
-                    get: profFunc
                 }
             } as any);
         } catch (e) {
@@ -314,7 +261,6 @@ describe("MQ Command handler", () => {
         }
 
         expect(error).toBeUndefined();
-        expect(profFunc).toHaveBeenCalledWith("mq", false);
         expect(MQSCCommand.qmgrAction).toHaveBeenCalledTimes(1);
         expect(MQSCCommand.qmgrAction).toHaveBeenCalledWith(fakeSession, qmgr, cmd);
         expect(jsonObj).toMatchSnapshot();

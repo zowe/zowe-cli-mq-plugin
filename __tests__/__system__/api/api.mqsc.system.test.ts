@@ -9,13 +9,13 @@
 *
 */
 
-import { ITestEnvironment } from "../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
+import { ITestEnvironment, TestEnvironment } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../__src__/doc/ITestPropertiesSchema";
 import MQSCCommand from "../../../src/api/MQSCCommand";
 import { Session } from "@zowe/imperative";
 import { IMQResponse } from "../../../src/api/doc/IMQResponse";
-import { ITestPropertiesSchema } from "../../__src__/environment/doc/ITestPropertiesSchema";
-let testEnvironment: ITestEnvironment;
+import * as TestUtils from "../../__src__/TestUtils";
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 let mqProperties: ITestPropertiesSchema;
 let session: Session;
 let response: IMQResponse;
@@ -27,7 +27,7 @@ describe("MQSC API tests", () => {
             testName: "mq_mqsc",
         });
         mqProperties = await testEnvironment.systemTestProperties;
-        session = TestEnvironment.createSession(testEnvironment);
+        session = TestUtils.createSession(testEnvironment);
 
         // Create queue
         try {

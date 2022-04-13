@@ -9,36 +9,23 @@
 *
 */
 
-import * as fs from "fs";
-import { spawnSync, SpawnSyncReturns } from "child_process";
-import { ITestEnvironment } from "./environment/doc/response/ITestEnvironment";
-
+import { ITestEnvironment } from "@zowe/cli-test-utils";
+import { Session } from "@zowe/imperative";
+import { ITestPropertiesSchema } from "./doc/ITestPropertiesSchema";
 
 /**
- * Execute a CLI script
- * @export
- * @param  scriptPath - the path to the script
- * @param  testEnvironment - the test environment with env
- * @param [args=[]] - set of script args (optional)
- * @returns  node.js details about the results of
- *           executing the script, including exit code and output
+ * Create an MQ based session from properties present in your test environment
+ * @param testEnvironment - your test environment with system test properties populated
  */
-export function runCliScript(scriptPath: string, testEnvironment: ITestEnvironment, args: any[] = []): SpawnSyncReturns<Buffer> {
-    if (fs.existsSync(scriptPath)) {
-
-        // We force the color off to prevent any oddities in the snapshots or expected values
-        // Color can vary OS/terminal
-        const childEnv = JSON.parse(JSON.stringify(process.env));
-        childEnv.FORCE_COLOR = "0";
-        for (const key of Object.keys(testEnvironment.env)) {
-            // copy the values from the env
-            childEnv[key] = testEnvironment.env[key];
-        }
-        // Execute the command synchronously
-        return spawnSync("sh", [`${scriptPath}`].concat(args), {cwd: testEnvironment.workingDir, env: childEnv});
-    } else {
-        throw new Error(`The script file  ${scriptPath} doesn't exist`);
-
-    }
+export function createSession(testEnvironment: ITestEnvironment<ITestPropertiesSchema>): Session {
+    const SYSTEM_PROPS = testEnvironment.systemTestProperties;
+    return new Session({
+        user: SYSTEM_PROPS.mq.user,
+        password: SYSTEM_PROPS.mq.password,
+        hostname: SYSTEM_PROPS.mq.host,
+        port: SYSTEM_PROPS.mq.port,
+        type: "basic",
+        rejectUnauthorized: false,
+        basePath: SYSTEM_PROPS.mq.basepath
+    });
 }
-

@@ -10,11 +10,10 @@
 */
 
 // Test environment will be populated in the "beforeAll"
-import { ITestEnvironment } from "../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
-import { runCliScript } from "../../__src__/TestUtils";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../__src__/doc/ITestPropertiesSchema";
 
-let TEST_ENVIRONMENT: ITestEnvironment;
+let TEST_ENVIRONMENT: ITestEnvironment<ITestPropertiesSchema>;
 describe("mq mqsc", () => {
 
     // Create the unique test environment

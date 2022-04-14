@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `3.0.0-next.202204141925`
 
 - BugFix: Removed deprecated profiles API calls
 - BugFix: Fixed prompting in daemon mode

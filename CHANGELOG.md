@@ -6,6 +6,7 @@ All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in t
 
 - BugFix: Removed deprecated profiles API calls
 - BugFix: Fixed prompting in daemon mode
+- BugFix: Remove APIML Conn Lookup until the IMS definition for APIML is known.
 
 ## `3.0.0-next.202202071746`
 

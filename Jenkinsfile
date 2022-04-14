@@ -19,7 +19,7 @@ import org.zowe.pipelines.nodejs.models.SemverLevel
  */
 def PRODUCT_NAME = "Zowe CLI - MQ plugin"
 
-node('zowe-jenkins-agent') {
+node('zowe-jenkins-agent-dind') {
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)
 
@@ -119,6 +119,7 @@ node('zowe-jenkins-agent') {
             sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
             sh "npm run test:integration"
         },
+        shouldUnlockKeyring: true,
         testResults: [dir: "${INTEGRATION_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - Integration Test Report"],
         junitOutput: INTEGRATION_JUNIT_OUTPUT,
     )

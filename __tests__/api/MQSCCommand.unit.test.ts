@@ -10,17 +10,12 @@
 */
 
 import { RestClient } from "@zowe/imperative";
-import { MQConstants } from "../../src/api/rest/constants/MQ.constants";
 import MQSCCommand from "../../src/api/MQSCCommand";
-import { posix } from "path";
-import * as chai from "chai";
-import * as chaiAsPromised from "chai-as-promised";
 
 describe("Run a command", () => {
     const dummySession: any = {};
     const queueMgrName = "testing";
     const command = "DEFINE CHANNEL(NEWSVRCONN) CHLTYPE(SVRCONN)";
-    const endpoint = posix.join(MQConstants.RESOURCE, MQConstants.RES_QUEUE_MANAGER_COMMAND, queueMgrName, MQConstants.RES_QUEUE_MANAGER_ACTION);
 
     let mySpy: any;
     const mainResponse = {
@@ -63,27 +58,58 @@ describe("Run a command", () => {
         });
 
         it("should be fail to submit a command because queueMgrName is undefined", async () => {
-            const expectChai = chai.expect;
-            chai.use(chaiAsPromised);
-            await expectChai(MQSCCommand.qmgrAction(dummySession, undefined, command )).to.eventually.be.rejectedWith("Missing Queue manager name.");
+            let response;
+            let error;
+            try {
+                response = await MQSCCommand.qmgrAction(dummySession, undefined, command );
+            } catch (err) {
+                error = err;
+            }
+
+            expect(response).toBeUndefined();
+            expect(error).toBeDefined();
+            expect(error.message).toContain("Missing Queue manager name.");
         });
 
         it("should be fail to submit a command because queueMgrName is empty", async () => {
-            const expectChai = chai.expect;
-            chai.use(chaiAsPromised);
-            await expectChai(MQSCCommand.qmgrAction(dummySession, "", command )).to.eventually.be.rejectedWith("Missing Queue manager name.");
+            let response;
+            let error;
+            try {
+                response = await MQSCCommand.qmgrAction(dummySession, "", command );
+            } catch (err) {
+                error = err;
+            }
+
+            expect(response).toBeUndefined();
+            expect(error).toBeDefined();
+            expect(error.message).toContain("Required parameter 'qmgr' must not be blank");
         });
         it("should be fail to submit a command because command is undefined", async () => {
-            const expectChai = chai.expect;
-            chai.use(chaiAsPromised);
-            await expectChai(MQSCCommand.qmgrAction(dummySession, queueMgrName, undefined ))
-                .to.eventually.be.rejectedWith("Missing action command.");
+            let response;
+            let error;
+            try {
+                response = await MQSCCommand.qmgrAction(dummySession, queueMgrName, undefined );
+            } catch (err) {
+                error = err;
+            }
+
+            expect(response).toBeUndefined();
+            expect(error).toBeDefined();
+            expect(error.message).toContain("Missing action command.");
         });
 
         it("should be fail to submit a command because command is empty", async () => {
-            const expectChai = chai.expect;
-            chai.use(chaiAsPromised);
-            await expectChai(MQSCCommand.qmgrAction(dummySession, queueMgrName, "" )).to.eventually.be.rejectedWith("Missing action command.");
+            let response;
+            let error;
+            try {
+                response = await MQSCCommand.qmgrAction(dummySession, queueMgrName, "" );
+            } catch (err) {
+                error = err;
+            }
+
+            expect(response).toBeUndefined();
+            expect(error).toBeDefined();
+            expect(error.message).toContain("Required parameter 'cmd' must not be blank");
         });
     });
 });

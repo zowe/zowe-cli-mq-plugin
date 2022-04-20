@@ -2,6 +2,32 @@
 
 All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- Major: Updated for V2 compatibility. See the prerelease items below for more details.
+
+## `3.0.0-next.202204141925`
+
+- BugFix: Removed deprecated profiles API calls
+- BugFix: Fixed prompting in daemon mode
+- BugFix: Remove APIML Conn Lookup until the IMS definition for APIML is known.
+
+## `3.0.0-next.202202071746`
+
+- BugFix: Pruned dev dependencies from npm-shrinkwrap file.
+
+## `3.0.0-next.202201261902`
+
+- BugFix: Included an npm-shrinkwrap file to lock-down all transitive dependencies.
+
+## `3.0.0-next.202107021902`
+
+- Enhancement: Add apimlConnLookup properties to enable auto-config through APIML. A valid apiId must still be identified.
+
+## `3.0.0-next.202104261401`
+
+- Remove @zowe/cli peer dependency to better support NPM v7
+
 ## `2.0.3`
 
 - BugFix: Pruned dev dependencies from npm-shrinkwrap file.

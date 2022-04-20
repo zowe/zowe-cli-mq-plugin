@@ -9,11 +9,10 @@
 *
 */
 
-import { TestEnvironment } from "../../__src__/environment/TestEnvironment";
-import { ITestEnvironment } from "../../__src__/environment/doc/response/ITestEnvironment";
-import { runCliScript } from "../../__src__/TestUtils";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../__src__/doc/ITestPropertiesSchema";
 
-let testEnvironment: ITestEnvironment;
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 describe("Creating an MQ profile", () => {
 
     beforeAll(async () => {
@@ -30,8 +29,11 @@ describe("Creating an MQ profile", () => {
 
     it("should create an MQ profile successfully with fake connection details", () => {
         const output = runCliScript(__dirname + "/__scripts__/create_mq_profile.sh", testEnvironment);
-        expect(output.stderr.toString()).toEqual("");
+        expect(output.stderr.toString()).toContain("The command 'profiles create' is deprecated.");
+        if (output.stdout.toString().indexOf("Profile created successfully!") < 0) {
+            expect(output.stderr.toString()).toEqual("");
+        }
+        expect(output.stdout.toString()).toContain("Profile created successfully!");
         expect(output.status).toEqual(0);
-        expect(output.stdout.toString()).toContain("success");
     });
 });

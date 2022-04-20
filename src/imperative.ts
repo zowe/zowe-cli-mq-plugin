@@ -19,6 +19,13 @@ const config: IImperativeConfig = {
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
     pluginHealthCheck: __dirname + "/healthCheck.Handler",
+    // apimlConnLookup: [
+    //     {
+    //         apiId: "place_the_mq_apiId_here",
+    //         gatewayUrl: "api/v1",
+    //         connProfType: "mq"
+    //     }
+    // ],
     profiles: [
         {
             type: "mq",
@@ -30,45 +37,20 @@ const config: IImperativeConfig = {
                 properties: {
                     host: {
                         type: "string",
-                        optionDefinition: {
-                            name: "host",
-                            aliases: ["H"],
-                            description: "The MQ Rest server host name",
-                            type: "string",
-                            required: true,
-                        }
+                        optionDefinition: MqSessionUtils.MQ_OPTION_HOST,
                     },
                     port: {
                         type: "number",
-                        optionDefinition: {
-                            type: "number",
-                            name: "port",
-                            aliases: ["P"],
-                            required: true,
-                            description: "Port number of your MQ REST API server"
-                        }
+                        optionDefinition: MqSessionUtils.MQ_OPTION_PORT,
                     },
                     user: {
                         type: "string",
-                        optionDefinition: {
-                            type: "string",
-                            name: "user",
-                            aliases: ["u"],
-                            required: true,
-                            description: "User name to authenticate to your MQ REST API server"
-                        },
+                        optionDefinition: MqSessionUtils.MQ_OPTION_USER,
                         secure: true
                     },
                     password: {
                         type: "string",
-                        optionDefinition: {
-                            type: "string",
-                            name: "password",
-                            aliases: ["p"],
-                            required: true,
-                            implies: ["user"],
-                            description: "Password to authenticate to your MQ REST API server"
-                        },
+                        optionDefinition: MqSessionUtils.MQ_OPTION_PASSWORD,
                         secure: true
                     },
                     rejectUnauthorized: {
@@ -80,7 +62,7 @@ const config: IImperativeConfig = {
                         optionDefinition: MqSessionUtils.MQ_OPTION_PROTOCOL
                     }
                 },
-                required: ["host", "port", "user", "password"],
+                required: [],
             },
             createProfileExamples: [
                 {

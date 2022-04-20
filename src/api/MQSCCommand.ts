@@ -33,10 +33,8 @@ export default class MQSCCommand {
      */
     public static async qmgrAction(session: Session, queueMgrName: string,
         thecommand: string, csrfHeader: boolean = true): Promise<IMQResponse> {
-        ImperativeExpect.toNotBeNullOrUndefined(queueMgrName, MQMessages.missingQueueManagerName.message);
-        ImperativeExpect.toNotBeEqual(queueMgrName, "", MQMessages.missingQueueManagerName.message);
-        ImperativeExpect.toNotBeNullOrUndefined(thecommand, MQMessages.missingCommand.message);
-        ImperativeExpect.toNotBeEqual(thecommand, "", MQMessages.missingCommand.message);
+        ImperativeExpect.toBeDefinedAndNonBlank(queueMgrName, "qmgr", MQMessages.missingQueueManagerName.message);
+        ImperativeExpect.toBeDefinedAndNonBlank(thecommand, "cmd", MQMessages.missingCommand.message);
 
         const endpoint = posix.join(MQConstants.RESOURCE, MQConstants.RES_QUEUE_MANAGER_COMMAND, queueMgrName, MQConstants.RES_QUEUE_MANAGER_ACTION);
 

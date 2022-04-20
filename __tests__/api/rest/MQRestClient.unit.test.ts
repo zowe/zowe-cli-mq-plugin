@@ -9,7 +9,7 @@
 *
 */
 
-import { MQRestClient } from "../MQRestClient";
+import { MQRestClient } from "../../../src/api/rest/MQRestClient";
 import { IImperativeError, Session } from "@zowe/imperative";
 
 describe("ZosmfRestClient tests", () => {

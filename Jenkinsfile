@@ -19,18 +19,20 @@ import org.zowe.pipelines.nodejs.models.SemverLevel
  */
 def PRODUCT_NAME = "Zowe CLI - MQ plugin"
 
-node('zowe-jenkins-agent') {
+node('zowe-jenkins-agent-dind') {
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)
 
     // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm", "stonecc")
+    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm", "stonecc", "kevinloesch1")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"]]
-        // [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true],
+        [name: "master", tag: "latest", aliasTags: ["zowe-v2-lts", "next"], devDependencies: ["@zowe/cli": "zowe-v2-lts", "@zowe/cli-test-utils": "zowe-v2-lts", "@zowe/imperative": "zowe-v2-lts"], level: SemverLevel.MINOR],
+        [name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/cli": "zowe-v1-lts", "@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.PATCH]
+        // [name: "master", tag: "latest", aliasTags: ["zowe-v2-lts", "next"], devDependencies: ["@zowe/cli": "zowe-v2-lts", "@zowe/cli-test-utils": "zowe-v2-lts", "@zowe/imperative": "zowe-v2-lts"], level: SemverLevel.MINOR, autoDeploy: true],
+        // [name: "next", tag: "next", prerelease: "next", devDependencies: ["@zowe/cli": "next", "@zowe/cli-test-utils": "next", "@zowe/imperative": "next"]]
     ])
     // Git configuration information
     pipeline.gitConfig = [
@@ -113,9 +115,12 @@ node('zowe-jenkins-agent') {
         name: "Integration",
         operation: {
             def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print \$2 }' | sed 's/[\",]//g')").trim()
-            sh "npm i -g @zowe/cli@$zoweVersion --zowe:registry=${pipeline.registryConfig[0].url}"
+            sh "npm i -g \"@zowe/cli@$zoweVersion\" --zowe:registry=${pipeline.registryConfig[0].url}"
+            // create the custom properties file. contents don't matter for integration tests
+            sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
             sh "npm run test:integration"
         },
+        shouldUnlockKeyring: true,
         testResults: [dir: "${INTEGRATION_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - Integration Test Report"],
         junitOutput: INTEGRATION_JUNIT_OUTPUT,
     )

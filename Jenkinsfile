@@ -25,7 +25,7 @@ node('zowe-jenkins-agent-dind') {
 
     // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm", "stonecc")
+    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm", "stonecc", "kevinloesch1")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([

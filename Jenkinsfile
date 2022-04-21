@@ -25,12 +25,14 @@ node('zowe-jenkins-agent') {
 
     // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm", "stonecc")
+    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm", "stonecc", "kevinloesch1")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"]]
-        // [name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], aliasTags: ["zowe-v1-lts"], autoDeploy: true],
+        [name: "master", tag: "latest", aliasTags: ["zowe-v2-lts", "next"], devDependencies: ["@zowe/cli": "zowe-v2-lts", "@zowe/cli-test-utils": "zowe-v2-lts", "@zowe/imperative": "zowe-v2-lts"], level: SemverLevel.MINOR],
+        [name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/cli": "zowe-v1-lts", "@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.PATCH]
+        // [name: "master", tag: "latest", aliasTags: ["zowe-v2-lts", "next"], devDependencies: ["@zowe/cli": "zowe-v2-lts", "@zowe/cli-test-utils": "zowe-v2-lts", "@zowe/imperative": "zowe-v2-lts"], level: SemverLevel.MINOR, autoDeploy: true],
+        // [name: "next", tag: "next", prerelease: "next", devDependencies: ["@zowe/cli": "next", "@zowe/cli-test-utils": "next", "@zowe/imperative": "next"]]
     ])
     // Git configuration information
     pipeline.gitConfig = [

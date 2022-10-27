@@ -40,6 +40,9 @@ jobs:
         echo "::remove-matcher owner=eslint-compact::"
         echo "::remove-matcher owner=eslint-stylish::"
 
+    - name: Use NPM v8
+      run: npm install -g npm@^8
+
     - name: Install Dependencies
       run: npm ci
 

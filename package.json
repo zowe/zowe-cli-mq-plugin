@@ -50,7 +50,7 @@
     "@typescript-eslint/parser": "^4.29.0",
     "@zowe/cli": "^7.0.1",
     "@zowe/cli-test-utils": "^7.0.1",
-    "@zowe/imperative": "^5.0.1",
+    "@zowe/imperative": "^5.8.1",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "chalk": "^2.4.1",

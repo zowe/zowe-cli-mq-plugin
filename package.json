@@ -4,7 +4,7 @@
   "description": "IBM MQ Plug-in for Zowe CLI",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zowe/zowe-mq-plugin.git"
+    "url": "https://github.com/zowe/zowe-cli-mq-plugin.git"
   },
   "main": "lib/index.js",
   "files": [

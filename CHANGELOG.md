@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `2.0.4`
 
 - BugFix: Fixed GitHub repository URL in package.json.
 

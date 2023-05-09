@@ -40,17 +40,8 @@ jobs:
         echo "::remove-matcher owner=eslint-compact::"
         echo "::remove-matcher owner=eslint-stylish::"
 
-    - name: Use NPM v8
-      run: npm install -g npm@^8
-
     - name: Install Dependencies
       run: npm ci
-
-    - name: Update Dependencies
-      id: npm-update
-      uses: zowe-actions/octorelease-script@v1
-      with:
-        script: npmUpdate
 
     - name: Build Source
       id: build
@@ -114,7 +105,7 @@ jobs:
     - name: Build Source
       run: npm run build
 
-    - uses: zowe-actions/octorelease@master
+    - uses: zowe-actions/octorelease-script@v1
       env:
         GIT_COMMITTER_NAME: ${{ secrets.ZOWE_ROBOT_USER }}
         GIT_COMMITTER_EMAIL: ${{ secrets.ZOWE_ROBOT_EMAIL }}

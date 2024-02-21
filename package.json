@@ -36,7 +36,7 @@
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@zowe/imperative": "^5.0.0"
+    "@zowe/imperative": ">8.0.0-next.0 <8.0.0-next.x"
   },
   "devDependencies": {
     "@types/chai": "^4.2.16",
@@ -49,9 +49,9 @@
     "@types/yargs": "^11.1.7",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
-    "@zowe/cli": "^7.21.2",
-    "@zowe/cli-test-utils": "^7.21.2",
-    "@zowe/imperative": "^5.20.1",
+    "@zowe/cli": "^8.0.0-next.202402132108",
+    "@zowe/cli-test-utils": "^8.0.0-next.202402132108",
+    "@zowe/imperative": "^8.0.0-next.202402132108",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "chalk": "^2.4.1",

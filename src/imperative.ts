@@ -18,7 +18,6 @@ const config: IImperativeConfig = {
     rootCommandDescription: PluginConstants.PLUGIN_DESCRIPTION,
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
-    pluginHealthCheck: __dirname + "/healthCheck.Handler",
     // apimlConnLookup: [
     //     {
     //         apiId: "place_the_mq_apiId_here",

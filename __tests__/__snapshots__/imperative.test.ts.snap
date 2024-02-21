@@ -65,7 +65,7 @@ Object {
                   "https",
                 ],
               },
-              "defaultValue": "http",
+              "defaultValue": "https",
               "description": "Specifies the MQ protocol (http or https).",
               "group": "MQ Connection Options",
               "name": "protocol",

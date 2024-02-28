@@ -37,6 +37,9 @@
         "typedoc": "^0.25.9",
         "typescript": "^5.3.3"
       },
+      "engines": {
+        "node": ">=18.12.0"
+      },
       "peerDependencies": {
         "@zowe/imperative": ">8.0.0-next.0 <8.0.0-next.x"
       }

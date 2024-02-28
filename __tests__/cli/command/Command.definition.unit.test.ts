@@ -17,7 +17,7 @@ describe("mq get resource", () => {
     it ("should not have changed", () => {
         const definition: ICommandDefinition = require("../../../src/cli/command/Command.definition");
         expect(definition).toBeDefined();
-        expect(definition.children.length).toBe(DEFINE_RESOURCES);
+        expect(definition.children?.length).toBe(DEFINE_RESOURCES);
         delete definition.children;
         expect(definition).toMatchSnapshot();
     });

@@ -59,7 +59,7 @@
     "jest-html-reporter": "^3.10.2",
     "jest-junit": "^16.0.0",
     "jest-sonar-reporter": "^2.0.0",
-    "jest-stare": "^1.13.2",
+    "jest-stare": "^2.5.1",
     "madge": "^6.1.0",
     "rimraf": "^5.0.0",
     "ts-jest": "^29.1.2",

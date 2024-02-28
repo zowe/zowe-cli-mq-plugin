@@ -45,7 +45,7 @@ describe("MQ Command handler", () => {
                 overallCompletionCode: "200",
                 overallReasonCode: "Great"
             };
-        });
+        }) as any;
 
         try {
             // Invoke the handler with a full set of mocked arguments and response functions
@@ -134,7 +134,7 @@ describe("MQ Command handler", () => {
                 overallCompletionCode: "200",
                 overallReasonCode: "Great"
             };
-        });
+        }) as any;
 
         try {
             // Invoke the handler with a full set of mocked arguments and response functions
@@ -217,7 +217,7 @@ describe("MQ Command handler", () => {
                 overallCompletionCode: "200",
                 overallReasonCode: "Great"
             };
-        });
+        }) as any;
 
         try {
             // Invoke the handler with a full set of mocked arguments and response functions

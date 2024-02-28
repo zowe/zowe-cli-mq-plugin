@@ -26,7 +26,7 @@ describe("Run a command", () => {
         ],
         overallCompletionCode: 2,
         overallReasonCode: 3008
-    };
+    } as any;
 
     beforeEach(() => {
         mySpy = jest.spyOn(RestClient, "postExpectJSON").mockReturnValue(mainResponse);

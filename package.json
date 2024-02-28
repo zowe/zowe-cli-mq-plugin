@@ -27,9 +27,9 @@
     "lint:src": "eslint \"src/**/*.ts\" --ignore-pattern \"**/__tests__/**/*.ts\"",
     "lint:tests": "eslint \"**/__tests__/**/*.ts\"",
     "test": "npm run test:unit && npm run test:integration && npm run test:system",
-    "test:integration": "env-cmd __tests__/__resources__/env/integration.env jest .*/__integration__/.* ",
-    "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false --runInBand",
-    "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" \"__integration__\"",
+    "test:integration": "env-cmd -f __tests__/__resources__/env/integration.env jest .*/__integration__/.* ",
+    "test:system": "env-cmd -f __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false --runInBand",
+    "test:unit": "env-cmd -f __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" \"__integration__\"",
     "typedoc": "typedoc --out ./docs/typedoc/ ./src/ --disableOutputCheck"
   },
   "imperative": {
@@ -39,46 +39,33 @@
     "@zowe/imperative": ">8.0.0-next.0 <8.0.0-next.x"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.16",
-    "@types/chai-as-promised": "^7.1.3",
-    "@types/expect": "^1.20.3",
-    "@types/fs-extra": "^5.0.0",
-    "@types/jest": "^22.1.0",
-    "@types/mocha": "^2.2.42",
-    "@types/node": "^8.10.66",
-    "@types/yargs": "^11.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/parser": "^4.29.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^18.19.17",
+    "@types/yargs": "^17.0.32",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
     "@zowe/cli": "^8.0.0-next.202402132108",
     "@zowe/cli-test-utils": "^8.0.0-next.202402132108",
     "@zowe/imperative": "^8.0.0-next.202402132108",
-    "chai": "^4.3.4",
-    "chai-as-promised": "^7.1.1",
-    "chalk": "^2.4.1",
-    "env-cmd": "^8.0.2",
-    "eslint": "^7.32.0",
-    "eslint-plugin-jest": "^24.4.0",
-    "eslint-plugin-unused-imports": "^1.1.2",
-    "expect": "^24.8.0",
-    "fs-extra": "^5.0.0",
+    "chalk": "^4.1.2",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-unused-imports": "^3.1.0",
     "glob": "^7.1.6",
-    "jest": "^26.6.3",
-    "jest-cli": "^26.6.3",
-    "jest-environment-node": "^26.6.2",
-    "jest-environment-node-debug": "^2.0.0",
-    "jest-html-reporter": "^3.4.1",
-    "jest-junit": "^6.4.0",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0",
+    "jest-environment-node": "^29.7.0",
+    "jest-html-reporter": "^3.10.2",
+    "jest-junit": "^16.0.0",
     "jest-sonar-reporter": "^2.0.0",
     "jest-stare": "^1.13.2",
-    "jsdom": "^16.5.0",
-    "madge": "^5.0.1",
-    "rimraf": "^2.7.1",
-    "sinon": "^6.1.0",
-    "ts-jest": "^26.5.4",
-    "ts-node": "^3.3.0",
-    "typedoc": "^0.20.36",
-    "typescript": "^3.9.9",
-    "uuid": "^3.4.0"
+    "madge": "^6.1.0",
+    "rimraf": "^5.0.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^7.0.1",
+    "typedoc": "^0.25.9",
+    "typescript": "^5.3.3"
   },
   "jest": {
     "modulePathIgnorePatterns": [
@@ -86,7 +73,7 @@
     ],
     "testResultsProcessor": "jest-stare",
     "transform": {
-      ".(ts)": "ts-jest"
+      ".(ts)": ["ts-jest"]
     },
     "testRegex": "(test|spec)\\.ts$",
     "moduleFileExtensions": [
@@ -112,27 +99,27 @@
       "cobertura"
     ],
     "coverageDirectory": "<rootDir>/__tests__/__results__/unit/coverage",
-    "globals": {
-      "ts-jest": {
-        "diagnostics": false
-      }
-    }
-  },
-  "jest-stare": {
-    "resultDir": "__tests__/__results__/jest-stare",
-    "additionalResultsProcessors": [
-      "jest-junit",
-      "jest-html-reporter"
-    ],
-    "coverageLink": "../coverage/lcov-report/index.html"
-  },
-  "jest-junit": {
-    "output": "__tests__/__results__/junit.xml"
-  },
-  "jest-html-reporter": {
-    "pageTitle": "MQ Config Plugin Test Results",
-    "outputPath": "__tests__/__results__/results.html",
-    "includeFailureMsg": true
+    "snapshotFormat": {
+      "escapeString": true,
+      "printBasicPrototype": true
+    },
+    "reporters": [
+      "default",
+      ["jest-junit", {
+        "outputDirectory": "__tests__/__results__",
+        "reportTestSuiteErrors": true
+      }],
+      ["jest-stare", {
+        "coverageLink": "../coverage/lcov-report/index.html",
+        "resultDir": "__tests__/__results__/jest-stare"
+      }],
+      ["jest-html-reporter", {
+        "pageTitle": "MQ Config Plugin Test Results",
+        "outputPath": "__tests__/__results__/results.html",
+        "includeFailureMsg": true
+      }],
+      ["github-actions", { "silent": false } ]
+    ]
   },
   "author": "Zowe",
   "license": "EPL-2.0"

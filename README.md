@@ -40,13 +40,13 @@ Use one of the following methods to install the plug-in:
 -   Install the plug-in from an online registry or a local package.
 
     Use the online registry/local package method when you simply want to install the plug-in to Zowe CLI and start using it.
-    
+
     For more information, see [Installing plug-ins](https://zowe.github.io/docs-site/latest/user-guide/cli-installplugins.html) on the [Zowe Docs](https://zowe.github.io/docs-site/latest/) website.
 
 -   Build the plug-in from source and install it into your Zowe CLI implementation.
 
     Use the build from source method when you want to install the plug-in to Zowe CLI using the most current binaries and modify the behavior of the plug-in. For example, you want to create a new command and use the plug-in with the command that you created.
-    
+
     For more information, see [Building from source](#building-from-source).
 
 ## Building from source
@@ -98,7 +98,7 @@ You can create an `mq` user profile to avoid typing your connection details on e
 
 **Follow these steps:**
 
-1.  Create an `mq` profile: 
+1.  Create an `mq` profile:
     ```
     zowe profiles create mq-profile <profileName> --host <hostname> --port <portnumber> --user <username> --password <password> --rejectUnauthorized false
     ```
@@ -109,6 +109,24 @@ You can create an `mq` user profile to avoid typing your connection details on e
 ```
 zowe profiles create mq-profile -h
 ```
+
+
+## Creating a user profile
+
+After you install the plug-in, you create an MQ profile. An MQ profile is recommended to issue commands to the MQ resource. MQ profiles contain your host, port, user name, and password for the IBM MQ REST API server of your choice. You can create multiple profiles and switch between them as needed.
+
+**Follow these steps:**
+1.  Install the IBM MQ Plug-in for Zowe CLI
+2.  Create an MQ profile:
+
+    ```
+    zowe config init
+    ```
+3.  Set the port number to your MQ port:
+
+    ```
+    zowe config set profiles.mq.properties.port <port number>
+    ```
 
 ## Running tests
 
@@ -141,7 +159,7 @@ Any failures potentially indicate an issue with the set-up of the Rest API or co
     ```
     zowe plugins uninstall @zowe/mq-for-zowe-cli
     ```
-    
+
 After the uninstallation process completes successfully, the product no longer contains the plug-in.
 
 ## Contributing

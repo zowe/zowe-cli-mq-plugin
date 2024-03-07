@@ -41,6 +41,7 @@ const config: IImperativeConfig = {
                     port: {
                         type: "number",
                         optionDefinition: MqSessionUtils.MQ_OPTION_PORT,
+                        includeInTemplate: true
                     },
                     user: {
                         type: "string",

@@ -107,34 +107,20 @@
     },
     "reporters": [
       "default",
-      [
-        "jest-junit",
-        {
-          "outputDirectory": "__tests__/__results__",
-          "reportTestSuiteErrors": true
-        }
-      ],
-      [
-        "jest-stare",
-        {
-          "coverageLink": "../coverage/lcov-report/index.html",
-          "resultDir": "__tests__/__results__/jest-stare"
-        }
-      ],
-      [
-        "jest-html-reporter",
-        {
-          "pageTitle": "MQ Config Plugin Test Results",
-          "outputPath": "__tests__/__results__/results.html",
-          "includeFailureMsg": true
-        }
-      ],
-      [
-        "github-actions",
-        {
-          "silent": false
-        }
-      ]
+      ["jest-junit", {
+        "outputDirectory": "__tests__/__results__",
+        "reportTestSuiteErrors": true
+      }],
+      ["jest-stare", {
+        "coverageLink": "../coverage/lcov-report/index.html",
+        "resultDir": "__tests__/__results__/jest-stare"
+      }],
+      ["jest-html-reporter", {
+        "pageTitle": "MQ Config Plugin Test Results",
+        "outputPath": "__tests__/__results__/results.html",
+        "includeFailureMsg": true
+      }],
+      ["github-actions", { "silent": false } ]
     ]
   },
   "author": "Zowe",

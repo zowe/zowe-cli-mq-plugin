@@ -39,6 +39,7 @@ Object {
             "type": "string",
           },
           "port": Object {
+            "includeInTemplate": true,
             "optionDefinition": Object {
               "aliases": Array [
                 "P",

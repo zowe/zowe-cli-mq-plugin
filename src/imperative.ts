@@ -62,13 +62,7 @@ const config: IImperativeConfig = {
                     }
                 },
                 required: [],
-            },
-            createProfileExamples: [
-                {
-                    options: "mq --host mq123 --port 1234 --user ibmuser --password myp4ss",
-                    description: "Create an MQ profile named 'mqprofile' to connect to MQ at host zos123 and port 1234"
-                }
-            ]
+            }
         }
     ]
 };

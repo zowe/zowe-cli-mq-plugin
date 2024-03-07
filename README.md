@@ -94,24 +94,6 @@ Successfully validated.
 When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the Zowe CLI home directory.
 
 ## Creating a user profile
-You can create an `mq` user profile to avoid typing your connection details on every command. An `mq` profile contains the host, port, username, and password for the MQ Rest API server of your choice. You can create multiple profiles and switch between them as needed.
-
-**Follow these steps:**
-
-1.  Create an `mq` profile:
-    ```
-    zowe profiles create mq-profile <profileName> --host <hostname> --port <portnumber> --user <username> --password <password> --rejectUnauthorized false
-    ```
-    The result of the command displays as a success or failure message. You can use the profile when you issue commands in the mq command group.
-
-**Tip:** For more information about the syntax, actions, and options, for a profiles create command, open Zowe CLI and issue the following command:
-
-```
-zowe profiles create mq-profile -h
-```
-
-
-## Creating a user profile
 
 After you install the plug-in, you create an MQ profile. An MQ profile is recommended to issue commands to the MQ resource. MQ profiles contain your host, port, user name, and password for the IBM MQ REST API server of your choice. You can create multiple profiles and switch between them as needed.
 

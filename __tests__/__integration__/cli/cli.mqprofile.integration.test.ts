@@ -11,6 +11,7 @@
 
 import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
 import { ITestPropertiesSchema } from "../../__src__/doc/ITestPropertiesSchema";
+import { readFileSync } from "fs";
 
 let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 describe("Creating an MQ profile", () => {
@@ -29,11 +30,12 @@ describe("Creating an MQ profile", () => {
 
     it("should create an MQ profile successfully with fake connection details", () => {
         const output = runCliScript(__dirname + "/__scripts__/create_mq_profile.sh", testEnvironment);
-        expect(output.stderr.toString()).toContain("The command 'profiles create' is deprecated.");
-        if (output.stdout.toString().indexOf("Profile created successfully!") < 0) {
-            expect(output.stderr.toString()).toEqual("");
-        }
-        expect(output.stdout.toString()).toContain("Profile created successfully!");
+        const outStr = output.stdout.toString();
+        expect(outStr).toContain("Saved config template to ");
+
+        const zoweConfigJson = JSON.parse(readFileSync(testEnvironment.workingDir + "/zowe.config.json").toString());
+
+        expect(zoweConfigJson.defaults.mq).toBeDefined();
         expect(output.status).toEqual(0);
     });
 });

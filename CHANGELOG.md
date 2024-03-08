@@ -5,6 +5,7 @@ All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in t
 ## Recent Changes
 
 - BugFix: Add missing npm-shrinkwrap
+- V3 Breaking: Increased minimum Node engine version to 18.12.0. [#64](https://github.com/zowe/zowe-cli-mq-plugin/pull/64)
 
 ## `3.0.1`
 

@@ -23,7 +23,7 @@ describe("mq mqsc cli", () => {
             installPlugin: true,
             tempProfileTypes: ["mq"]
         });
-        mqProperties = await testEnvironment.systemTestProperties;
+        mqProperties = testEnvironment.systemTestProperties;
 
         const output = runCliScript(__dirname + "/__scripts__/query_queue_manager.sh", testEnvironment,
             [mqProperties.mq.qmgr, mqProperties.test.setup.cmd]);

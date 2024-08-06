@@ -9,6 +9,8 @@
 *
 */
 
+import { SessConstants } from "@zowe/imperative";
+
 /**
  * Interface representing the values in the custom_properties.yaml file
  * see example_properties.yaml for descriptions and more details
@@ -43,6 +45,10 @@ export interface ITestPropertiesSchema {
          * The location of the API
          */
         basepath: string,
+        /**
+         * Protocol for MQ
+         */
+        protocol?: SessConstants.HTTP_PROTOCOL_CHOICES,
         /**
          * The Queue manager
          */

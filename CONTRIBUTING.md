@@ -18,7 +18,7 @@ The following code block should be inserted into the Changelog above the last re
 
 ## Primary Contribution Guidelines
 
-We provide specific guidelines for developing Zowe MQ plug-in in the [Zowe CLI GitHub repository](https://github.com/zowe/mq-config). The following information is critical to working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
+We provide specific guidelines for developing Zowe MQ plug-in in the [Zowe CLI GitHub repository](https://github.com/zowe/zowe-cli). The following information is critical to working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
 
 | For more information about ... | See: |
 | ------------------------------ | ----- |
@@ -26,7 +26,7 @@ We provide specific guidelines for developing Zowe MQ plug-in in the [Zowe CLI G
 | Conventions and best practices for creating packages and plug-ins for Zowe CLI | [Package and Plug-in Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PackagesAndPluginGuidelines.md)|
 | Guidelines for running tests on Zowe CLI | [Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/TESTING.md) |
 | Guidelines for running tests on the plug-ins that you build for Zowe CLI | [Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md) |
-| Documentation that describes the features of the Imperative CLI Framework | [About Imperative CLI Framework](https://github.com/zowe/imperative/wiki) |
+| Documentation that describes the features of the Imperative CLI Framework | [About Imperative CLI Framework](https://github.com/zowe/zowe-cli/wiki) |
 Versioning conventions for Zowe CLI and Plug-ins| [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) |
 
 ## Contribution Guidelines Specific to the IBM MQ Plug-in for Zowe CLI

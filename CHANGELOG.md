@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- Update: Final prerelease
+
 ## `4.0.0-next.202403081534`
 
 - BugFix: Add missing npm-shrinkwrap

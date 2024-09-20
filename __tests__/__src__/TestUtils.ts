@@ -26,6 +26,7 @@ export function createSession(testEnvironment: ITestEnvironment<ITestPropertiesS
         port: SYSTEM_PROPS.mq.port,
         type: "basic",
         rejectUnauthorized: false,
-        basePath: SYSTEM_PROPS.mq.basepath
+        basePath: SYSTEM_PROPS.mq.basepath,
+        protocol: SYSTEM_PROPS.mq.protocol,
     });
 }

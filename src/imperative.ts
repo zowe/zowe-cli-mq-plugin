@@ -18,7 +18,6 @@ const config: IImperativeConfig = {
     rootCommandDescription: PluginConstants.PLUGIN_DESCRIPTION,
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
-    pluginHealthCheck: __dirname + "/healthCheck.Handler",
     // apimlConnLookup: [
     //     {
     //         apiId: "place_the_mq_apiId_here",
@@ -42,6 +41,7 @@ const config: IImperativeConfig = {
                     port: {
                         type: "number",
                         optionDefinition: MqSessionUtils.MQ_OPTION_PORT,
+                        includeInTemplate: true
                     },
                     user: {
                         type: "string",
@@ -63,13 +63,7 @@ const config: IImperativeConfig = {
                     }
                 },
                 required: [],
-            },
-            createProfileExamples: [
-                {
-                    options: "mq --host mq123 --port 1234 --user ibmuser --password myp4ss",
-                    description: "Create an MQ profile named 'mqprofile' to connect to MQ at host zos123 and port 1234"
-                }
-            ]
+            }
         }
     ]
 };

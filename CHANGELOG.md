@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `4.0.0-next.202409202037`
 
 - Update: Final prerelease
 

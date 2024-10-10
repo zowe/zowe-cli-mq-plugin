@@ -115,13 +115,6 @@
         }
       ],
       [
-        "jest-stare",
-        {
-          "coverageLink": "../coverage/lcov-report/index.html",
-          "resultDir": "__tests__/__results__/jest-stare"
-        }
-      ],
-      [
         "jest-html-reporter",
         {
           "pageTitle": "MQ Config Plugin Test Results",
@@ -136,6 +129,14 @@
         }
       ]
     ]
+  },
+  "jest-stare": {
+    "additionalResultsProcessors": [
+      "jest-junit",
+      "jest-html-reporter"
+    ],
+    "coverageLink": "../coverage/lcov-report/index.html",
+    "resultDir": "__tests__/__results__/jest-stare"
   },
   "author": "Zowe",
   "license": "EPL-2.0",

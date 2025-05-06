@@ -119,9 +119,9 @@ exports[`mq mqsc should display the mqsc help 1`] = `
  EXAMPLES
  --------
 
-   - The following sequence shows how to query a
-   server-connection channel that is called NEWSVRCONN on an MQ queue manager - our
-   example queue manager is called MQ99:
+   - The following sequence shows how to query a server-connection channel that is
+   called NEWSVRCONN on an MQ queue manager - our example queue manager is called
+   MQ99:
 
       $ zowe mq run mqsc MQ99 \\"DISPLAY CHANNEL(NEWSVRCONN)\\"
 

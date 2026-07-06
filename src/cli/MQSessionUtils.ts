@@ -84,7 +84,7 @@ export class MqSessionUtils {
         aliases: ["ru"],
         description: "Reject self-signed certificates.",
         type: "boolean",
-        defaultValue: false,
+        defaultValue: true,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
     /**
@@ -94,7 +94,7 @@ export class MqSessionUtils {
         name: "protocol",
         description: "Specifies the MQ protocol (http or https).",
         type: "string",
-        defaultValue: "http",
+        defaultValue: "https",
         allowableValues: { values: ["http", "https"], caseSensitive: false },
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };

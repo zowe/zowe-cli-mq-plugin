@@ -54,13 +54,13 @@ exports[`mq mqsc should display the mqsc help 1`] = `
 
       Reject self-signed certificates.
 
-      Default value: false
+      Default value: true
 
    --protocol (string)
 
       Specifies the MQ protocol (http or https).
 
-      Default value: http
+      Default value: https
       Allowed values: http, https
 
  PROFILE OPTIONS

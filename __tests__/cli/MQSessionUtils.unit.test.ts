@@ -31,4 +31,9 @@ describe("Tests utils functions not covered elsewhere", () => {
         expect(session.ISession.hostname).toEqual("boppyhost");
         expect(session.ISession.protocol).toEqual("https");
     });
+
+    it("should default reject-unauthorized to true so TLS peers are validated", () => {
+        // Secure default: server certificates are validated unless the operator explicitly opts out.
+        expect(MqSessionUtils.MQ_OPTION_REJECT_UNAUTHORIZED.defaultValue).toBe(true);
+    });
 });

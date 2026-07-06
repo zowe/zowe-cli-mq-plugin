@@ -84,7 +84,7 @@ export class MqSessionUtils {
         aliases: ["ru"],
         description: "Reject self-signed certificates.",
         type: "boolean",
-        defaultValue: false,
+        defaultValue: true,
         group: MqSessionUtils.MQ_CONNECTION_OPTION_GROUP
     };
     /**

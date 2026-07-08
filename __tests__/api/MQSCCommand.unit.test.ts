@@ -29,7 +29,7 @@ describe("Run a command", () => {
     };
 
     beforeEach(() => {
-        mySpy = jest.spyOn(RestClient, "postExpectJSON").mockReturnValue(mainResponse);
+        mySpy = jest.spyOn(RestClient, "postExpectJSON").mockResolvedValue(mainResponse);
     });
 
     afterEach(() => {

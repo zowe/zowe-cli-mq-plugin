@@ -4,6 +4,8 @@ All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in t
 
 ## Recent Changes
 
+- BREAKING: Changed the default value of the `--reject-unauthorized` (`--ru`) option from `false` to `true`, so server certificates are validated by default. Connections to endpoints with self-signed or otherwise untrusted certificates now fail unless you explicitly opt out with `--reject-unauthorized false`. [#128](https://github.com/zowe/zowe-cli-mq-plugin/pull/128)
+- BREAKING: Changed the default value of the `--protocol` option from `http` to `https`, so connections are encrypted by default. Endpoints that only serve plaintext HTTP now require you to explicitly set `--protocol http`. [#128](https://github.com/zowe/zowe-cli-mq-plugin/pull/128)
 - BugFix: Add missing npm-shrinkwrap
 
 ## `3.0.1`
@@ -58,4 +60,3 @@ All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in t
 ## `1.0.0`
 
 - Initial release
-

@@ -31,4 +31,45 @@ describe("Tests utils functions not covered elsewhere", () => {
         expect(session.ISession.hostname).toEqual("boppyhost");
         expect(session.ISession.protocol).toEqual("https");
     });
+
+    it("should default reject-unauthorized to true so certificate validation is on by default", () => {
+        expect(MqSessionUtils.MQ_OPTION_REJECT_UNAUTHORIZED.defaultValue).toBe(true);
+    });
+
+    it("should default protocol to https so connections are encrypted by default", () => {
+        expect(MqSessionUtils.MQ_OPTION_PROTOCOL.defaultValue).toBe("https");
+    });
+
+    it("should create a session that validates certificates over https using the secure defaults", async () => {
+        const args: ICommandArguments = {
+            $0: "",
+            _: [],
+            host: "boppyhost",
+            port: "port",
+            user: "auser",
+            password: "apassword",
+            basePath: "abasePath",
+            protocol: MqSessionUtils.MQ_OPTION_PROTOCOL.defaultValue,
+            rejectUnauthorized: MqSessionUtils.MQ_OPTION_REJECT_UNAUTHORIZED.defaultValue
+        };
+        const session: Session = await MqSessionUtils.createSessCfgFromArgs(args, false);
+        expect(session.ISession.protocol).toEqual("https");
+        expect(session.ISession.rejectUnauthorized).toBe(true);
+    });
+
+    it("should honor an explicit opt-out of certificate validation for self-signed dev environments", async () => {
+        const args: ICommandArguments = {
+            $0: "",
+            _: [],
+            host: "boppyhost",
+            port: "port",
+            user: "auser",
+            password: "apassword",
+            basePath: "abasePath",
+            protocol: "https",
+            rejectUnauthorized: false
+        };
+        const session: Session = await MqSessionUtils.createSessCfgFromArgs(args, false);
+        expect(session.ISession.rejectUnauthorized).toBe(false);
+    });
 });

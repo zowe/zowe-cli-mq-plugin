@@ -54,7 +54,7 @@ exports[`mq mqsc should display the mqsc help 1`] = `
 
       Reject self-signed certificates.
 
-      Default value: false
+      Default value: true
 
    --protocol (string)
 

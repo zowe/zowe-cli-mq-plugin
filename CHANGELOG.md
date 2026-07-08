@@ -4,6 +4,7 @@ All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in t
 
 ## Recent Changes
 
+- Breaking: Changed the default value of the `reject-unauthorized` option to `true` so that TLS certificates presented by the IBM MQ REST API are validated by default, preventing credentials from being sent over an unverified connection. Profiles or commands relying on the previous insecure default must now explicitly pass `--reject-unauthorized false`. [#127](https://github.com/zowe/zowe-cli-mq-plugin/pull/127)
 - BugFix: Updated minimum supported version of Node from 18 to 20. Added Node 24 support. [#91](https://github.com/zowe/zowe-cli-mq-plugin/pull/91)
 
 ## `4.0.0`
@@ -71,4 +72,3 @@ All notable changes to the IBM® MQ Plug-in for Zowe CLI will be documented in t
 ## `1.0.0`
 
 - Initial release
-

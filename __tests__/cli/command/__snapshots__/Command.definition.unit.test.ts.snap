@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`mq get resource should not have changed 1`] = `
-Object {
+{
   "description": "MQ Utilities",
   "name": "run",
-  "passOn": Array [
-    Object {
-      "ignoreNodes": Array [
-        Object {
+  "passOn": [
+    {
+      "ignoreNodes": [
+        {
           "type": "group",
         },
       ],
       "merge": true,
       "property": "options",
-      "value": Array [
-        Object {
-          "aliases": Array [
+      "value": [
+        {
+          "aliases": [
             "H",
           ],
           "description": "The host name used to access the IBM MQ REST API. This might be the host name of the IBM MQ mqweb server, or the Zowe API Mediation Layer..",
@@ -23,8 +23,8 @@ Object {
           "name": "host",
           "type": "string",
         },
-        Object {
-          "aliases": Array [
+        {
+          "aliases": [
             "P",
           ],
           "description": "The port number used to access the IBM MQ REST API. This might be the port number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.",
@@ -32,8 +32,8 @@ Object {
           "name": "port",
           "type": "number",
         },
-        Object {
-          "aliases": Array [
+        {
+          "aliases": [
             "u",
           ],
           "description": "The mainframe (MQ) user name, which can be the same as your TSO login.",
@@ -41,8 +41,8 @@ Object {
           "name": "user",
           "type": "string",
         },
-        Object {
-          "aliases": Array [
+        {
+          "aliases": [
             "pass",
             "pw",
           ],
@@ -51,8 +51,8 @@ Object {
           "name": "password",
           "type": "string",
         },
-        Object {
-          "aliases": Array [
+        {
+          "aliases": [
             "ru",
           ],
           "defaultValue": true,
@@ -61,10 +61,10 @@ Object {
           "name": "reject-unauthorized",
           "type": "boolean",
         },
-        Object {
-          "allowableValues": Object {
+        {
+          "allowableValues": {
             "caseSensitive": false,
-            "values": Array [
+            "values": [
               "http",
               "https",
             ],

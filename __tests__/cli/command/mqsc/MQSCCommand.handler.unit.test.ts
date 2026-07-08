@@ -28,14 +28,14 @@ describe("MQ Command handler", () => {
         let fakeSession = null;
 
         // Mock the qmgrAction function
-        MQSCCommand.qmgrAction = jest.fn((session) => {
+        MQSCCommand.qmgrAction = jest.fn(async (session) => {
             fakeSession = session;
             return {
                 success: true,
                 commandResponse:[
                     {
-                        completionCode: 0,
-                        reasonCode: 0,
+                        completionCode: "0",
+                        reasonCode: "0",
                         text: [
                             "CSQN205I   COUNT=1, RETURN=00000000, REASON=00000000",
                             "CSQM416I  MQ22 CHANNEL(SYSTEM.DEF.CLNTCONN)"
@@ -111,14 +111,14 @@ describe("MQ Command handler", () => {
         let fakeSession = null;
 
         // Mock the qmgrAction function
-        MQSCCommand.qmgrAction = jest.fn((session) => {
+        MQSCCommand.qmgrAction = jest.fn(async (session) => {
             fakeSession = session;
             return {
                 success: true,
                 commandResponse:[
                     {
-                        completionCode: 0,
-                        reasonCode: 0,
+                        completionCode: "0",
+                        reasonCode: "0",
                         text:[
                             "CSQN205I COUNT= 5, RETURN=00000000, REASON=00000000",
                             // eslint-disable-next-line max-len
@@ -200,14 +200,14 @@ describe("MQ Command handler", () => {
         let fakeSession = null;
 
         // Mock the qmgrAction function
-        MQSCCommand.qmgrAction = jest.fn((session) => {
+        MQSCCommand.qmgrAction = jest.fn(async (session) => {
             fakeSession = session;
             return {
                 success: true,
                 commandResponse:[
                     {
-                        completionCode: 0,
-                        reasonCode: 0,
+                        completionCode: "0",
+                        reasonCode: "0",
                         text: [
                             "CSQN205I   COUNT=1, RETURN=00000000, REASON=00000000",
                             "CSQM416I  MQ24 CHANNEL(SYSTEM.DEF.CLNTCONN)"

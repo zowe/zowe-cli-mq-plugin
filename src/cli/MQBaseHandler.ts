@@ -95,7 +95,7 @@ export default abstract class MqBaseHandler implements ICommandHandler {
      *
      * @returns {Promise<IMQResponse>} The response from the underlying mq api call.
      */
-    public abstract async processWithSession(
+    public abstract processWithSession(
         commandParameters: IHandlerParameters,
         session: Session
     ): Promise<IMQResponse>;

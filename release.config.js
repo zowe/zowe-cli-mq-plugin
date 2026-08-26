@@ -21,8 +21,7 @@ module.exports = {
         ["@octorelease/npm", {
             aliasTags: {
                 latest: ["zowe-v2-lts", "next"]
-            },
-            pruneShrinkwrap: true
+            }
         }],
         ["@octorelease/github", {
             checkPrLabels: true

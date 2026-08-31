@@ -143,6 +143,7 @@
   "author": "Zowe",
   "license": "EPL-2.0",
   "engines": {
-    "node": ">=20.9.0"
+    "node": ">=20.9.0",
+    "npm": "^10.0.0"
   }
 }

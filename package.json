@@ -58,7 +58,7 @@
     "jest-cli": "^29.7.0",
     "jest-environment-node": "^29.7.0",
     "jest-html-reporter": "^3.10.2",
-    "jest-junit": "^16.0.0",
+    "jest-junit": "^17.0.0",
     "jest-sonar-reporter": "^2.0.0",
     "jest-stare": "^2.5.3",
     "madge": "^6.1.0",
@@ -144,5 +144,6 @@
   "license": "EPL-2.0",
   "engines": {
     "node": ">=20.9.0"
-  }
+  },
+  "packageManager": "npm@10.9.8"
 }
